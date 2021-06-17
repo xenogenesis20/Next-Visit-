@@ -10,3 +10,54 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+header,
+footer {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  flex-direction: column;
+    color: white;
+}
+
+.about {
+  width: 100%;
+  height: 300vh;
+  display: flex;
+}
+
+.about-title {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  position: sticky;
+  top: 0;
+  color:white;
+  background:rgba(201, 14, 226, 0.5);
+}
+
+.about-pages {
+  width: 50%;
+  flex: 1;
+  background:rgba(97, 204, 9, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+.about-pages > div {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+.about-pages > div > p {
+  width: 80%;
+  font-size: 18px;
+  line-height: 30px;
+}
