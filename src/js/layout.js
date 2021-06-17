@@ -6,7 +6,7 @@ import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
-
+import { SignUp } from "./views/SignUp";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { ParallaxProvider } from "react-scroll-parallax";
@@ -32,6 +32,7 @@ const Layout = () => {
 							<Route exact path="/single/:theid">
 								<Single />
 							</Route>
+							<Route exact path="/SignUp" component={SignUp} />
 							<Route>
 								<h1>Not found!</h1>
 							</Route>

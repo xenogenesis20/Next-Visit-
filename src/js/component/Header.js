@@ -12,7 +12,7 @@ export const Header = () => {
 					flexDirection: "column",
 					color: "white"
 				}}
-				x={[-20, 10]}>
+				y={[-20, 30]}>
 				<h1>Welcome to Next Visit</h1>
 				<div className="w-75 m-3">
 					<h3>
