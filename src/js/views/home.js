@@ -3,6 +3,7 @@ import "../../styles/home.scss";
 import { Header } from "../component/Header";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import { SectionContent } from "../component/SectionContent";
+import { Footer } from "../component/footer";
 
 export const Home = () => {
 	return (
@@ -13,6 +14,7 @@ export const Home = () => {
 			<section>
 				<SectionContent />
 			</section>
+			<Footer />
 		</>
 	);
 };

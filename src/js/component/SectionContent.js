@@ -1,35 +1,59 @@
-import React from "react";
-import { Parallax } from "react-scroll-parallax";
-import { Link } from "react-router-dom";
+import React, { useRef } from "react";
+import { gsap } from "gsap";
+import { useIntersection } from "react-use";
+
 import { SectionCard } from "./SectionCard";
 import { SectionCardFeaturesOne } from "./SectionCardFeaturesOne";
 import { SectionCardFeaturesTwo } from "./SectionCardFeaturesTwo";
+import { SectionCardFeaturesThree } from "./SectionCardFeaturesThree";
+
 export const SectionContent = () => {
+	const sectionRef = useRef(null);
+
+	const intersection = useIntersection(sectionRef, {
+		root: null,
+		rootMargin: "0px",
+		threshold: 0.2
+	});
+
+	const fadeIn = element => {
+		gsap.to(element, 1, {
+			opacity: 1,
+			y: -20,
+			ease: "power4.out",
+			stagger: {
+				amount: 0.3
+			}
+		});
+	};
+	const fadeOut = element => {
+		gsap.to(element, 1, {
+			opacity: 0,
+			y: -20,
+			ease: "power4.out"
+		});
+	};
+
+	intersection && intersection.intersectionRatio < 0.2 ? fadeOut(".fadeIn") : fadeIn(".fadeIn");
+
 	return (
 		<>
-			<Parallax>
-				<section className="about">
-					<div className="about-title">
-						<SectionCard />
+			<section className="about fadeIn" ref={sectionRef}>
+				<div className="about-title">
+					<SectionCard />
+				</div>
+				<div className="about-pages justify-content-center">
+					<div>
+						<SectionCardFeaturesOne />
 					</div>
-					<div className="about-pages justify-content-center">
-						<div>
-							<SectionCardFeaturesOne />
-						</div>
+					<div>
 						<SectionCardFeaturesTwo />
-						<div>
-							<h2>View all of your information from the dashboard</h2>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae mollitia deserunt
-								quod eligendi exercitationem dignissimos! Numquam nulla asperiores modi, unde,
-								voluptatum nam inventore at facilis deleniti provident incidunt nostrum et debitis
-								veniam quas? Nobis architecto quos minus ad, deserunt ab odio cum, iusto id at
-								recusandae pariatur animi aut commodi!
-							</p>
-						</div>
 					</div>
-				</section>
-			</Parallax>
+					<div>
+						<SectionCardFeaturesThree />
+					</div>
+				</div>
+			</section>
 		</>
 	);
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { Parallax } from "react-scroll-parallax";
+import headerbg from "../../img/desk.png";
 
 export const Header = () => {
 	return (

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const SectionCardFeaturesOne = () => {
 	return (
 		<div className="about-card">
-			<div className="card text-center" style={{ width: "275px;" }}>
+			<div className="card text-center" style={{ width: "23rem" }}>
 				<img src="src/img/desk.png" className="card-img-top" alt="..." />
 				<div className="card-body">
 					<h4 className="card-title">

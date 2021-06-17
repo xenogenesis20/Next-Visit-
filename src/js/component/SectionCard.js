@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const SectionCard = () => {
 	return (
 		<div className="about-card">
-			<div className="card text-center" style={{ width: "275px;" }}>
+			<div className="card text-center" style={{ width: "23rem" }}>
 				<img
 					src="https://image.freepik.com/free-vector/doctor-examining-patient-clinic-illustrated_23-2148856559.jpg"
 					className="card-img-top"

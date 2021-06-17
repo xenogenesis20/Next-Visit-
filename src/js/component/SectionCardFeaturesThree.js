@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export const SectionCardFeaturesTwo = () => {
+export const SectionCardFeaturesThree = () => {
 	return (
 		<div className="about-card">
 			<div className="card text-center" style={{ width: "23rem" }}>
@@ -10,7 +11,7 @@ export const SectionCardFeaturesTwo = () => {
 					alt="..."
 				/>
 				<div className="card-body">
-					<h4 className="card-title">Keep a log of all your medications </h4>
+					<h4 className="card-title">View all of your information on the dashboard</h4>
 					<p className="card-text">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae mollitia deserunt quod
 						eligendi exercitationem dignissimos! Numquam nulla asperiores modi, unde, voluptatum nam
