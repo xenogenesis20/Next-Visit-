@@ -14,6 +14,19 @@ export const SignUp = () => {
 		address: null
 	});
 
+	const [personalInfo, setPersonalInfo] = useState({
+		height: null,
+		weight: null,
+		diet: null
+	});
+
+	const Uservalues = {
+		name: user.name,
+		email: user.email,
+		phone: user.phone,
+		address: user.address
+	};
+
 	const nextStep = () => {
 		setStep(step + 1);
 	};
@@ -33,7 +46,7 @@ export const SignUp = () => {
 	});
 	switch (step) {
 		case 1:
-			return <SignupStepOne nextStep={nextStep} handleInput={handleInput} />;
+			return <SignupStepOne nextStep={nextStep} handleInput={handleInput} values={Uservalues} />;
 		case 2:
 			return <SignupStepTwo nextStep={nextStep} prevStep={prevStep} handleInput={handleInput} />;
 		case 3:

@@ -17,6 +17,7 @@ export const SignupStepOne = props => {
 						className="form-control"
 						name="name"
 						onChange={props.handleInput}
+						value={props.values.name}
 					/>
 					<label className="form-label" htmlFor="name-input">
 						Full Name
@@ -29,6 +30,7 @@ export const SignupStepOne = props => {
 						className="form-control"
 						name="email"
 						onChange={props.handleInput}
+						value={props.values.email}
 					/>
 					<label className="form-label" htmlFor="email-input">
 						Email
@@ -41,6 +43,7 @@ export const SignupStepOne = props => {
 						className="form-control"
 						name="phone"
 						onChange={props.handleInput}
+						value={props.values.phone}
 					/>
 					<label className="form-label" htmlFor="phone-input">
 						Phone
@@ -53,6 +56,7 @@ export const SignupStepOne = props => {
 						className="form-control"
 						name="address"
 						onChange={props.handleInput}
+						value={props.values.address}
 					/>
 					<label className="form-label" htmlFor="address-input">
 						Address
@@ -68,5 +72,6 @@ export const SignupStepOne = props => {
 };
 SignupStepOne.propTypes = {
 	nextStep: PropTypes.func,
-	handleInput: PropTypes.func
+	handleInput: PropTypes.func,
+	values: PropTypes.object
 };

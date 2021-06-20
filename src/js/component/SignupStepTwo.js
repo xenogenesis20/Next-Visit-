@@ -22,12 +22,12 @@ export const SignupStepTwo = props => {
 						How much do you weigh? (in pounds)
 					</label>
 				</div>
-				<div className="form-outline bg-light mb-3 p-1">
-					<input type="text" id="email-input" className="form-control" name="email" />
-					<label className="form-label" htmlFor="email-input">
-						Email
-					</label>
-				</div>
+				<select className="form-select mb-3 p-1" aria-label="Default select example">
+					<option selected>Type of diet</option>
+					<option value="1">Regular</option>
+					<option value="2">Two</option>
+					<option value="3">Three</option>
+				</select>
 				<div className="form-outline bg-light mb-3 p-1">
 					<input type="number" id="phone-input" className="form-control" name="phone" />
 					<label className="form-label" htmlFor="phone-input">
