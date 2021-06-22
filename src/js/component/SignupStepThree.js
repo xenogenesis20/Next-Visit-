@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const SignupStepTwo = props => {
+export const SignupStepThree = props => {
 	const proceed = e => {
 		props.nextStep();
 	};
@@ -11,27 +11,13 @@ export const SignupStepTwo = props => {
 			<h4 className="text-center mt-2 p-3">A little more information and we are done!</h4>
 			<form>
 				<div className="form-outline bg-light mb-3 p-1">
-					<input
-						type="number"
-						id="height-input"
-						className="form-control"
-						name="height"
-						value={props.values.height}
-						onChange={props.handleInput}
-					/>
+					<input type="number" id="height-input" className="form-control" name="height" />
 					<label className="form-label" htmlFor="name-input">
 						How tall are you? (in inches)
 					</label>
 				</div>
 				<div className="form-outline bg-light mb-3 p-1">
-					<input
-						type="number"
-						id="weight-input"
-						className="form-control"
-						name="weight"
-						value={props.values.weight}
-						onChange={props.handleInput}
-					/>
+					<input type="number" id="weight-input" className="form-control" name="weight" />
 					<label className="form-label" htmlFor="name-input">
 						How much do you weigh? (in pounds)
 					</label>
@@ -67,9 +53,8 @@ export const SignupStepTwo = props => {
 		</div>
 	);
 };
-SignupStepTwo.propTypes = {
+SignupStepThree.propTypes = {
 	nextStep: PropTypes.func,
 	prevStep: PropTypes.func,
-	handleInput: PropTypes.func,
-	values: PropTypes.object
+	handleInput: PropTypes.func
 };

@@ -8,6 +8,7 @@ import injectContext from "./store/appContext";
 import { SignUp } from "./views/SignUp";
 import { Navbar } from "./component/navbar";
 import { ParallaxProvider } from "react-scroll-parallax";
+import { SignIn } from "./views/SignIn";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -30,6 +31,7 @@ const Layout = () => {
 							<Single />
 						</Route>
 						<Route exact path="/SignUp" component={SignUp} />
+						<Route exact path="/SignIn" component={SignIn} />
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
