@@ -10,6 +10,7 @@ import { Navbar } from "./component/navbar";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { SignIn } from "./views/SignIn";
 import { Dashboard } from "./views/Dashboard";
+import { SectionCard } from "./component/SectionCard";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -31,6 +32,10 @@ const Layout = () => {
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
+						<Route exact path="/AboutUs" component={SectionCard} />
+						<Route exact path="/DailyMeds" component={DailyMeds} />
+						<Route exact path="/DailyVitals" component={DailyVitals} />
+						<Route exact path="/DailySymptoms" component={DailySymptoms} />
 						<Route exact path="/SignUp" component={SignUp} />
 						<Route exact path="/SignIn" component={SignIn} />
 						<Route exact path="/Dashboard" component={Dashboard} />

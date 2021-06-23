@@ -17,6 +17,7 @@ export const Header = () => {
 				<h1>Welcome to Next Visit</h1>
 				<div className="w-75 m-3">
 					<h3>
+						<a href="#about-us" aria-hidden="true" className="anchor" />
 						about us text example Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 						Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown
 						printer took a galley of type and scrambled it to make a type specimen book.
