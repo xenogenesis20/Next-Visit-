@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 import { SignupStepOne } from "../component/SignupStepOne";
 import { SignupStepTwo } from "../component/SignupStepTwo";
 import { SignupStepThree } from "../component/SignupStepThree";
+import { SignupSuccess } from "../component/SignupSuccess";
 
 export const SignUp = () => {
 	const { store, actions } = useContext(Context);
@@ -66,13 +67,9 @@ export const SignUp = () => {
 				/>
 			);
 		case 3:
-			return (
-				<h1>
-					<SignupStepThree nextStep={nextStep} prevStep={prevStep} />
-				</h1>
-			);
+			return <SignupStepThree nextStep={nextStep} prevStep={prevStep} />;
 		case 4:
-			return <h1>Success!</h1>;
+			return <SignupSuccess prevStep={prevStep} />;
 		default:
 			break;
 	}

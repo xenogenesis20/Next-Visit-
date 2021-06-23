@@ -77,7 +77,7 @@
 		]
 	},
 	"dependencies": {
-		"bootstrap": "^4.3.1",
+		"bootstrap": "^5.0.2",
 		"gsap": "^3.7.0",
 		"mdb-ui-kit": "^3.8.0",
 		"prop-types": "^15.6.1",
