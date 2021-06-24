@@ -4,10 +4,10 @@ import { Header } from "../component/Header";
 
 export const DailyVitals = () => {
 	return (
-        <>			
-            <header className="wrapper">
-                    <Header />
-            </header>
-        </>
-    );
+		<>
+			<header className="wrapper">
+				<Header />
+			</header>
+		</>
+	);
 };

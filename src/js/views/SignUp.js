@@ -26,7 +26,7 @@ export const SignUp = () => {
 		weight: personalInfo.weight,
 		diet: personalInfo.diet
 	};
-	const Uservalues = {
+	const userValues = {
 		name: user.name,
 		email: user.email,
 		phone: user.phone,
@@ -54,23 +54,81 @@ export const SignUp = () => {
 			new mdb.Input(formOutline).update();
 		}, []);
 	});
-	switch (step) {
-		case 1:
-			return <SignupStepOne nextStep={nextStep} handleInput={handleInput} values={Uservalues} />;
-		case 2:
-			return (
-				<SignupStepTwo
-					nextStep={nextStep}
-					prevStep={prevStep}
-					handleInput={handleStepTwoInput}
-					values={personalValues}
-				/>
-			);
-		case 3:
-			return <SignupStepThree nextStep={nextStep} prevStep={prevStep} />;
-		case 4:
-			return <SignupSuccess prevStep={prevStep} />;
-		default:
-			break;
-	}
+
+	return (
+		<div className="container signup-box">
+			<h4 className="text-center mt-2 p-3">Lets collect some basic information.</h4>
+			<form>
+				<div className="form-outline bg-light mb-3 p-1">
+					<input
+						type="text"
+						id="name-input"
+						className="form-control"
+						name="name"
+						onChange={handleInput}
+						value={userValues.name}
+					/>
+					<label className="form-label" htmlFor="name-input">
+						Full Name
+					</label>
+				</div>
+				<div className="form-outline bg-light mb-3 p-1">
+					<input
+						type="text"
+						id="email-input"
+						className="form-control"
+						name="email"
+						onChange={handleInput}
+						value={userValues.email}
+					/>
+					<label className="form-label" htmlFor="email-input">
+						Email
+					</label>
+				</div>
+				<div className="form-outline bg-light mb-3 p-1">
+					<input
+						type="number"
+						id="phone-input"
+						className="form-control"
+						name="phone"
+						onChange={handleInput}
+						value={userValues.phone}
+					/>
+					<label className="form-label" htmlFor="phone-input">
+						Phone
+					</label>
+				</div>
+				<div className="form-outline bg-light mb-3 p-1">
+					<input
+						type="text"
+						id="address-input"
+						className="form-control"
+						name="address"
+						onChange={handleInput}
+						value={userValues.address}
+					/>
+					<label className="form-label" htmlFor="address-input">
+						Address
+					</label>
+				</div>
+				<div className="form-outline bg-light mb-3 p-1">
+					<input
+						type="text"
+						id="pw-input"
+						className="form-control"
+						name="name"
+						onChange={handleInput}
+						// value={userValues.name}
+					/>
+					<label className="form-label" htmlFor="pw-input">
+						Password
+					</label>
+				</div>
+
+				<button type="button" className="btn btn-primary btn-rounded form-control" onClick={() => proceed()}>
+					Continue
+				</button>
+			</form>
+		</div>
+	);
 };

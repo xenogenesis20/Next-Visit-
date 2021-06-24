@@ -11,6 +11,10 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import { SignIn } from "./views/SignIn";
 import { Dashboard } from "./views/Dashboard";
 import { SectionCard } from "./component/SectionCard";
+import { DailyMeds } from "./views/DailyMeds";
+import { DailyVitals } from "./views/DailyVitals";
+import { DailySymptoms } from "./views/DailySymptoms";
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -21,7 +25,6 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<ParallaxProvider>
 				<BrowserRouter basename={basename}>
-					<Navbar />
 					<Switch>
 						<Route exact path="/">
 							<Home />
