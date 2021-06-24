@@ -12,8 +12,13 @@ import { SignIn } from "./views/SignIn";
 import { Dashboard } from "./views/Dashboard";
 import { SectionCard } from "./component/SectionCard";
 import { DailyMeds } from "./views/DailyMeds";
+<<<<<<< HEAD
 import { DailyVitals } from "./views/DailyVitals";
 import { DailySymptoms } from "./views/DailySymptoms";
+=======
+import { DailySymptoms } from "./views/DailySymptoms";
+import { DailyVitals } from "./views/DailyVitals";
+>>>>>>> 032746dba686104cbb8bfc47bca5f9a502a68e66
 
 //create your first component
 const Layout = () => {
