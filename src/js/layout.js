@@ -25,6 +25,7 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<ParallaxProvider>
 				<BrowserRouter basename={basename}>
+					<Navbar />
 					<Switch>
 						<Route exact path="/">
 							<Home />

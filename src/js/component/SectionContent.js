@@ -10,50 +10,52 @@ import { SectionCardFeaturesThree } from "./SectionCardFeaturesThree";
 export const SectionContent = () => {
 	const sectionRef = useRef(null);
 
-	const intersection = useIntersection(sectionRef, {
-		root: null,
-		rootMargin: "0px",
-		threshold: 0.2
-	});
+	// const intersection = useIntersection(sectionRef, {
+	// 	root: null,
+	// 	rootMargin: "0px",
+	// 	threshold: 0.2
+	// });
 
-	const fadeIn = element => {
-		gsap.to(element, 1, {
-			opacity: 1,
-			y: -20,
-			ease: "power4.out",
-			stagger: {
-				amount: 0.3
-			}
-		});
-	};
-	const fadeOut = element => {
-		gsap.to(element, 1, {
-			opacity: 0,
-			y: -20,
-			ease: "power4.out"
-		});
-	};
+	// const fadeIn = element => {
+	// 	gsap.to(element, 1, {
+	// 		opacity: 1,
+	// 		y: -20,
+	// 		ease: "power4.out",
+	// 		stagger: {
+	// 			amount: 0.3
+	// 		}
+	// 	});
+	// };
+	// const fadeOut = element => {
+	// 	gsap.to(element, 1, {
+	// 		opacity: 0,
+	// 		y: -20,
+	// 		ease: "power4.out"
+	// 	});
+	// };
 
-	intersection && intersection.intersectionRatio < 0.2 ? fadeOut(".fadeIn") : fadeIn(".fadeIn");
+	// intersection && intersection.intersectionRatio < 0.2 ? fadeOut(".fadeIn") : fadeIn(".fadeIn");
 
 	return (
 		<>
-			<section className="about fadeIn" ref={sectionRef}>
-				<div className="about-title">
-					<SectionCard />
+			<div className=" container" ref={sectionRef}>
+				<div className="row">
+					<div className="col-12">
+						<SectionCard />
+					</div>
 				</div>
-				<div className="about-pages justify-content-center">
-					<div>
+				<div className="row">
+					<div className="col">
 						<SectionCardFeaturesOne />
 					</div>
-					<div>
+					<div className="col">
 						<SectionCardFeaturesTwo />
 					</div>
-					<div>
+					<div className="col">
 						<SectionCardFeaturesThree />
 					</div>
 				</div>
-			</section>
+			</div>
 		</>
 	);
 };

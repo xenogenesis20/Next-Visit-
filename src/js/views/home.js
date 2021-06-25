@@ -1,22 +1,39 @@
 import React from "react";
 import "../../styles/home.scss";
 import { Header } from "../component/Header";
-import { ParallaxProvider, Parallax } from "react-scroll-parallax";
-import { SectionContent } from "../component/SectionContent";
 import { Footer } from "../component/footer";
 import { Navbar } from "../component/navbar";
+import { SectionCardFeaturesOne } from "../component/SectionCardFeaturesOne";
+import { SectionCardFeaturesTwo } from "../component/SectionCardFeaturesTwo";
+import { SectionCardFeaturesThree } from "../component/SectionCardFeaturesThree";
 
 export const Home = () => {
 	return (
 		<>
 			<Navbar />
-			<header className="wrapper">
-				<Header />
-			</header>
-			<section>
-				<SectionContent />
-			</section>
-			<Footer />
+			<div className="container">
+				<div className="row">
+					<div className="col-12">
+						<Header />
+					</div>
+				</div>
+				<div className="row">
+					<div className="col">
+						<SectionCardFeaturesOne />
+					</div>
+					<div className="col">
+						<SectionCardFeaturesTwo />
+					</div>
+					<div className="col">
+						<SectionCardFeaturesThree />
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-12">
+						<Footer />
+					</div>
+				</div>
+			</div>
 		</>
 	);
 };

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar fixed-top navbar-expand-lg navbar-light">
+		<nav className="navbar fixed-top navbar-expand-lg navbar-dark" style={{ backgroundColor: "#111213ff" }}>
 			<div className="container-fluid">
 				<Link className="navbar-brand" to="/">
 					Next Visit

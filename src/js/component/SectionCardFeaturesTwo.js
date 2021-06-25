@@ -2,7 +2,7 @@ import React from "react";
 
 export const SectionCardFeaturesTwo = () => {
 	return (
-		<div className="about-card">
+		<div className="card">
 			<div className="card text-center" style={{ width: "23rem" }}>
 				<img
 					src="https://image.freepik.com/free-vector/holistic-medicine-abstract-concept-vector-illustration-alternative-natural-medicine-holistic-mental-therapy-whole-body-treatment-health-practice-disease-integrative-doctor-abstract-metaphor_335657-1696.jpg"

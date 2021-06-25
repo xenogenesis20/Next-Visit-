@@ -1,19 +1,11 @@
 import React from "react";
-import { Parallax } from "react-scroll-parallax";
+
 import headerbg from "../../img/desk.png";
 
 export const Header = () => {
 	return (
 		<>
-			<Parallax
-				styleInner={{
-					display: "flex",
-					alignItems: "center",
-					fontSize: "30px",
-					flexDirection: "column",
-					color: "white"
-				}}
-				y={[-20, 30]}>
+			<div>
 				<h1>Welcome to Next Visit</h1>
 				<div className="w-75 m-3">
 					<h3>
@@ -36,7 +28,7 @@ export const Header = () => {
 				<div className="w-75 mt-5 d-flex justify-content-center">
 					<h4>Scroll down to learn more!</h4>
 				</div>
-			</Parallax>
+			</div>
 		</>
 	);
 };

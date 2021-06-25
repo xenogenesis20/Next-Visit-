@@ -1,0 +1,18 @@
+
+@import "~mdb-ui-kit/css/mdb.min.css";
+
+.symptom-column{
+    background-color: rgba(166, 255, 0, 0.466);
+}
+.medication-column{
+    background-color: rgba(225, 0, 255, 0.582);
+}
+.chart-column{
+    background-color: rgba(255, 5, 5, 0.507) ;
+}
+.centered {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
