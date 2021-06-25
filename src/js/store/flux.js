@@ -4,6 +4,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			userInfo: []
 		},
 		actions: {
+			addUser: user => {
+				let newUser = getStore().userInfo;
+				newUser.push(user);
+
+				setStore({ userInfo: newUser });
+			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

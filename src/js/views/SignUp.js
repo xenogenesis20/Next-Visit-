@@ -1,52 +1,25 @@
 import React, { useEffect, useContext, useState } from "react";
 import * as mdb from "mdb-ui-kit"; // lib
-import { Context } from "../store/appContext";
-import { SignupStepOne } from "../component/SignupStepOne";
-import { SignupStepTwo } from "../component/SignupStepTwo";
-import { SignupStepThree } from "../component/SignupStepThree";
-import { SignupSuccess } from "../component/SignupSuccess";
+import { GlobalState } from "../store/appContext";
+import { ModalToSignIn } from "../component/ModalToSignIn";
 
 export const SignUp = () => {
-	const { store, actions } = useContext(Context);
-	const [step, setStep] = useState(1);
+	const { store, actions } = useContext(GlobalState);
 	const [user, setUser] = useState({
 		name: null,
 		email: null,
 		phone: null,
-		address: null
+		address: null,
+		password: null
 	});
-
-	const [personalInfo, setPersonalInfo] = useState({
-		height: null,
-		weight: null,
-		diet: null
-	});
-	const personalValues = {
-		height: personalInfo.height,
-		weight: personalInfo.weight,
-		diet: personalInfo.diet
-	};
-	const userValues = {
-		name: user.name,
-		email: user.email,
-		phone: user.phone,
-		address: user.address
-	};
-
-	const nextStep = () => {
-		setStep(step + 1);
-	};
-
-	const prevStep = () => {
-		setStep(step - 1);
+	const [state, setState] = useState({ showModal: false });
+	const setModalState = userData => {
+		actions.addUser(userData);
+		setState({ showModal: true });
 	};
 
 	const handleInput = e => {
 		setUser({ ...user, [e.target.name]: e.target.value });
-	};
-
-	const handleStepTwoInput = e => {
-		setPersonalInfo({ ...personalInfo, [e.target.name]: e.target.value });
 	};
 
 	useEffect(() => {
@@ -66,7 +39,7 @@ export const SignUp = () => {
 						className="form-control"
 						name="name"
 						onChange={handleInput}
-						value={userValues.name}
+						value={user.name}
 					/>
 					<label className="form-label" htmlFor="name-input">
 						Full Name
@@ -79,7 +52,7 @@ export const SignUp = () => {
 						className="form-control"
 						name="email"
 						onChange={handleInput}
-						value={userValues.email}
+						value={user.email}
 					/>
 					<label className="form-label" htmlFor="email-input">
 						Email
@@ -92,7 +65,7 @@ export const SignUp = () => {
 						className="form-control"
 						name="phone"
 						onChange={handleInput}
-						value={userValues.phone}
+						value={user.phone}
 					/>
 					<label className="form-label" htmlFor="phone-input">
 						Phone
@@ -105,7 +78,7 @@ export const SignUp = () => {
 						className="form-control"
 						name="address"
 						onChange={handleInput}
-						value={userValues.address}
+						value={user.address}
 					/>
 					<label className="form-label" htmlFor="address-input">
 						Address
@@ -116,19 +89,23 @@ export const SignUp = () => {
 						type="text"
 						id="pw-input"
 						className="form-control"
-						name="name"
+						name="password"
 						onChange={handleInput}
-						// value={userValues.name}
+						value={user.password}
 					/>
 					<label className="form-label" htmlFor="pw-input">
 						Password
 					</label>
 				</div>
 
-				<button type="button" className="btn btn-primary btn-rounded form-control" onClick={() => proceed()}>
-					Continue
+				<button
+					type="button"
+					className="btn btn-primary btn-rounded form-control"
+					onClick={() => setModalState(user)}>
+					Submit
 				</button>
 			</form>
+			<ModalToSignIn show={state.showModal} onClose={() => setState({ showModal: false })} />
 		</div>
 	);
 };
