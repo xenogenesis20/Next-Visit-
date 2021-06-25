@@ -20,7 +20,7 @@ body {
   // background: url(../img/vecteezy_blue-background_wk1120.jpg) no-repeat center
   //   center fixed;
   // background-color: var(--blue-crayola) !important;
-  background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+  background: linear-gradient(40deg, #006bc9, #58d8ff) !important;
 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -38,7 +38,8 @@ header {
   color: white;
 }
 footer {
-  background: url(../img/2650401.jpg) no-repeat center center fixed;
+  // background: url(../img/2650401.jpg) no-repeat center center fixed;
+  background-color: red;
 }
 
 
