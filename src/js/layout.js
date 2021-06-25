@@ -22,34 +22,30 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div className="d-flex flex-column">
-			<ParallaxProvider>
-				<BrowserRouter basename={basename}>
-					<Navbar />
-					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route>
-						<Route exact path="/AboutUs" component={SectionCard} />
-						<Route exact path="/DailyMeds" component={DailyMeds} />
-						<Route exact path="/DailyVitals" component={DailyVitals} />
-						<Route exact path="/DailySymptoms" component={DailySymptoms} />
-						<Route exact path="/SignUp" component={SignUp} />
-						<Route exact path="/SignIn" component={SignIn} />
-						<Route exact path="/Dashboard" component={Dashboard} />
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
-					</Switch>
-				</BrowserRouter>
-			</ParallaxProvider>
-		</div>
+		<BrowserRouter basename={basename}>
+			<Navbar />
+			<Switch>
+				<Route exact path="/">
+					<Home />
+				</Route>
+				<Route exact path="/demo">
+					<Demo />
+				</Route>
+				<Route exact path="/single/:theid">
+					<Single />
+				</Route>
+				<Route exact path="/AboutUs" component={SectionCard} />
+				<Route exact path="/DailyMeds" component={DailyMeds} />
+				<Route exact path="/DailyVitals" component={DailyVitals} />
+				<Route exact path="/DailySymptoms" component={DailySymptoms} />
+				<Route exact path="/SignUp" component={SignUp} />
+				<Route exact path="/SignIn" component={SignIn} />
+				<Route exact path="/Dashboard" component={Dashboard} />
+				<Route>
+					<h1>Not found!</h1>
+				</Route>
+			</Switch>
+		</BrowserRouter>
 	);
 };
 
