@@ -11,7 +11,7 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import { SignIn } from "./views/SignIn";
 import { Dashboard } from "./views/Dashboard";
 import { SectionCard } from "./component/SectionCard";
-import { DailyMeds } from "./views/DailyMeds";
+import { YourMedications } from "./views/YourMedications";
 import { DailySymptoms } from "./views/DailySymptoms";
 import { DailyVitals } from "./views/DailyVitals";
 
@@ -35,7 +35,7 @@ const Layout = () => {
 					<Single />
 				</Route>
 				<Route exact path="/AboutUs" component={SectionCard} />
-				<Route exact path="/DailyMeds" component={DailyMeds} />
+				<Route exact path="/YourMedications" component={YourMedications} />
 				<Route exact path="/DailyVitals" component={DailyVitals} />
 				<Route exact path="/DailySymptoms" component={DailySymptoms} />
 				<Route exact path="/SignUp" component={SignUp} />

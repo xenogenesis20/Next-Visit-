@@ -10,8 +10,8 @@ import { SectionCardFeaturesThree } from "../component/SectionCardFeaturesThree"
 export const Home = () => {
 	return (
 		<>
-			{/* <Navbar /> */}
-			<div className="container">
+			<Navbar />
+			<div className="container landing-page-container">
 				<div className="row">
 					<div className="col-12">
 						<Header />

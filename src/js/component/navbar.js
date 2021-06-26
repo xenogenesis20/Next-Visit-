@@ -49,6 +49,11 @@ export const Navbar = () => {
 								Dashboard
 							</Link>
 						</li>
+						<li className="nav-item">
+							<Link className="nav-link" to="/YourMedications">
+								Your Medications
+							</Link>
+						</li>
 					</ul>
 				</div>
 			</div>
