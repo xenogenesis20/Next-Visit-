@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../../styles/home.scss";
 import { SingleMedicationCard } from "../component/SingleMedicationCard";
+import * as mdb from "mdb-ui-kit"; // lib
+import { GlobalState } from "../store/appContext";
 
 export const YourMedications = () => {
+	const { store, actions } = useContext(GlobalState);
+	const [medications, setMedications] = useState({
+		medicationName: "",
+		dose: "",
+		frequency: "",
+		reason: "",
+		sideEffects: ""
+	});
+	const handleInput = e => {
+		setMedications({ ...medications, [e.target.name]: e.target.value });
+	};
+	const confirmNewMedication = med => {
+		actions.addUserMedication(med);
+	};
+	useEffect(() => {
+		document.querySelectorAll(".form-outline").forEach(formOutline => {
+			new mdb.Input(formOutline).update();
+		}, []);
+	});
 	return (
 		<div className="container-fluid">
 			<h1>Your Medications</h1>
@@ -40,13 +61,20 @@ export const YourMedications = () => {
 										id="medication-name-input"
 										className="form-control"
 										name="medicationName"
+										onChange={handleInput}
 									/>
 									<label className="form-label" htmlFor="medication-name-input">
 										Medication name
 									</label>
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
-									<input type="text" id="dose-input" className="form-control" name="dose" />
+									<input
+										type="text"
+										id="dose-input"
+										className="form-control"
+										name="dose"
+										onChange={handleInput}
+									/>
 									<label className="form-label" htmlFor="dose-input">
 										Current dose
 									</label>
@@ -57,13 +85,20 @@ export const YourMedications = () => {
 										id="frequency-input"
 										className="form-control"
 										name="frequency"
+										onChange={handleInput}
 									/>
 									<label className="form-label" htmlFor="frequency-input">
 										How often do you take it
 									</label>
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
-									<input type="text" id="reason-input" className="form-control" name="reason" />
+									<input
+										type="text"
+										id="reason-input"
+										className="form-control"
+										name="reason"
+										onChange={handleInput}
+									/>
 									<label className="form-label" htmlFor="reason-input">
 										Reason for medication
 									</label>
@@ -74,6 +109,7 @@ export const YourMedications = () => {
 										id="sideEffects-input"
 										className="form-control"
 										name="sideEffects"
+										onChange={handleInput}
 									/>
 									<label className="form-label" htmlFor="sideEffects-input">
 										Side effects
@@ -85,7 +121,10 @@ export const YourMedications = () => {
 							<button type="button" className="btn btn-secondary" data-mdb-dismiss="modal">
 								Cancel
 							</button>
-							<button type="button" className="btn btn-primary">
+							<button
+								type="button"
+								className="btn btn-primary"
+								onClick={() => confirmNewMedication(medications)}>
 								Save changes
 							</button>
 						</div>

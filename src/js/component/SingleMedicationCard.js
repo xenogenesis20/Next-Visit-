@@ -42,12 +42,6 @@ export const SingleMedicationCard = props => {
 							insomnia{" "}
 						</p>
 					</div>
-					<div className="list-group-item">
-						<p className="mb-1">
-							<strong>Past dosages:</strong>
-							ex:50mg, 100mg, etc, etc
-						</p>
-					</div>
 				</div>
 				{/* End med info inside card body */}
 				<div className="d-flex w-100 justify-content-around m-1">
