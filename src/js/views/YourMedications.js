@@ -32,11 +32,14 @@ export const YourMedications = () => {
 			</button>
 			<div className="row">
 				<div className="col-6">
-					<SingleMedicationCard />
-					<SingleMedicationCard />
-					<SingleMedicationCard />
-					<SingleMedicationCard />
-					<SingleMedicationCard />
+					{store.allUserMedications &&
+						store.allUserMedications.map((medication, index) => (
+							<SingleMedicationCard
+								key={medication.id}
+								entity={medication}
+								onDelete={() => stateSetter(medication.id)}
+							/>
+						))}
 				</div>
 			</div>
 			<div
