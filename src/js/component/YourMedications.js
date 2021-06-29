@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import "../../styles/home.scss";
-import { SingleMedicationCard } from "../component/SingleMedicationCard";
+import { SingleMedicationCard } from "./SingleMedicationCard";
 import * as mdb from "mdb-ui-kit"; // lib
 import { GlobalState } from "../store/appContext";
 
@@ -50,24 +50,19 @@ export const YourMedications = () => {
 	console.log("second log", medlist);
 
 	return (
-		<div className="container-fluid">
+		<>
 			<h1>Your Medications</h1>
 			<button type="button" className="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
 				Add a new medication.
 			</button>
-			<div className="row">
-				<div className="col-6">
-					{store.allUserMedications &&
-						store.allUserMedications.map((medication, index) => (
-							<SingleMedicationCard
-								key={medication.id}
-								entity={medication}
-								onDelete={() => stateSetter(medication.id)}
-							/>
-						))}
-				</div>
-			</div>
-
+			{store.allUserMedications &&
+				store.allUserMedications.map((medication, index) => (
+					<SingleMedicationCard
+						key={medication.id}
+						entity={medication}
+						onDelete={() => stateSetter(medication.id)}
+					/>
+				))}
 			<div
 				className="modal fade"
 				id="exampleModal"
@@ -161,6 +156,6 @@ export const YourMedications = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };

@@ -7,11 +7,10 @@ import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 import { SignUp } from "./views/SignUp";
 import { Navbar } from "./component/navbar";
-import { ParallaxProvider } from "react-scroll-parallax";
 import { SignIn } from "./views/SignIn";
 import { Dashboard } from "./views/Dashboard";
 import { SectionCard } from "./component/SectionCard";
-import { YourMedications } from "./views/YourMedications";
+import { YourMedications } from "./component/YourMedications";
 import { DailySymptoms } from "./views/DailySymptoms";
 import { DailyVitals } from "./views/DailyVitals";
 
@@ -23,7 +22,6 @@ const Layout = () => {
 
 	return (
 		<BrowserRouter basename={basename}>
-			<Navbar />
 			<Switch>
 				<Route exact path="/">
 					<Home />

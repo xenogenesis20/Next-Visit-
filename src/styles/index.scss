@@ -26,21 +26,21 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  margin-top: 100px;
+  // margin-top: 100px;
 }
 // .landing-page-container{
 //   margin-top: 100px;
 // }
-header {
-  height: 50vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
-  flex-direction: column;
-  color: white;
-}
+// header {
+//   height: 50vh;
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   font-size: 30px;
+//   flex-direction: column;
+//   color: white;
+// }
 footer {
   // background: url(../img/2650401.jpg) no-repeat center center fixed;
   background-color: red;
@@ -70,12 +70,12 @@ footer {
   background: rgba(9, 158, 204, 0.5);
 
   display: flex;
-  flex-direction: column;
+  // : column;flex-direction
 }
 .about-pages > div {
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
