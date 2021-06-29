@@ -6,6 +6,7 @@ import { GlobalState } from "../store/appContext";
 
 export const YourMedications = () => {
 	const { store, actions } = useContext(GlobalState);
+	const [medlist, setMedList] = useState([]);
 	const [medications, setMedications] = useState({
 		medicationName: "",
 		dose: "",
@@ -24,6 +25,30 @@ export const YourMedications = () => {
 			new mdb.Input(formOutline).update();
 		}, []);
 	});
+	let dynamicValue = "adde";
+	const getMedList = dynamicValue => {
+		useEffect(() => {
+			fetch(`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${dynamicValue}`)
+				.then(function(response) {
+					if (!response.ok) {
+						throw Error(response.statusText);
+					}
+					// Read the response as json.
+					return response.json();
+				})
+				.then(function(responseAsJson) {
+					// Do stuff with the JSON
+					console.log("response log", responseAsJson.results);
+					setMedList(responseAsJson.results);
+				})
+				.catch(function(err) {
+					console.log("Fetch Error :-S", err);
+				});
+		}, []);
+	};
+
+	console.log("second log", medlist);
+
 	return (
 		<div className="container-fluid">
 			<h1>Your Medications</h1>
@@ -42,6 +67,7 @@ export const YourMedications = () => {
 						))}
 				</div>
 			</div>
+
 			<div
 				className="modal fade"
 				id="exampleModal"
@@ -61,24 +87,25 @@ export const YourMedications = () => {
 								<div className="form-outline bg-light mb-3 p-1">
 									<input
 										type="text"
-										id="medication-name-input"
+										id="rxterms"
 										className="form-control"
 										name="medicationName"
 										onChange={handleInput}
 									/>
-									<label className="form-label" htmlFor="medication-name-input">
+									<label className="form-label" htmlFor="rxterms">
 										Medication name
 									</label>
+									<div>Suggetions here? </div>
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
 									<input
 										type="text"
-										id="dose-input"
+										id="drug_strength"
 										className="form-control"
 										name="dose"
 										onChange={handleInput}
 									/>
-									<label className="form-label" htmlFor="dose-input">
+									<label className="form-label" htmlFor="drug_strength">
 										Current dose
 									</label>
 								</div>

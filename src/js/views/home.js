@@ -11,7 +11,7 @@ export const Home = () => {
 	return (
 		<>
 			<Navbar />
-			<div className="container landing-page-container">
+			<div className="container-fluid landing-page-container">
 				<div className="row">
 					<div className="col-12">
 						<Header />

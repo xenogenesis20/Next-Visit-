@@ -77,13 +77,17 @@
 		]
 	},
 	"dependencies": {
+		"autocomplete-lhc": "^18.1.1",
 		"bootstrap": "^5.0.2",
 		"gsap": "^3.7.0",
+		"jquery": "^3.6.0",
 		"mdb-ui-kit": "^3.8.0",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-dom": "^16.8.4",
+		"react-icons": "^4.2.0",
 		"react-polyfills": "0.0.1",
+		"react-pro-sidebar": "^0.6.0",
 		"react-router-dom": "^5.2.0",
 		"react-scroll-parallax": "^2.4.0",
 		"react-use": "^17.2.4"
