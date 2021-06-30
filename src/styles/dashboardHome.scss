@@ -1,0 +1,23 @@
+@import "~mdb-ui-kit/css/mdb.min.css";
+.med-and-symptom-row{
+    background-color: var(--quick-silver);
+    height: 50vh;
+}
+.your-medications-box{
+    background-color: var(--eerie-black);
+    height: 100%;
+    border: 2px;
+    border-color: var(--cyan-process);
+}
+.your-symptoms-box{
+    background-color: var(--eerie-black);
+    height: 100%;
+    border: 2px;
+    border-color: var(--cyan-process);
+}
+.charts-row{
+    background-color: var(--cyan-process);
+    height: 50vh;
+    border: 2px;
+    border-color: var(--cyan-process);
+}

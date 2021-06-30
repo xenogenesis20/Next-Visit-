@@ -8,11 +8,12 @@ import injectContext from "./store/appContext";
 import { SignUp } from "./views/SignUp";
 import { Navbar } from "./component/navbar";
 import { SignIn } from "./views/SignIn";
-import { Dashboard } from "./views/Dashboard";
+import { DashboardMeds } from "./views/DashboardMeds";
 import { SectionCard } from "./component/SectionCard";
 import { YourMedications } from "./component/YourMedications";
 import { DailySymptoms } from "./views/DailySymptoms";
 import { DailyVitals } from "./views/DailyVitals";
+import { DashboardHome } from "./views/DashboardHome";
 
 //create your first component
 const Layout = () => {
@@ -38,7 +39,8 @@ const Layout = () => {
 				<Route exact path="/DailySymptoms" component={DailySymptoms} />
 				<Route exact path="/SignUp" component={SignUp} />
 				<Route exact path="/SignIn" component={SignIn} />
-				<Route exact path="/Dashboard" component={Dashboard} />
+				<Route exact path="/DashboardMeds" component={DashboardMeds} />
+				<Route exact path="/DashboardHome" component={DashboardHome} />
 				<Route>
 					<h1>Not found!</h1>
 				</Route>

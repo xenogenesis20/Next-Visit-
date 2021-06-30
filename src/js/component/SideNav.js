@@ -5,14 +5,16 @@ import React, { useState } from "react";
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent } from "react-pro-sidebar";
 
 //import icons from react icons
-import { FaList, FaRegHeart } from "react-icons/fa";
+import { FaList, FaRegHeart, FaPills } from "react-icons/fa";
 import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import { RiPencilLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
+import { RiDashboardLine } from "react-icons/ri";
 
 //import sidebar css from react-pro-sidebar module and our custom css
 import "react-pro-sidebar/dist/css/styles.css";
 import "../../styles/sideNav.scss";
+import { Link } from "react-router-dom";
 
 export const SideNav = () => {
 	//create initial menuCollapse state using useState hook
@@ -32,7 +34,7 @@ export const SideNav = () => {
 					<SidebarHeader>
 						<div className="logotext">
 							{/* small and big change using menucollapse state */}
-							<p>{menuCollapse ? "Logo" : "Big Logo"}</p>
+							<p>{menuCollapse ? "N|V" : "NEXT VISIT"}</p>
 						</div>
 						<div className="closemenu" onClick={menuIconClick}>
 							{/* changing menu collapse icon on click */}
@@ -42,11 +44,16 @@ export const SideNav = () => {
 					<SidebarContent>
 						<Menu iconShape="square">
 							<MenuItem active={true} icon={<FiHome />}>
-								Home
+								<Link to="/">Home</Link>
 							</MenuItem>
-							<MenuItem icon={<FaList />}>Add a medication</MenuItem>
+							<MenuItem icon={<RiDashboardLine />}>
+								<Link to="/DashboardHome">Dashboard </Link>
+							</MenuItem>
+							<MenuItem icon={<FaPills />}>
+								<Link to="/DashboardMeds">Medications </Link>
+							</MenuItem>
 							<MenuItem icon={<FaRegHeart />}>Favourite</MenuItem>
-							<MenuItem icon={<RiPencilLine />}>Author</MenuItem>
+							<MenuItem icon={<RiPencilLine />}>Home</MenuItem>
 							<MenuItem icon={<BiCog />}>Settings</MenuItem>
 						</Menu>
 					</SidebarContent>
