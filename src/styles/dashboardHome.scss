@@ -2,20 +2,23 @@
 .med-and-symptom-row{
     // background-color: var(--quick-silver);
     height: 50vh;
-    background-color: rgba(255, 255, 255, 0.308);
+    
 }
 .your-medications-box{
-    background-color: rgba(255, 255, 255, 0.308);    height: 100%;
+    background-color: rgb(141, 141, 141);
+    height: 100%;
     border: 2px;
     border-color: var(--cyan-process);
 }
 .your-symptoms-box{
-    background-color: rgba(255, 255, 255, 0.308);    height: 100%;
+    background-color: rgb(65, 65, 65);
+    height: 100%;
     border: 2px;
     border-color: var(--cyan-process);
 }
 .charts-row{
-    background-color: rgba(255, 255, 255, 0.199);    height: 50vh;
+    background-color: rgb(17, 17, 63);
+    height: 50vh;
     border: 2px;
     border-color: var(--cyan-process);
 }
