@@ -4,7 +4,7 @@ import { SideNav } from "../component/SideNav";
 
 export const DashboardHome = () => {
 	return (
-		<div className="container-fluid m-0 p-0 d-flex">
+		<div className="container-fluid m-0 p-0 d-flex linear-bg">
 			<div className="side-nav">
 				<SideNav />
 			</div>

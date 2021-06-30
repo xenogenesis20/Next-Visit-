@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent } from "react-pro-sidebar";
 
 //import icons from react icons
-import { FaList, FaRegHeart, FaPills } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft, FaRegHeart, FaPills } from "react-icons/fa";
 import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import { RiPencilLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
@@ -38,7 +38,7 @@ export const SideNav = () => {
 						</div>
 						<div className="closemenu" onClick={menuIconClick}>
 							{/* changing menu collapse icon on click */}
-							{menuCollapse ? <FiArrowRightCircle /> : <FiArrowLeftCircle />}
+							{menuCollapse ? <FaArrowRight /> : <FaArrowLeft />}
 						</div>
 					</SidebarHeader>
 					<SidebarContent>

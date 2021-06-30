@@ -1,23 +1,25 @@
 @import "~mdb-ui-kit/css/mdb.min.css";
 .med-and-symptom-row{
-    background-color: var(--quick-silver);
+    // background-color: var(--quick-silver);
     height: 50vh;
+    background-color: rgba(255, 255, 255, 0.308);
 }
 .your-medications-box{
-    background-color: var(--eerie-black);
-    height: 100%;
+    background-color: rgba(255, 255, 255, 0.308);    height: 100%;
     border: 2px;
     border-color: var(--cyan-process);
 }
 .your-symptoms-box{
-    background-color: var(--eerie-black);
-    height: 100%;
+    background-color: rgba(255, 255, 255, 0.308);    height: 100%;
     border: 2px;
     border-color: var(--cyan-process);
 }
 .charts-row{
-    background-color: var(--cyan-process);
-    height: 50vh;
+    background-color: rgba(255, 255, 255, 0.199);    height: 50vh;
     border: 2px;
     border-color: var(--cyan-process);
+}
+.linear-bg{
+    background: linear-gradient(10deg, rgba(0,69,195,1) 0%, rgba(47,113,232,1) 50%, rgba(0,38,106,1) 100%);
+
 }
