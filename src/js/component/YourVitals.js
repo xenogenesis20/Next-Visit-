@@ -1,25 +1,24 @@
 import React, { useEffect, useState, useContext } from "react";
 import "../../styles/home.scss";
-import { SingleSymptomCard } from "./SingleSymptomCard";
+import { SingleMedicationCard } from "./SingleMedicationCard";
 import * as mdb from "mdb-ui-kit"; // lib
 import { GlobalState } from "../store/appContext";
 
-export const YourSymptoms = () => {
+export const YourVitals = () => {
 	const { store, actions } = useContext(GlobalState);
-	const [symptomlist, setSymptomList] = useState([]);
-	const [symptoms, setSymptoms] = useState({
-		symptomName: "",
-		// dose: "",
-		// frequency: "",
-		// reason: "",
-		// sideEffects: "",
-		severity: ""
+	const [medlist, setMedList] = useState([]);
+	const [medications, setMedications] = useState({
+		medicationName: "",
+		dose: "",
+		frequency: "",
+		reason: "",
+		sideEffects: ""
 	});
 	const handleInput = e => {
-		setSymptoms({ ...symptoms, [e.target.name]: e.target.value });
+		setMedications({ ...medications, [e.target.name]: e.target.value });
 	};
-	const confirmNewSymptom = sym => {
-		actions.addUserSymptom(sym);
+	const confirmNewMedication = med => {
+		actions.addUserMedication(med);
 	};
 	useEffect(() => {
 		document.querySelectorAll(".form-outline").forEach(formOutline => {
@@ -27,9 +26,9 @@ export const YourSymptoms = () => {
 		}, []);
 	});
 	let dynamicValue = "adde";
-	const getSymptomList = dynamicValue => {
+	const getMedList = dynamicValue => {
 		useEffect(() => {
-			fetch(``)
+			fetch(`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${dynamicValue}`)
 				.then(function(response) {
 					if (!response.ok) {
 						throw Error(response.statusText);
@@ -40,7 +39,7 @@ export const YourSymptoms = () => {
 				.then(function(responseAsJson) {
 					// Do stuff with the JSON
 					console.log("response log", responseAsJson.results);
-					setSymptomList(responseAsJson.results);
+					setMedList(responseAsJson.results);
 				})
 				.catch(function(err) {
 					console.log("Fetch Error :-S", err);
@@ -48,22 +47,22 @@ export const YourSymptoms = () => {
 		}, []);
 	};
 
-	console.log("second log", symptomlist);
+	console.log("second log", medlist);
 
 	return (
 		<>
-			<h1>Your Symptoms</h1>
+			<h1>Your Medications</h1>
 			<button type="button" className="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-				Add a new symptom.
+				Add a new medication.
 			</button>
-			{store.allUserSymptoms &&
-				store.allUserSymptoms.map((symptom, index) => {
-					console.log(symptom);
-					return (
-						// <SingleSymptomCard key={symptom.id} entity={symptom} onDelete={() => stateSetter(symptom.id)} />
-						<SingleSymptomCard key={index} entity={symptom} onDelete={() => stateSetter(index)} />
-					);
-				})}
+			{store.allUserMedications &&
+				store.allUserMedications.map((medication, index) => (
+					<SingleMedicationCard
+						key={medication.id}
+						entity={medication}
+						onDelete={() => stateSetter(medication.id)}
+					/>
+				))}
 			<div
 				className="modal fade"
 				id="exampleModal"
@@ -74,7 +73,7 @@ export const YourSymptoms = () => {
 					<div className="modal-content">
 						<div className="modal-header">
 							<h5 className="modal-title" id="exampleModalLabel">
-								Add a Symptom
+								Add a medication
 							</h5>
 							<button type="button" className="btn-close" data-mdb-dismiss="modal" aria-label="Close" />
 						</div>
@@ -85,11 +84,11 @@ export const YourSymptoms = () => {
 										type="text"
 										id="rxterms"
 										className="form-control"
-										name="symptomName"
+										name="medicationName"
 										onChange={handleInput}
 									/>
 									<label className="form-label" htmlFor="rxterms">
-										Symptom name
+										Medication name
 									</label>
 									<div>Suggetions here? </div>
 								</div>
@@ -150,7 +149,7 @@ export const YourSymptoms = () => {
 							<button
 								type="button"
 								className="btn btn-primary"
-								onClick={() => confirmNewSymptom(symptoms)}>
+								onClick={() => confirmNewMedication(medications)}>
 								Save changes
 							</button>
 						</div>
