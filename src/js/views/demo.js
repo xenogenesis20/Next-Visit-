@@ -7,6 +7,26 @@ import "../../styles/demo.scss";
 
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
+	// const getMedList = dynamicValue => {
+	// 	useEffect(() => {
+	// 		fetch(`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${dynamicValue}`)
+	// 			.then(function(response) {
+	// 				if (!response.ok) {
+	// 					throw Error(response.statusText);
+	// 				}
+	// 				// Read the response as json.
+	// 				return response.json();
+	// 			})
+	// 			.then(function(responseAsJson) {
+	// 				// Do stuff with the JSON
+	// 				console.log("response log", responseAsJson.results);
+	// 				setMedList(responseAsJson.results);
+	// 			})
+	// 			.catch(function(err) {
+	// 				console.log("Fetch Error :-S", err);
+	// 			});
+	// 	}, []);
+	// };
 
 	return (
 		<div className="container">

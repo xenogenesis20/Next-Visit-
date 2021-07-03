@@ -4,58 +4,186 @@ import { GlobalState } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 export const SingleMedicationCard = props => {
-	const { actions, store } = useContext(GlobalState);
+	const { store, actions } = useContext(GlobalState);
+	const [medlist, setMedList] = useState([]);
+	const [medications, setMedications] = useState({
+		id: "",
+		medicationName: "",
+		dose: "",
+		frequency: "",
+		reason: "",
+		sideEffects: ""
+	});
 
-	console.log(props.entity);
+	console.log("This is the key", props.id);
+	console.log("all medications", store.allUserMedications);
+
+	const populateEditCard = id => {
+		setMedications({ ...medications, id: props.id });
+		let medToEdit = store.allUserMedications.filter(medication => medication["id"] == id);
+		console.log("Medication to EDIT", medToEdit);
+		console.log("all medications", store.allUserMedications);
+		return medToEdit;
+	};
+
+	const handleInput = e => {
+		setMedications({ ...medications, [e.target.name]: e.target.value });
+	};
+	const confirmNewMedication = med => {
+		actions.addUserMedication(med);
+	};
+
+	// console.log(props.entity);
 
 	return (
-		<div className="card border border-primary shadow-0" style={{ width: "35vw" }}>
-			<div className="card-header text-center">
-				<h3>{props.entity.medicationName}</h3>
-			</div>
-			<div className="card-body p-2">
-				{/* Start med info inside card body */}
-				<div className="list-group">
-					<div className="list-group-item">
-						<div className="d-flex w-100 justify-content-around">
-							<h6 className="mb-1">Current Dose:</h6>
-							<h6 className="mb-1">{props.entity.dose} </h6>
-						</div>
-					</div>
-					<div className="list-group-item">
-						<div className="d-flex w-100 justify-content-around">
-							<h6 className="mb-1">How often do you take it:</h6>
-							<h6 className="mb-1">{props.entity.frequency}</h6>
-						</div>
-					</div>
-					<div className="list-group-item">
-						<div className="d-flex w-100 justify-content-around">
-							<h6 className="mb-1">Symptom target:</h6>
-							<h6 className="mb-1">{props.entity.reson}</h6>
-						</div>
-					</div>
-					<div className="list-group-item">
-						<div className="d-flex w-100 justify-content-around">
-							<h6 className="mb-1">Side effects:</h6>
-							<h6 className="mb-1">{props.entity.sideEffects}</h6>
-						</div>
-					</div>
+		<>
+			<div className="card border border-primary shadow-0" style={{ width: "35vw" }}>
+				<div className="card-header text-center">
+					<h3>{props.entity.medicationName}</h3>
 				</div>
-				{/* End med info inside card body */}
-				<div className="d-flex w-100 justify-content-around m-1">
-					<Link to={"/edit/"}>
-						<button type="button" className="btn btn-primary">
+				<div className="card-body p-2">
+					{/* Start med info inside card body */}
+					<div className="list-group">
+						<div className="list-group-item">
+							<div className="d-flex w-100 justify-content-around">
+								<h6 className="mb-1">Current Dose:</h6>
+								<h6 className="mb-1">{props.entity.dose} </h6>
+							</div>
+						</div>
+						<div className="list-group-item">
+							<div className="d-flex w-100 justify-content-around">
+								<h6 className="mb-1">How often do you take it:</h6>
+								<h6 className="mb-1">{props.entity.frequency}</h6>
+							</div>
+						</div>
+						<div className="list-group-item">
+							<div className="d-flex w-100 justify-content-around">
+								<h6 className="mb-1">Symptom target:</h6>
+								<h6 className="mb-1">{props.entity.reson}</h6>
+							</div>
+						</div>
+						<div className="list-group-item">
+							<div className="d-flex w-100 justify-content-around">
+								<h6 className="mb-1">Side effects:</h6>
+								<h6 className="mb-1">{props.entity.sideEffects}</h6>
+							</div>
+						</div>
+					</div>
+					{/* End med info inside card body */}
+					<div className="d-flex w-100 justify-content-around m-1">
+						<button
+							type="button"
+							className="btn btn-primary"
+							data-mdb-toggle="modal"
+							data-mdb-target="#editMed"
+							onClick={() => populateEditCard(props.id)}>
 							Edit
 							<i className="fas fa-pencil-alt mr-3" />
 						</button>
-					</Link>
-					<button className="btn btn btn-danger">
-						Delete
-						<i className="fas fa-trash-alt" />
-					</button>
+
+						<button className="btn btn btn-danger">
+							Delete
+							<i className="fas fa-trash-alt" />
+						</button>
+					</div>
 				</div>
 			</div>
-		</div>
+			{/* edit med modal */}
+			<div
+				className="modal fade"
+				id="editMed"
+				tabIndex="-1"
+				aria-labelledby="addMedicationModal"
+				aria-hidden="true">
+				<div className="modal-dialog">
+					<div className="modal-content">
+						<div className="modal-header">
+							<h5 className="modal-title" id="addMedicationModal">
+								Edit a medication
+							</h5>
+							<button type="button" className="btn-close" data-mdb-dismiss="modal" aria-label="Close" />
+						</div>
+						<div className="modal-body">
+							<form>
+								<div className="form-outline bg-light mb-3 p-1">
+									<input
+										type="text"
+										id="rxterms"
+										className="form-control"
+										name="medicationName"
+										onChange={handleInput}
+									/>
+									<label className="form-label" htmlFor="rxterms">
+										{"Medication name"}
+									</label>
+									<div>Suggetions here? </div>
+								</div>
+								<div className="form-outline bg-light mb-3 p-1">
+									<input
+										type="text"
+										id="drug_strength"
+										className="form-control"
+										name="dose"
+										onChange={handleInput}
+									/>
+									<label className="form-label" htmlFor="drug_strength">
+										Current dose
+									</label>
+								</div>
+								<div className="form-outline bg-light mb-3 p-1">
+									<input
+										type="number"
+										id="frequency-input"
+										className="form-control"
+										name="frequency"
+										onChange={handleInput}
+									/>
+									<label className="form-label" htmlFor="frequency-input">
+										How often do you take it
+									</label>
+								</div>
+								<div className="form-outline bg-light mb-3 p-1">
+									<input
+										type="text"
+										id="reason-input"
+										className="form-control"
+										name="reason"
+										onChange={handleInput}
+									/>
+									<label className="form-label" htmlFor="reason-input">
+										Reason for medication
+									</label>
+								</div>
+								<div className="form-outline bg-light mb-3 p-1">
+									<input
+										type="text"
+										id="sideEffects-input"
+										className="form-control"
+										name="sideEffects"
+										onChange={handleInput}
+									/>
+									<label className="form-label" htmlFor="sideEffects-input">
+										Side effects
+									</label>
+								</div>
+							</form>
+						</div>
+						<div className="modal-footer">
+							<button type="button" className="btn btn-secondary" data-mdb-dismiss="modal">
+								Cancel
+							</button>
+							<button
+								type="button"
+								className="btn btn-primary"
+								onClick={() => confirmNewMedication(medications)}>
+								Save changes
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			{/* edit med modal */}
+		</>
 	);
 };
 
@@ -66,7 +194,8 @@ export const SingleMedicationCard = props => {
 SingleMedicationCard.propTypes = {
 	history: PropTypes.object,
 	onDelete: PropTypes.func,
-	entity: PropTypes.object
+	entity: PropTypes.object,
+	id: PropTypes.number
 };
 
 /**

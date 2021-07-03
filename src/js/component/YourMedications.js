@@ -3,6 +3,7 @@ import "../../styles/home.scss";
 import { SingleMedicationCard } from "./SingleMedicationCard";
 import * as mdb from "mdb-ui-kit"; // lib
 import { GlobalState } from "../store/appContext";
+import { EditMedModal } from "./EditMedModal";
 
 export const YourMedications = () => {
 	const { store, actions } = useContext(GlobalState);
@@ -14,6 +15,14 @@ export const YourMedications = () => {
 		reason: "",
 		sideEffects: ""
 	});
+	const [state, setState] = useState({
+		showModal: false,
+		id: "0"
+	});
+	const stateSetter = medId => {
+		setState({ showModal: true, id: medId });
+	};
+
 	const handleInput = e => {
 		setMedications({ ...medications, [e.target.name]: e.target.value });
 	};
@@ -25,54 +34,35 @@ export const YourMedications = () => {
 			new mdb.Input(formOutline).update();
 		}, []);
 	});
-	let dynamicValue = "adde";
-	const getMedList = dynamicValue => {
-		useEffect(() => {
-			fetch(`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${dynamicValue}`)
-				.then(function(response) {
-					if (!response.ok) {
-						throw Error(response.statusText);
-					}
-					// Read the response as json.
-					return response.json();
-				})
-				.then(function(responseAsJson) {
-					// Do stuff with the JSON
-					console.log("response log", responseAsJson.results);
-					setMedList(responseAsJson.results);
-				})
-				.catch(function(err) {
-					console.log("Fetch Error :-S", err);
-				});
-		}, []);
-	};
 
 	console.log("second log", medlist);
 
 	return (
 		<>
 			<h1>Your Medications</h1>
-			<button type="button" className="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+			<button type="button" className="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#addMed">
 				Add a new medication.
 			</button>
 			{store.allUserMedications &&
 				store.allUserMedications.map((medication, index) => (
 					<SingleMedicationCard
-						key={medication.id}
+						key={index}
+						id={index}
 						entity={medication}
 						onDelete={() => stateSetter(medication.id)}
 					/>
 				))}
+			{/* add med modal */}
 			<div
 				className="modal fade"
-				id="exampleModal"
+				id="addMed"
 				tabIndex="-1"
-				aria-labelledby="exampleModalLabel"
+				aria-labelledby="addMedicationModal"
 				aria-hidden="true">
 				<div className="modal-dialog">
 					<div className="modal-content">
 						<div className="modal-header">
-							<h5 className="modal-title" id="exampleModalLabel">
+							<h5 className="modal-title" id="addMedicationModal">
 								Add a medication
 							</h5>
 							<button type="button" className="btn-close" data-mdb-dismiss="modal" aria-label="Close" />
@@ -156,6 +146,10 @@ export const YourMedications = () => {
 					</div>
 				</div>
 			</div>
+			{/* add med modal end */}
+			{/* edit med modal */}
+			{/* <EditMedModal show={state.showModal} onClose={() => setState({ showModal: false })} id={state.id} /> */}
+			{/* edit med modal end */}
 		</>
 	);
 };
