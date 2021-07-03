@@ -9,10 +9,10 @@ import { SignUp } from "./views/SignUp";
 import { Navbar } from "./component/navbar";
 import { SignIn } from "./views/SignIn";
 import { DashboardMeds } from "./views/DashboardMeds";
+import { DashboardSymptoms } from "./views/DashboardSymptoms";
+import { DashboardVitals } from "./views/DashboardVitals";
 import { SectionCard } from "./component/SectionCard";
 import { YourMedications } from "./component/YourMedications";
-import { DailySymptoms } from "./views/DailySymptoms";
-import { DailyVitals } from "./views/DailyVitals";
 import { DashboardHome } from "./views/DashboardHome";
 import { DemoView } from "./views/DemoView";
 
@@ -36,11 +36,12 @@ const Layout = () => {
 				</Route>
 				<Route exact path="/AboutUs" component={SectionCard} />
 				<Route exact path="/YourMedications" component={YourMedications} />
-				<Route exact path="/DailyVitals" component={DailyVitals} />
-				<Route exact path="/DailySymptoms" component={DailySymptoms} />
+
 				<Route exact path="/SignUp" component={SignUp} />
 				<Route exact path="/SignIn" component={SignIn} />
 				<Route exact path="/DashboardMeds" component={DashboardMeds} />
+				<Route exact path="/DashboardVitals" component={DashboardVitals} />
+				<Route exact path="/DashboardSymptoms" component={DashboardSymptoms} />
 				<Route exact path="/DashboardHome" component={DashboardHome} />
 				<Route exact path="/DemoView" component={DemoView} />
 				<Route>

@@ -2,7 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			userInfo: [],
-			allUserMedications: []
+			allUserMedications: [],
+			allUserSymptoms: []
 		},
 		actions: {
 			addUser: user => {
@@ -15,6 +16,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let allMedications = getStore().allUserMedications;
 				allMedications.push(medication);
 				setStore({ allUserMedications: allMedications });
+			},
+			addUserSymptom: symptom => {
+				let allSymptoms = getStore().allUserSymptoms;
+				allSymptoms.push(symptom);
+				setStore({ allUserSymptoms: allSymptoms });
 			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {

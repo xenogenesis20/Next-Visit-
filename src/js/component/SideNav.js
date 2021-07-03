@@ -50,8 +50,15 @@ export const SideNav = () => {
 								<Link to="/DashboardHome">Dashboard </Link>
 							</MenuItem>
 							<MenuItem icon={<FaPills />}>
+								<Link to="/DashboardVitals">Vitals </Link>
+							</MenuItem>
+							<MenuItem icon={<FaPills />}>
 								<Link to="/DashboardMeds">Medications </Link>
 							</MenuItem>
+							<MenuItem icon={<FaPills />}>
+								<Link to="/DashboardSymptoms">Symptoms </Link>
+							</MenuItem>
+
 							<MenuItem icon={<FaRegHeart />}>Favourite</MenuItem>
 							<MenuItem icon={<RiPencilLine />}>Home</MenuItem>
 							<MenuItem icon={<BiCog />}>Settings</MenuItem>
