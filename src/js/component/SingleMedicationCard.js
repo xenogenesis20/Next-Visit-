@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { GlobalState } from "../store/appContext";
-import { Link } from "react-router-dom";
 
 export const SingleMedicationCard = props => {
 	const { store, actions } = useContext(GlobalState);
 	const [medlist, setMedList] = useState([]);
 	const [medications, setMedications] = useState({
-		id: "",
+		id: store.allUserMedications.length,
 		medicationName: "",
 		dose: "",
 		frequency: "",
@@ -15,22 +14,26 @@ export const SingleMedicationCard = props => {
 		sideEffects: ""
 	});
 
-	console.log("This is the key", props.id);
-	console.log("all medications", store.allUserMedications);
-
 	const populateEditCard = id => {
-		setMedications({ ...medications, id: props.id });
 		let medToEdit = store.allUserMedications.filter(medication => medication["id"] == id);
-		console.log("Medication to EDIT", medToEdit);
-		console.log("all medications", store.allUserMedications);
-		return medToEdit;
+		setMedications(medToEdit[0]);
 	};
 
 	const handleInput = e => {
 		setMedications({ ...medications, [e.target.name]: e.target.value });
 	};
+
 	const confirmNewMedication = med => {
-		actions.addUserMedication(med);
+		console.log(med);
+		actions.editUserMedication(med);
+		setMedications({
+			id: store.allUserMedications.length,
+			medicationName: "",
+			dose: "",
+			frequency: "",
+			reason: "",
+			sideEffects: ""
+		});
 	};
 
 	// console.log(props.entity);
@@ -59,7 +62,7 @@ export const SingleMedicationCard = props => {
 						<div className="list-group-item">
 							<div className="d-flex w-100 justify-content-around">
 								<h6 className="mb-1">Symptom target:</h6>
-								<h6 className="mb-1">{props.entity.reson}</h6>
+								<h6 className="mb-1">{props.entity.reason}</h6>
 							</div>
 						</div>
 						<div className="list-group-item">
@@ -99,7 +102,7 @@ export const SingleMedicationCard = props => {
 					<div className="modal-content">
 						<div className="modal-header">
 							<h5 className="modal-title" id="addMedicationModal">
-								Edit a medication
+								Edit {medications.medicationName}
 							</h5>
 							<button type="button" className="btn-close" data-mdb-dismiss="modal" aria-label="Close" />
 						</div>
@@ -112,6 +115,7 @@ export const SingleMedicationCard = props => {
 										className="form-control"
 										name="medicationName"
 										onChange={handleInput}
+										value={medications.medicationName}
 									/>
 									<label className="form-label" htmlFor="rxterms">
 										{"Medication name"}
@@ -125,6 +129,7 @@ export const SingleMedicationCard = props => {
 										className="form-control"
 										name="dose"
 										onChange={handleInput}
+										value={medications.dose}
 									/>
 									<label className="form-label" htmlFor="drug_strength">
 										Current dose
@@ -137,6 +142,7 @@ export const SingleMedicationCard = props => {
 										className="form-control"
 										name="frequency"
 										onChange={handleInput}
+										value={medications.frequency}
 									/>
 									<label className="form-label" htmlFor="frequency-input">
 										How often do you take it
@@ -149,6 +155,7 @@ export const SingleMedicationCard = props => {
 										className="form-control"
 										name="reason"
 										onChange={handleInput}
+										value={medications.reason}
 									/>
 									<label className="form-label" htmlFor="reason-input">
 										Reason for medication
@@ -161,6 +168,7 @@ export const SingleMedicationCard = props => {
 										className="form-control"
 										name="sideEffects"
 										onChange={handleInput}
+										value={medications.sideEffects}
 									/>
 									<label className="form-label" htmlFor="sideEffects-input">
 										Side effects

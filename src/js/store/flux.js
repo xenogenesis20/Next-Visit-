@@ -17,6 +17,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				allMedications.push(medication);
 				setStore({ allUserMedications: allMedications });
 			},
+			editUserMedication: medication => {
+				let allMeds = getStore().allUserMedications;
+				for (let i = 0; i < allMeds.length; i++) {
+					if (medication.id == allMeds[i]) {
+						allMeds[i] = medication;
+					}
+				}
+			},
 			addUserSymptom: symptom => {
 				let allSymptoms = getStore().allUserSymptoms;
 				allSymptoms.push(symptom);

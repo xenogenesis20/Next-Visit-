@@ -9,6 +9,7 @@ export const YourMedications = () => {
 	const { store, actions } = useContext(GlobalState);
 	const [medlist, setMedList] = useState([]);
 	const [medications, setMedications] = useState({
+		id: store.allUserMedications.length,
 		medicationName: "",
 		dose: "",
 		frequency: "",
@@ -27,15 +28,22 @@ export const YourMedications = () => {
 		setMedications({ ...medications, [e.target.name]: e.target.value });
 	};
 	const confirmNewMedication = med => {
+		console.log(med);
 		actions.addUserMedication(med);
+		setMedications({
+			id: store.allUserMedications.length,
+			medicationName: "",
+			dose: "",
+			frequency: "",
+			reason: "",
+			sideEffects: ""
+		});
 	};
 	useEffect(() => {
 		document.querySelectorAll(".form-outline").forEach(formOutline => {
 			new mdb.Input(formOutline).update();
 		}, []);
 	});
-
-	console.log("second log", medlist);
 
 	return (
 		<>
@@ -47,8 +55,8 @@ export const YourMedications = () => {
 				store.allUserMedications.map((medication, index) => (
 					<SingleMedicationCard
 						key={index}
-						id={index}
 						entity={medication}
+						id={store.allUserMedications[index].id}
 						onDelete={() => stateSetter(medication.id)}
 					/>
 				))}
@@ -67,8 +75,8 @@ export const YourMedications = () => {
 							</h5>
 							<button type="button" className="btn-close" data-mdb-dismiss="modal" aria-label="Close" />
 						</div>
-						<div className="modal-body">
-							<form>
+						<form>
+							<div className="modal-body">
 								<div className="form-outline bg-light mb-3 p-1">
 									<input
 										type="text"
@@ -130,19 +138,19 @@ export const YourMedications = () => {
 										Side effects
 									</label>
 								</div>
-							</form>
-						</div>
-						<div className="modal-footer">
-							<button type="button" className="btn btn-secondary" data-mdb-dismiss="modal">
-								Cancel
-							</button>
-							<button
-								type="button"
-								className="btn btn-primary"
-								onClick={() => confirmNewMedication(medications)}>
-								Save changes
-							</button>
-						</div>
+							</div>
+							<div className="modal-footer">
+								<button type="button" className="btn btn-secondary" data-mdb-dismiss="modal">
+									Cancel
+								</button>
+								<button
+									type="button"
+									className="btn btn-primary"
+									onClick={() => confirmNewMedication(medications)}>
+									Save changes
+								</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
