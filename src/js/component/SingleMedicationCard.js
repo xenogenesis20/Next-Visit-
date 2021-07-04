@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { GlobalState } from "../store/appContext";
+import "../../styles/singleMedCard.scss";
 
 export const SingleMedicationCard = props => {
 	const { store, actions } = useContext(GlobalState);
@@ -36,7 +37,26 @@ export const SingleMedicationCard = props => {
 		});
 	};
 
-	// console.log(props.entity);
+	useEffect(() => {
+		fetch(
+			`https://clinicaltables.nlm.nih.gov/api/conditions/v3/search?df=info_link_data&authenticity_token=&terms=${dynamicValue}`
+		)
+			.then(function(response) {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				}
+				// Read the response as json.
+				return response.json();
+			})
+			.then(function(responseAsJson) {
+				// Do stuff with the JSON
+				console.log("response log", responseAsJson.results);
+				setMedList(responseAsJson.results);
+			})
+			.catch(function(err) {
+				console.log("Fetch Error :-S", err);
+			});
+	}, []);
 
 	return (
 		<>
@@ -90,6 +110,9 @@ export const SingleMedicationCard = props => {
 						</button>
 					</div>
 				</div>
+			</div>
+			<div className="iframe-wrapper" style={{ width: "35vw" }}>
+				Here is some information about your medication.
 			</div>
 			{/* edit med modal */}
 			<div
