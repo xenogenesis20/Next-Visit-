@@ -47,10 +47,15 @@ export const YourMedications = () => {
 
 	return (
 		<>
-			<h1>Your Medications</h1>
-			<button type="button" className="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#addMed">
-				Add a new medication.
-			</button>
+			<div className="row">
+				<div className="col">
+					<h1>Your Medications</h1>
+					<div />
+					<button type="button" className="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#addMed">
+						Add a new medication.
+					</button>
+				</div>
+			</div>
 			{store.allUserMedications &&
 				store.allUserMedications.map((medication, index) => (
 					<SingleMedicationCard
@@ -154,10 +159,6 @@ export const YourMedications = () => {
 					</div>
 				</div>
 			</div>
-			{/* add med modal end */}
-			{/* edit med modal */}
-			{/* <EditMedModal show={state.showModal} onClose={() => setState({ showModal: false })} id={state.id} /> */}
-			{/* edit med modal end */}
 		</>
 	);
 };

@@ -37,82 +37,97 @@ export const SingleMedicationCard = props => {
 		});
 	};
 
-	useEffect(() => {
-		fetch(
-			`https://clinicaltables.nlm.nih.gov/api/conditions/v3/search?df=info_link_data&authenticity_token=&terms=${dynamicValue}`
-		)
-			.then(function(response) {
-				if (!response.ok) {
-					throw Error(response.statusText);
-				}
-				// Read the response as json.
-				return response.json();
-			})
-			.then(function(responseAsJson) {
-				// Do stuff with the JSON
-				console.log("response log", responseAsJson.results);
-				setMedList(responseAsJson.results);
-			})
-			.catch(function(err) {
-				console.log("Fetch Error :-S", err);
-			});
-	}, []);
+	// useEffect(() => {
+	// 	fetch(
+	// 		`https://clinicaltables.nlm.nih.gov/api/conditions/v3/search?df=info_link_data&authenticity_token=&terms=${dynamicValue}`
+	// 	)
+	// 		.then(function(response) {
+	// 			if (!response.ok) {
+	// 				throw Error(response.statusText);
+	// 			}
+	// 			// Read the response as json.
+	// 			return response.json();
+	// 		})
+	// 		.then(function(responseAsJson) {
+	// 			// Do stuff with the JSON
+	// 			console.log("response log", responseAsJson.results);
+	// 			setMedList(responseAsJson.results);
+	// 		})
+	// 		.catch(function(err) {
+	// 			console.log("Fetch Error :-S", err);
+	// 		});
+	// }, []);
 
 	return (
 		<>
-			<div className="card border border-primary shadow-0" style={{ width: "35vw" }}>
-				<div className="card-header text-center">
-					<h3>{props.entity.medicationName}</h3>
-				</div>
-				<div className="card-body p-2">
-					{/* Start med info inside card body */}
-					<div className="list-group">
-						<div className="list-group-item">
-							<div className="d-flex w-100 justify-content-around">
-								<h6 className="mb-1">Current Dose:</h6>
-								<h6 className="mb-1">{props.entity.dose} </h6>
-							</div>
+			<div className="med-card-and-med-info d-flex justify-content-center row mb-2">
+				<div className="col d-flex justify-content-center">
+					<div className="card border border-primary shadow-0" style={{ width: "35vw" }}>
+						<div className="card-header text-center">
+							<h3>{props.entity.medicationName}</h3>
 						</div>
-						<div className="list-group-item">
-							<div className="d-flex w-100 justify-content-around">
-								<h6 className="mb-1">How often do you take it:</h6>
-								<h6 className="mb-1">{props.entity.frequency}</h6>
+						<div className="card-body p-2">
+							{/* Start med info inside card body */}
+							<div className="list-group">
+								<div className="list-group-item">
+									<div className="d-flex w-100 justify-content-around">
+										<h6 className="mb-1">Current Dose:</h6>
+										<h6 className="mb-1">{props.entity.dose} </h6>
+									</div>
+								</div>
+								<div className="list-group-item">
+									<div className="d-flex w-100 justify-content-around">
+										<h6 className="mb-1">How often do you take it:</h6>
+										<h6 className="mb-1">{props.entity.frequency}</h6>
+									</div>
+								</div>
+								<div className="list-group-item">
+									<div className="d-flex w-100 justify-content-around">
+										<h6 className="mb-1">Symptom target:</h6>
+										<h6 className="mb-1">{props.entity.reason}</h6>
+									</div>
+								</div>
+								<div className="list-group-item">
+									<div className="d-flex w-100 justify-content-around">
+										<h6 className="mb-1">Side effects:</h6>
+										<h6 className="mb-1">{props.entity.sideEffects}</h6>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div className="list-group-item">
-							<div className="d-flex w-100 justify-content-around">
-								<h6 className="mb-1">Symptom target:</h6>
-								<h6 className="mb-1">{props.entity.reason}</h6>
-							</div>
-						</div>
-						<div className="list-group-item">
-							<div className="d-flex w-100 justify-content-around">
-								<h6 className="mb-1">Side effects:</h6>
-								<h6 className="mb-1">{props.entity.sideEffects}</h6>
-							</div>
-						</div>
-					</div>
-					{/* End med info inside card body */}
-					<div className="d-flex w-100 justify-content-around m-1">
-						<button
-							type="button"
-							className="btn btn-primary"
-							data-mdb-toggle="modal"
-							data-mdb-target="#editMed"
-							onClick={() => populateEditCard(props.id)}>
-							Edit
-							<i className="fas fa-pencil-alt mr-3" />
-						</button>
+							{/* End med info inside card body */}
+							<div className="d-flex w-100 justify-content-around m-1">
+								<button
+									type="button"
+									className="btn btn-primary"
+									data-mdb-toggle="modal"
+									data-mdb-target="#editMed"
+									onClick={() => populateEditCard(props.id)}>
+									Edit
+									<i className="fas fa-pencil-alt mr-3" />
+								</button>
 
-						<button className="btn btn btn-danger">
-							Delete
-							<i className="fas fa-trash-alt" />
-						</button>
+								<button className="btn btn btn-danger">
+									Delete
+									<i className="fas fa-trash-alt" />
+								</button>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div className="iframe-wrapper" style={{ width: "35vw" }}>
-				Here is some information about your medication.
+				<div className="col d-flex justify-content-center">
+					<div className="card" style={{ width: "35vw" }}>
+						<div className="card-header text-center">
+							<h3>{props.entity.medicationName}</h3>
+						</div>
+						<div className="card-body">
+							<h3 className="card-title">Common side effects</h3>
+							<h6 className="card-text">
+								Some quick example text to build on the card title and make up the bulk of the cards
+								content.
+							</h6>
+						</div>
+					</div>
+				</div>
 			</div>
 			{/* edit med modal */}
 			<div

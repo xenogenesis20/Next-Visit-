@@ -9,7 +9,7 @@ export const DashboardMeds = () => {
 			<div className="side-nav">
 				<SideNav />
 			</div>
-			<div className="medication-column">
+			<div className="medication-column container-fluid">
 				<YourMedications />
 			</div>
 		</div>
