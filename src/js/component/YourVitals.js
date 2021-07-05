@@ -1,24 +1,26 @@
 import React, { useEffect, useState, useContext } from "react";
 import "../../styles/home.scss";
-import { SingleMedicationCard } from "./SingleMedicationCard";
+import { SingleVitalCard } from "./SingleVitalCard";
 import * as mdb from "mdb-ui-kit"; // lib
 import { GlobalState } from "../store/appContext";
 
 export const YourVitals = () => {
 	const { store, actions } = useContext(GlobalState);
-	const [medlist, setMedList] = useState([]);
-	const [medications, setMedications] = useState({
-		medicationName: "",
-		dose: "",
-		frequency: "",
-		reason: "",
-		sideEffects: ""
+	const [vitalList, setVitalList] = useState([]);
+	const [vitals, setVitals] = useState({
+		height: "",
+		weight: "",
+		heartRate: "",
+		bloodPressure: "",
+		bloodType: "",
+		bodyTemperature: "",
+		oxySaturation: ""
 	});
 	const handleInput = e => {
-		setMedications({ ...medications, [e.target.name]: e.target.value });
+		setVitals({ ...vitals, [e.target.name]: e.target.value });
 	};
-	const confirmNewMedication = med => {
-		actions.addUserMedication(med);
+	const confirmNewVital = vital => {
+		actions.addUserVital(vital);
 	};
 	useEffect(() => {
 		document.querySelectorAll(".form-outline").forEach(formOutline => {
@@ -26,9 +28,9 @@ export const YourVitals = () => {
 		}, []);
 	});
 	let dynamicValue = "adde";
-	const getMedList = dynamicValue => {
+	const getVitalList = dynamicValue => {
 		useEffect(() => {
-			fetch(`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${dynamicValue}`)
+			fetch(``)
 				.then(function(response) {
 					if (!response.ok) {
 						throw Error(response.statusText);
@@ -39,7 +41,7 @@ export const YourVitals = () => {
 				.then(function(responseAsJson) {
 					// Do stuff with the JSON
 					console.log("response log", responseAsJson.results);
-					setMedList(responseAsJson.results);
+					setVitalList(responseAsJson.results);
 				})
 				.catch(function(err) {
 					console.log("Fetch Error :-S", err);
@@ -47,21 +49,17 @@ export const YourVitals = () => {
 		}, []);
 	};
 
-	console.log("second log", medlist);
+	console.log("second log", vitalList);
 
 	return (
 		<>
-			<h1>Your Medications</h1>
+			<h1>Your Vitals</h1>
 			<button type="button" className="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-				Add a new medication.
+				Add a new vital.
 			</button>
-			{store.allUserMedications &&
-				store.allUserMedications.map((medication, index) => (
-					<SingleMedicationCard
-						key={medication.id}
-						entity={medication}
-						onDelete={() => stateSetter(medication.id)}
-					/>
+			{store.allUserVitals &&
+				store.allUserVitals.map((vital, index) => (
+					<SingleVitalCard key={vital.id} entity={vital} onDelete={() => stateSetter(vital.id)} />
 				))}
 			<div
 				className="modal fade"
@@ -73,7 +71,7 @@ export const YourVitals = () => {
 					<div className="modal-content">
 						<div className="modal-header">
 							<h5 className="modal-title" id="exampleModalLabel">
-								Add a medication
+								Add a vital
 							</h5>
 							<button type="button" className="btn-close" data-mdb-dismiss="modal" aria-label="Close" />
 						</div>
@@ -88,7 +86,7 @@ export const YourVitals = () => {
 										onChange={handleInput}
 									/>
 									<label className="form-label" htmlFor="rxterms">
-										Medication name
+										Vital Name
 									</label>
 									<div>Suggetions here? </div>
 								</div>
@@ -146,10 +144,7 @@ export const YourVitals = () => {
 							<button type="button" className="btn btn-secondary" data-mdb-dismiss="modal">
 								Cancel
 							</button>
-							<button
-								type="button"
-								className="btn btn-primary"
-								onClick={() => confirmNewMedication(medications)}>
+							<button type="button" className="btn btn-primary" onClick={() => confirmNewVital(vitals)}>
 								Save changes
 							</button>
 						</div>
