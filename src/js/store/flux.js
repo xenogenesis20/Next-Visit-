@@ -21,10 +21,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			editUserMedication: medication => {
 				let allMeds = getStore().allUserMedications;
 				for (let i = 0; i < allMeds.length; i++) {
-					if (medication.id == allMeds[i]) {
+					if (medication.id == allMeds[i].id) {
 						allMeds[i] = medication;
+						console.log(medication.id);
 					}
 				}
+				console.log(medication);
+				setStore({ allUserMedications: allMeds });
 			},
 			addUserSymptom: symptom => {
 				let allSymptoms = getStore().allUserSymptoms;

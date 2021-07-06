@@ -90,6 +90,7 @@
 		"react-pro-sidebar": "^0.6.0",
 		"react-router-dom": "^5.2.0",
 		"react-scroll-parallax": "^2.4.0",
+		"react-tabs": "^3.2.2",
 		"react-use": "^17.2.4"
 	}
 }

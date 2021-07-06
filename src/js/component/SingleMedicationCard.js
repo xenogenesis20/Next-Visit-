@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { GlobalState } from "../store/appContext";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 import "../../styles/singleMedCard.scss";
 
 export const SingleMedicationCard = props => {
@@ -14,6 +16,7 @@ export const SingleMedicationCard = props => {
 		reason: "",
 		sideEffects: ""
 	});
+	const [medicationData, setMedicationData] = useState([]);
 
 	const populateEditCard = id => {
 		let medToEdit = store.allUserMedications.filter(medication => medication["id"] == id);
@@ -25,7 +28,6 @@ export const SingleMedicationCard = props => {
 	};
 
 	const confirmNewMedication = med => {
-		console.log(med);
 		actions.editUserMedication(med);
 		setMedications({
 			id: store.allUserMedications.length,
@@ -37,26 +39,32 @@ export const SingleMedicationCard = props => {
 		});
 	};
 
-	// useEffect(() => {
-	// 	fetch(
-	// 		`https://clinicaltables.nlm.nih.gov/api/conditions/v3/search?df=info_link_data&authenticity_token=&terms=${dynamicValue}`
-	// 	)
-	// 		.then(function(response) {
-	// 			if (!response.ok) {
-	// 				throw Error(response.statusText);
-	// 			}
-	// 			// Read the response as json.
-	// 			return response.json();
-	// 		})
-	// 		.then(function(responseAsJson) {
-	// 			// Do stuff with the JSON
-	// 			console.log("response log", responseAsJson.results);
-	// 			setMedList(responseAsJson.results);
-	// 		})
-	// 		.catch(function(err) {
-	// 			console.log("Fetch Error :-S", err);
-	// 		});
-	// }, []);
+	useEffect(
+		() => {
+			fetch(`https://api.fda.gov/drug/label.json?search=adverse_reactions:${props.entity.medicationName}`)
+				.then(function(response) {
+					if (!response.ok) {
+						throw Error(response.statusText);
+					}
+					return response.json();
+				})
+				.then(function(responseAsJson) {
+					console.log("response log", responseAsJson);
+					setMedicationData(responseAsJson.results);
+				})
+				.catch(function(err) {
+					console.log("Fetch Error :-S", err);
+				});
+		},
+		[medications]
+	);
+
+	useEffect(
+		() => {
+			console.log("Medication data hook:", medicationData);
+		},
+		[medicationData]
+	);
 
 	return (
 		<>
@@ -115,16 +123,38 @@ export const SingleMedicationCard = props => {
 					</div>
 				</div>
 				<div className="col d-flex justify-content-center">
-					<div className="card" style={{ width: "35vw" }}>
+					<div className="card" style={{ width: "35vw", height: "20rem", overflowY: "scroll" }}>
 						<div className="card-header text-center">
 							<h3>{props.entity.medicationName}</h3>
 						</div>
 						<div className="card-body">
-							<h3 className="card-title">Common side effects</h3>
-							<h6 className="card-text">
-								Some quick example text to build on the card title and make up the bulk of the cards
-								content.
-							</h6>
+							{/* Nav tabs start */}
+							<Tabs>
+								<TabList>
+									<Tab>Description</Tab>
+									<Tab>Adverse Reactions</Tab>
+									<Tab>Dosage Forams and Strengths</Tab>
+									<Tab>Information for Patients</Tab>
+									<Tab>Warnings and Cautions</Tab>
+								</TabList>
+
+								<TabPanel>
+									<p>{medicationData.length > 0 && medicationData[0].description}</p>
+								</TabPanel>
+								<TabPanel>
+									<p>{medicationData.length > 0 && medicationData[0].adverse_reactions}</p>
+								</TabPanel>
+								<TabPanel>
+									<p>{medicationData.length > 0 && medicationData[0].dosage_forms_and_strengths}</p>
+								</TabPanel>
+								<TabPanel>
+									<p>{medicationData.length > 0 && medicationData[0].information_for_patients}</p>
+								</TabPanel>
+								<TabPanel>
+									<p>{medicationData.length > 0 && medicationData[0].warnings_and_cautions}</p>
+								</TabPanel>
+							</Tabs>
+							{/* Nav tabs end */}
 						</div>
 					</div>
 				</div>
