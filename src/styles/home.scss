@@ -9,11 +9,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 500px;
+  
   padding: 5px;
 }
 
+.auto-container > .option:hover
+    {
+        color:#6200ff;
+    }
+
+
 .option,
 span {
-  text-transform: capitalize;
+   
+    text-transform: capitalize;
 }
