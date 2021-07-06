@@ -7,7 +7,8 @@ import { EditMedModal } from "./EditMedModal";
 
 export const YourMedications = () => {
 	const { store, actions } = useContext(GlobalState);
-	const [medlist, setMedList] = useState([]);
+	const [medList, setMedList] = useState(null);
+	const [display, setDisplay] = useState(false);
 	const [medications, setMedications] = useState({
 		id: store.allUserMedications.length,
 		medicationName: "",
@@ -28,7 +29,6 @@ export const YourMedications = () => {
 		setMedications({ ...medications, [e.target.name]: e.target.value });
 	};
 	const confirmNewMedication = med => {
-		console.log(med);
 		actions.addUserMedication(med);
 		setMedications({
 			id: store.allUserMedications.length,
@@ -39,11 +39,42 @@ export const YourMedications = () => {
 			sideEffects: ""
 		});
 	};
+	useEffect(
+		() => {
+			fetch(
+				`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${
+					medications.medicationName
+				}`
+			)
+				.then(function(response) {
+					if (!response.ok) {
+						throw Error(response.statusText);
+					}
+					// Read the response as json.
+					return response.json();
+				})
+				.then(function(responseAsJson) {
+					// Do stuff with the JSON
+					console.log("response log", responseAsJson);
+					setMedList(responseAsJson[1]);
+				})
+				.catch(function(err) {
+					console.log("Fetch Error :-S", err);
+				});
+		},
+		[medications.medicationName]
+	);
+
 	useEffect(() => {
 		document.querySelectorAll(".form-outline").forEach(formOutline => {
 			new mdb.Input(formOutline).update();
 		}, []);
 	});
+
+	const selectMedication = med => {
+		setMedications({ ...medications, medicationName: med });
+		setDisplay(false);
+	};
 
 	return (
 		<>
@@ -89,11 +120,23 @@ export const YourMedications = () => {
 										className="form-control"
 										name="medicationName"
 										onChange={handleInput}
+										onClick={() => setDisplay(!display)}
+										value={medications.medicationName}
 									/>
 									<label className="form-label" htmlFor="rxterms">
 										Medication name
 									</label>
-									<div>Suggetions here? </div>
+									{display && (
+										<div className="autoContainer">
+											{medList.map((v, i) => {
+												return (
+													<div onClick={() => selectMedication(v)} className="option" key={i}>
+														<span>{v}</span>
+													</div>
+												);
+											})}
+										</div>
+									)}
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
 									<input

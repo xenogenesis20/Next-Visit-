@@ -10,6 +10,27 @@
   --blue-crayola: #2f71e8ff;
   --cyan-process: #29b9f0ff;
   --cyan-process-two: #29b9f080;
+  /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--cyan-process); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #006c97; 
+}
 }
 .signup-box {
   background-color: white;

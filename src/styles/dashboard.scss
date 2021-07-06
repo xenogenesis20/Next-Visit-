@@ -6,12 +6,24 @@
     
 }
 .medication-column{
-    background-color: rgba(18, 209, 136, 0.582);
-    
+    background-color: #dae7ff;
+    background-image: 
+        radial-gradient(at 47% 33%, rgb(155, 192, 255) 0, transparent 59%), 
+        radial-gradient(at 82% 65%, rgb(152, 198, 224) 0, transparent 55%);
+    height: 100vh;
+    overflow-y: auto;
 }
 .chart-column{
     background-color: rgba(255, 5, 5, 0.507) ;
     
+}
+
+.card {
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 11px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
 }
 .centered {
     position: relative;

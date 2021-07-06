@@ -7,7 +7,6 @@ import "../../styles/singleMedCard.scss";
 
 export const SingleMedicationCard = props => {
 	const { store, actions } = useContext(GlobalState);
-	const [medlist, setMedList] = useState([]);
 	const [medications, setMedications] = useState({
 		id: store.allUserMedications.length,
 		medicationName: "",
@@ -17,6 +16,7 @@ export const SingleMedicationCard = props => {
 		sideEffects: ""
 	});
 	const [medicationData, setMedicationData] = useState([]);
+	const [medlist, setMedList] = useState([]);
 
 	const populateEditCard = id => {
 		let medToEdit = store.allUserMedications.filter(medication => medication["id"] == id);
@@ -123,11 +123,12 @@ export const SingleMedicationCard = props => {
 					</div>
 				</div>
 				<div className="col d-flex justify-content-center">
-					<div className="card" style={{ width: "35vw", height: "20rem", overflowY: "scroll" }}>
+					<div className="card" style={{ width: "35vw", height: "20rem" }}>
 						<div className="card-header text-center">
 							<h3>{props.entity.medicationName}</h3>
 						</div>
-						<div className="card-body">
+
+						<div className="card-body" style={{ height: "20rem", overflowY: "scroll" }}>
 							{/* Nav tabs start */}
 							<Tabs>
 								<TabList>
@@ -137,7 +138,6 @@ export const SingleMedicationCard = props => {
 									<Tab>Information for Patients</Tab>
 									<Tab>Warnings and Cautions</Tab>
 								</TabList>
-
 								<TabPanel>
 									<p>{medicationData.length > 0 && medicationData[0].description}</p>
 								</TabPanel>

@@ -1,0 +1,19 @@
+.auto-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
+  padding: 5px;
+}
+
+.option,
+span {
+  text-transform: capitalize;
+}
