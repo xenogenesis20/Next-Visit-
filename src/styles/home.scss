@@ -13,11 +13,9 @@
   padding: 5px;
 }
 
-.auto-container > .option:hover
-    {
-        color:#6200ff;
-    }
-
+.option:hover > * {
+  background-color: rgb(238, 255, 198);
+}
 
 .option,
 span {
