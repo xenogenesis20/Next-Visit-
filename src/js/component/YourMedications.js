@@ -121,6 +121,7 @@ export const YourMedications = () => {
 										name="medicationName"
 										onChange={handleInput}
 										onClick={() => setDisplay(!display)}
+										onBlur={() => setDisplay(!display)}
 										value={medications.medicationName}
 									/>
 									<label className="form-label" htmlFor="rxterms">

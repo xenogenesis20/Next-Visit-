@@ -1,3 +1,4 @@
-.iframe-wrapper{
-    background-color: red;
+.react-tabs__tab--selected{
+    background-color: rgb(125, 229, 255) !important;
+    transition: background-color 0.5s linear;
 }

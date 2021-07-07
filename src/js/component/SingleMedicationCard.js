@@ -132,11 +132,41 @@ export const SingleMedicationCard = props => {
 							{/* Nav tabs start */}
 							<Tabs>
 								<TabList>
-									<Tab>Description</Tab>
-									<Tab>Adverse Reactions</Tab>
-									<Tab>Dosage Forams and Strengths</Tab>
-									<Tab>Information for Patients</Tab>
-									<Tab>Warnings and Cautions</Tab>
+									{medicationData.length > 0 && medicationData[0].description ? (
+										<Tab>Description</Tab>
+									) : (
+										""
+									)}
+									{medicationData.length > 0 && medicationData[0].adverse_reactions ? (
+										<Tab>Adverse Reactions</Tab>
+									) : (
+										""
+									)}
+									{medicationData.length > 0 && medicationData[0].dosage_forms_and_strengths ? (
+										<Tab>Dosage Forams and Strengths</Tab>
+									) : (
+										""
+									)}
+									{medicationData.length > 0 && medicationData[0].information_for_patients ? (
+										<Tab>Information for Patients</Tab>
+									) : (
+										""
+									)}
+									{medicationData.length > 0 && medicationData[0].warnings_and_cautions ? (
+										<Tab>Warnings and Cautions</Tab>
+									) : (
+										""
+									)}
+									{medicationData.length > 0 && medicationData[0].indications_and_usage ? (
+										<Tab>Indications and usage</Tab>
+									) : (
+										""
+									)}
+									{medicationData.length > 0 && medicationData[0].dependence ? (
+										<Tab>Dependence</Tab>
+									) : (
+										""
+									)}
 								</TabList>
 								<TabPanel>
 									<p>{medicationData.length > 0 && medicationData[0].description}</p>
@@ -152,6 +182,12 @@ export const SingleMedicationCard = props => {
 								</TabPanel>
 								<TabPanel>
 									<p>{medicationData.length > 0 && medicationData[0].warnings_and_cautions}</p>
+								</TabPanel>
+								<TabPanel>
+									<p>{medicationData.length > 0 && medicationData[0].indications_and_usage}</p>
+								</TabPanel>
+								<TabPanel>
+									<p>{medicationData.length > 0 && medicationData[0].dependence}</p>
 								</TabPanel>
 							</Tabs>
 							{/* Nav tabs end */}

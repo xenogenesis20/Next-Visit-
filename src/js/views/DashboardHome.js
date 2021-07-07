@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../../styles/dashboardHome.scss";
 import { SideNav } from "../component/SideNav";
 import { SmallMedCard } from "../component/SmallMedCard";
+import { GlobalState } from "../store/appContext";
 
 export const DashboardHome = () => {
+	const { store, actions } = useContext(GlobalState);
+
 	return (
 		<div className="container-fluid m-0 p-0 d-flex linear-bg">
 			<div className="side-nav">
@@ -13,13 +16,15 @@ export const DashboardHome = () => {
 				<div className="row g-0 p-0 m-0 med-and-symptom-row">
 					<div className="col-6 your-symptoms-box">symptom summary / list</div>
 					<div className="col-6 your-medications-box d-flex flex-wrap">
-						<SmallMedCard />
-						<SmallMedCard />
-						<SmallMedCard />
-						<SmallMedCard />
-						<SmallMedCard />
-						<SmallMedCard />
-						<SmallMedCard />
+						{store.allUserMedications &&
+							store.allUserMedications.map((medication, index) => (
+								<SmallMedCard
+									key={index}
+									entity={medication}
+									id={store.allUserMedications[index].id}
+									onDelete={() => stateSetter(medication.id)}
+								/>
+							))}
 					</div>
 				</div>
 				<div className="row charts-row g-0 p-0 m-0">
