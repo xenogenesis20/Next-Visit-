@@ -55,7 +55,7 @@ export const YourMedications = () => {
 				})
 				.then(function(responseAsJson) {
 					// Do stuff with the JSON
-					console.log("response log", responseAsJson);
+					// console.log("response log", responseAsJson);
 					setMedList(responseAsJson[1]);
 				})
 				.catch(function(err) {
@@ -121,7 +121,8 @@ export const YourMedications = () => {
 										name="medicationName"
 										onChange={handleInput}
 										onClick={() => setDisplay(!display)}
-										onBlur={() => setDisplay(!display)}
+										// onBlur={() => setDisplay(!display)}
+										autoComplete="off"
 										value={medications.medicationName}
 									/>
 									<label className="form-label" htmlFor="rxterms">
@@ -153,7 +154,7 @@ export const YourMedications = () => {
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
 									<input
-										type="number"
+										type="text"
 										id="frequency-input"
 										className="form-control"
 										name="frequency"

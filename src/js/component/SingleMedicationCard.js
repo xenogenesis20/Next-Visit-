@@ -7,21 +7,15 @@ import "../../styles/singleMedCard.scss";
 
 export const SingleMedicationCard = props => {
 	const { store, actions } = useContext(GlobalState);
-	const [medications, setMedications] = useState({
-		id: store.allUserMedications.length,
-		medicationName: "",
-		dose: "",
-		frequency: "",
-		reason: "",
-		sideEffects: ""
-	});
+	const [medications, setMedications] = useState(props.entity);
 	const [medicationData, setMedicationData] = useState([]);
-	const [medlist, setMedList] = useState([]);
 
-	const populateEditCard = id => {
-		let medToEdit = store.allUserMedications.filter(medication => medication["id"] == id);
-		setMedications(medToEdit[0]);
-	};
+	// const populateEditCard = id => {
+	// 	console.log("edit function id", id);
+
+	// 	let medToEdit = store.allUserMedications.filter(medication => medication["id"] == id);
+	// 	setMedications(medToEdit[0]);
+	// };
 
 	const handleInput = e => {
 		setMedications({ ...medications, [e.target.name]: e.target.value });
@@ -29,14 +23,6 @@ export const SingleMedicationCard = props => {
 
 	const confirmNewMedication = med => {
 		actions.editUserMedication(med);
-		setMedications({
-			id: store.allUserMedications.length,
-			medicationName: "",
-			dose: "",
-			frequency: "",
-			reason: "",
-			sideEffects: ""
-		});
 	};
 
 	useEffect(
@@ -49,7 +35,7 @@ export const SingleMedicationCard = props => {
 					return response.json();
 				})
 				.then(function(responseAsJson) {
-					console.log("response log", responseAsJson);
+					// console.log("response log", responseAsJson);
 					setMedicationData(responseAsJson.results);
 				})
 				.catch(function(err) {
@@ -58,58 +44,140 @@ export const SingleMedicationCard = props => {
 		},
 		[medications]
 	);
-
-	useEffect(
-		() => {
-			console.log("Medication data hook:", medicationData);
-		},
-		[medicationData]
-	);
+	// console.log("Props Entity", props.entity);
+	console.log("Props Entity", props.entity.id);
 
 	return (
 		<>
 			<div className="med-card-and-med-info d-flex justify-content-center row mb-2">
 				<div className="col d-flex justify-content-center">
-					<div className="card border border-primary shadow-0" style={{ width: "35vw" }}>
-						<div className="card-header text-center">
+					<div className="card border border-primary shadow-0" style={{ width: "80vw", height: "45vh" }}>
+						<div className="card-header text-center ">
 							<h3>{props.entity.medicationName}</h3>
 						</div>
-						<div className="card-body p-2">
-							{/* Start med info inside card body */}
-							<div className="list-group">
-								<div className="list-group-item">
-									<div className="d-flex w-100 justify-content-around">
-										<h6 className="mb-1">Current Dose:</h6>
-										<h6 className="mb-1">{props.entity.dose} </h6>
+						<div className="card-body p-2 d-flex" style={{ overflowY: "auto", overflowX: "hidden" }}>
+							<div className="row">
+								<div className="col-4">
+									<div className="list-group">
+										<div className="list-group-item">
+											<div className="d-flex w-100 justify-content-around">
+												<h6 className="mb-1">Current Dose:</h6>
+												<h6 className="mb-1">{props.entity.dose} </h6>
+											</div>
+										</div>
+										<div className="list-group-item">
+											<div className="d-flex w-100 justify-content-around">
+												<h6 className="mb-1">How often do you take it:</h6>
+												<h6 className="mb-1">{props.entity.frequency}</h6>
+											</div>
+										</div>
+										<div className="list-group-item">
+											<div className="d-flex w-100 justify-content-around">
+												<h6 className="mb-1">Symptom target:</h6>
+												<h6 className="mb-1">{props.entity.reason}</h6>
+											</div>
+										</div>
+										<div className="list-group-item">
+											<div className="d-flex w-100 justify-content-around">
+												<h6 className="mb-1">Side effects:</h6>
+												<h6 className="mb-1">{props.entity.sideEffects}</h6>
+											</div>
+										</div>
 									</div>
 								</div>
-								<div className="list-group-item">
-									<div className="d-flex w-100 justify-content-around">
-										<h6 className="mb-1">How often do you take it:</h6>
-										<h6 className="mb-1">{props.entity.frequency}</h6>
-									</div>
-								</div>
-								<div className="list-group-item">
-									<div className="d-flex w-100 justify-content-around">
-										<h6 className="mb-1">Symptom target:</h6>
-										<h6 className="mb-1">{props.entity.reason}</h6>
-									</div>
-								</div>
-								<div className="list-group-item">
-									<div className="d-flex w-100 justify-content-around">
-										<h6 className="mb-1">Side effects:</h6>
-										<h6 className="mb-1">{props.entity.sideEffects}</h6>
+								<div className="col-8">
+									<div>
+										{/* Nav tabs start */}
+										<Tabs>
+											<TabList>
+												{medicationData.length > 0 && medicationData[0].description ? (
+													<Tab>Description</Tab>
+												) : (
+													""
+												)}
+												{medicationData.length > 0 && medicationData[0].adverse_reactions ? (
+													<Tab>Adverse Reactions</Tab>
+												) : (
+													""
+												)}
+												{medicationData.length > 0 &&
+												medicationData[0].dosage_forms_and_strengths ? (
+													<Tab>Dosage Forams and Strengths</Tab>
+												) : (
+													""
+												)}
+												{medicationData.length > 0 &&
+												medicationData[0].information_for_patients ? (
+													<Tab>Information for Patients</Tab>
+												) : (
+													""
+												)}
+												{medicationData.length > 0 &&
+												medicationData[0].warnings_and_cautions ? (
+													<Tab>Warnings and Cautions</Tab>
+												) : (
+													""
+												)}
+												{medicationData.length > 0 &&
+												medicationData[0].indications_and_usage ? (
+													<Tab>Indications and usage</Tab>
+												) : (
+													""
+												)}
+												{medicationData.length > 0 && medicationData[0].dependence ? (
+													<Tab>Dependence</Tab>
+												) : (
+													""
+												)}
+											</TabList>
+											<TabPanel>
+												<p>{medicationData.length > 0 && medicationData[0].description}</p>
+											</TabPanel>
+											<TabPanel>
+												<p>
+													{medicationData.length > 0 && medicationData[0].adverse_reactions}
+												</p>
+											</TabPanel>
+											<TabPanel>
+												<p>
+													{medicationData.length > 0 &&
+														medicationData[0].dosage_forms_and_strengths}
+												</p>
+											</TabPanel>
+											<TabPanel>
+												<p>
+													{medicationData.length > 0 &&
+														medicationData[0].information_for_patients}
+												</p>
+											</TabPanel>
+											<TabPanel>
+												<p>
+													{medicationData.length > 0 &&
+														medicationData[0].warnings_and_cautions}
+												</p>
+											</TabPanel>
+											<TabPanel>
+												<p>
+													{medicationData.length > 0 &&
+														medicationData[0].indications_and_usage}
+												</p>
+											</TabPanel>
+											<TabPanel>
+												<p>{medicationData.length > 0 && medicationData[0].dependence}</p>
+											</TabPanel>
+										</Tabs>
+										{/* Nav tabs end */}
 									</div>
 								</div>
 							</div>
-							{/* End med info inside card body */}
+						</div>
+						<div className="card-footer">
 							<div className="d-flex w-100 justify-content-around m-1">
 								<button
 									type="button"
 									className="btn btn-primary"
 									data-mdb-toggle="modal"
-									data-mdb-target="#editMed"
-									onClick={() => populateEditCard(props.id)}>
+									data-mdb-target={`#editMed-${props.id}`}>
 									Edit
 									<i className="fas fa-pencil-alt mr-3" />
 								</button>
@@ -122,83 +190,11 @@ export const SingleMedicationCard = props => {
 						</div>
 					</div>
 				</div>
-				<div className="col d-flex justify-content-center">
-					<div className="card" style={{ width: "35vw", height: "20rem" }}>
-						<div className="card-header text-center">
-							<h3>{props.entity.medicationName}</h3>
-						</div>
-
-						<div className="card-body" style={{ height: "20rem", overflowY: "scroll" }}>
-							{/* Nav tabs start */}
-							<Tabs>
-								<TabList>
-									{medicationData.length > 0 && medicationData[0].description ? (
-										<Tab>Description</Tab>
-									) : (
-										""
-									)}
-									{medicationData.length > 0 && medicationData[0].adverse_reactions ? (
-										<Tab>Adverse Reactions</Tab>
-									) : (
-										""
-									)}
-									{medicationData.length > 0 && medicationData[0].dosage_forms_and_strengths ? (
-										<Tab>Dosage Forams and Strengths</Tab>
-									) : (
-										""
-									)}
-									{medicationData.length > 0 && medicationData[0].information_for_patients ? (
-										<Tab>Information for Patients</Tab>
-									) : (
-										""
-									)}
-									{medicationData.length > 0 && medicationData[0].warnings_and_cautions ? (
-										<Tab>Warnings and Cautions</Tab>
-									) : (
-										""
-									)}
-									{medicationData.length > 0 && medicationData[0].indications_and_usage ? (
-										<Tab>Indications and usage</Tab>
-									) : (
-										""
-									)}
-									{medicationData.length > 0 && medicationData[0].dependence ? (
-										<Tab>Dependence</Tab>
-									) : (
-										""
-									)}
-								</TabList>
-								<TabPanel>
-									<p>{medicationData.length > 0 && medicationData[0].description}</p>
-								</TabPanel>
-								<TabPanel>
-									<p>{medicationData.length > 0 && medicationData[0].adverse_reactions}</p>
-								</TabPanel>
-								<TabPanel>
-									<p>{medicationData.length > 0 && medicationData[0].dosage_forms_and_strengths}</p>
-								</TabPanel>
-								<TabPanel>
-									<p>{medicationData.length > 0 && medicationData[0].information_for_patients}</p>
-								</TabPanel>
-								<TabPanel>
-									<p>{medicationData.length > 0 && medicationData[0].warnings_and_cautions}</p>
-								</TabPanel>
-								<TabPanel>
-									<p>{medicationData.length > 0 && medicationData[0].indications_and_usage}</p>
-								</TabPanel>
-								<TabPanel>
-									<p>{medicationData.length > 0 && medicationData[0].dependence}</p>
-								</TabPanel>
-							</Tabs>
-							{/* Nav tabs end */}
-						</div>
-					</div>
-				</div>
 			</div>
 			{/* edit med modal */}
 			<div
 				className="modal fade"
-				id="editMed"
+				id={`editMed-${props.id}`}
 				tabIndex="-1"
 				aria-labelledby="addMedicationModal"
 				aria-hidden="true">
@@ -224,7 +220,6 @@ export const SingleMedicationCard = props => {
 									<label className="form-label" htmlFor="rxterms">
 										{"Medication name"}
 									</label>
-									<div>Suggetions here? </div>
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
 									<input

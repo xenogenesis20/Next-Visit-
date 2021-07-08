@@ -26,7 +26,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(medication.id);
 					}
 				}
-				console.log(medication);
 				setStore({ allUserMedications: allMeds });
 			},
 			addUserSymptom: symptom => {
