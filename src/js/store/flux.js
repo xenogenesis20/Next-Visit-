@@ -4,7 +4,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 			userInfo: [],
 			allUserMedications: [],
 			allUserSymptoms: [],
-			allUserVitals: []
+			allUserVitals: [],
+			allDoctors: [
+				{
+					name: "George Mihov",
+					specialty: "Cardiologist",
+					id: "1"
+				},
+				{
+					name: "Pedro Cisternas",
+					specialty: "Sports Medicine",
+					id: "2"
+				},
+				{
+					name: "Nate Archer",
+					specialty: "Pulmonologist",
+					id: "3"
+				},
+				{
+					name: "Antoniya Anemtserova",
+					specialty: "Psychiatrist",
+					id: "4"
+				}
+			]
 		},
 		actions: {
 			addUser: user => {

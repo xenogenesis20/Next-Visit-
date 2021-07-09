@@ -15,6 +15,7 @@ import { SectionCard } from "./component/SectionCard";
 import { YourMedications } from "./component/YourMedications";
 import { DashboardHome } from "./views/DashboardHome";
 import { DemoView } from "./views/DemoView";
+import { FindDoctor } from "./views/FindDoctor";
 
 //create your first component
 const Layout = () => {
@@ -44,6 +45,7 @@ const Layout = () => {
 				<Route exact path="/DashboardSymptoms" component={DashboardSymptoms} />
 				<Route exact path="/DashboardHome" component={DashboardHome} />
 				<Route exact path="/DemoView" component={DemoView} />
+				<Route exact path="/FindDoctor" component={FindDoctor} />
 				<Route>
 					<h1>Not found!</h1>
 				</Route>

@@ -50,8 +50,8 @@ export const Navbar = () => {
 							</Link>
 						</li>
 						<li className="nav-item">
-							<Link className="nav-link" to="/YourMedications">
-								Your Medications
+							<Link className="nav-link" to="/FindDoctor">
+								Find a doctor
 							</Link>
 						</li>
 					</ul>
