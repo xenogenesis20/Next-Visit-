@@ -12,7 +12,6 @@ export const SingleMedicationCard = props => {
 
 	// const populateEditCard = id => {
 	// 	console.log("edit function id", id);
-
 	// 	let medToEdit = store.allUserMedications.filter(medication => medication["id"] == id);
 	// 	setMedications(medToEdit[0]);
 	// };
@@ -50,8 +49,8 @@ export const SingleMedicationCard = props => {
 	return (
 		<>
 			<div className="med-card-and-med-info d-flex justify-content-center row mb-2">
-				<div className="col d-flex justify-content-center">
-					<div className="card border border-primary shadow-0" style={{ width: "80vw", height: "45vh" }}>
+				<div className=" d-flex justify-content-center">
+					<div className="card border border-primary shadow-0" style={{ width: "40vw", height: "45vh" }}>
 						<div className="card-header text-center ">
 							<h3>{props.entity.medicationName}</h3>
 						</div>
@@ -182,7 +181,9 @@ export const SingleMedicationCard = props => {
 									<i className="fas fa-pencil-alt mr-3" />
 								</button>
 
-								<button className="btn btn btn-danger">
+								<button
+									className="btn btn btn-danger"
+									onClick={() => actions.deleteUserMedication(props.id)}>
 									Delete
 									<i className="fas fa-trash-alt" />
 								</button>

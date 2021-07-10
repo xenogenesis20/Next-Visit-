@@ -1,7 +1,9 @@
 import React from "react";
 import "../../styles/signin.scss";
+import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 
-export const SignIn = () => {
+export const SignIn = props => {
 	return (
 		<div className="container sign-in-box my-auto">
 			<div className="d-flex justify-content-center h-100">
@@ -42,7 +44,7 @@ export const SignIn = () => {
 								<input type="checkbox" />
 								Remember Me
 							</div>
-							<div className="form-group">
+							<div className="form-group" onClick={() => props.setLoggedIn(true)}>
 								<input type="submit" value="Login" className="btn float-right login_btn" />
 							</div>
 						</form>
@@ -58,6 +60,12 @@ export const SignIn = () => {
 					</div>
 				</div>
 			</div>
+			{props.loggedIn ? <Redirect to="DashboardHome" /> : ""}
 		</div>
 	);
+};
+
+SignIn.propTypes = {
+	loggedIn: PropTypes.bool,
+	setLoggedIn: PropTypes.func
 };

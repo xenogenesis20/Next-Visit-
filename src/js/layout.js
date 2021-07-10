@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Home } from "./views/home";
@@ -23,11 +23,13 @@ const Layout = () => {
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 
+	const [loggedIn, setLoggedIn] = useState(false);
+
 	return (
 		<BrowserRouter basename={basename}>
 			<Switch>
 				<Route exact path="/">
-					<Home />
+					<Home loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 				</Route>
 				<Route exact path="/demo">
 					<Demo />
@@ -39,11 +41,15 @@ const Layout = () => {
 				<Route exact path="/YourMedications" component={YourMedications} />
 
 				<Route exact path="/SignUp" component={SignUp} />
-				<Route exact path="/SignIn" component={SignIn} />
+				<Route exact path="/SignIn">
+					<SignIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+				</Route>
 				<Route exact path="/DashboardMeds" component={DashboardMeds} />
 				<Route exact path="/DashboardVitals" component={DashboardVitals} />
 				<Route exact path="/DashboardSymptoms" component={DashboardSymptoms} />
-				<Route exact path="/DashboardHome" component={DashboardHome} />
+				<Route exact path="/DashboardHome">
+					<DashboardHome loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+				</Route>
 				<Route exact path="/DemoView" component={DemoView} />
 				<Route exact path="/FindDoctor" component={FindDoctor} />
 				<Route>

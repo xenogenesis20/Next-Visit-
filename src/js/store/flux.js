@@ -50,6 +50,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				setStore({ allUserMedications: allMeds });
 			},
+			deleteUserMedication: id => {
+				let allMeds = getStore().allUserMedications;
+				let newMedList = allMeds.filter(med => id != med.id);
+				setStore({ allUserMedications: newMedList });
+			},
 			addUserSymptom: symptom => {
 				let allSymptoms = getStore().allUserSymptoms;
 				allSymptoms.push(symptom);

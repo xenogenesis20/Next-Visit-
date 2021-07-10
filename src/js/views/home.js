@@ -6,11 +6,12 @@ import { Navbar } from "../component/navbar";
 import { SectionCardFeaturesOne } from "../component/SectionCardFeaturesOne";
 import { SectionCardFeaturesTwo } from "../component/SectionCardFeaturesTwo";
 import { SectionCardFeaturesThree } from "../component/SectionCardFeaturesThree";
+import PropTypes from "prop-types";
 
-export const Home = () => {
+export const Home = props => {
 	return (
 		<>
-			<Navbar />
+			<Navbar loggedIn={props.loggedIn} />
 			<div className="container-fluid landing-page-container">
 				<div className="row">
 					<div className="col-12">
@@ -36,4 +37,8 @@ export const Home = () => {
 			</div>
 		</>
 	);
+};
+Home.propTypes = {
+	loggedIn: PropTypes.bool,
+	setLoggedIn: PropTypes.func
 };

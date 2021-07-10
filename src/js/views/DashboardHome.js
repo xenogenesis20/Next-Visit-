@@ -3,8 +3,10 @@ import "../../styles/dashboardHome.scss";
 import { SideNav } from "../component/SideNav";
 import { SmallMedCard } from "../component/SmallMedCard";
 import { GlobalState } from "../store/appContext";
+import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 
-export const DashboardHome = () => {
+export const DashboardHome = props => {
 	const { store, actions } = useContext(GlobalState);
 
 	return (
@@ -31,6 +33,12 @@ export const DashboardHome = () => {
 					<div className="col-12 ">Charts go here</div>
 				</div>
 			</div>
+			{props.loggedIn ? "" : <Redirect to="SignIn" />}
 		</div>
 	);
+};
+
+DashboardHome.propTypes = {
+	loggedIn: PropTypes.bool,
+	setLoggedIn: PropTypes.func
 };
