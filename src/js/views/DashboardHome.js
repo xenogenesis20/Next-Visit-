@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "../../styles/dashboardHome.scss";
 import { SideNav } from "../component/SideNav";
 import { SmallMedCard } from "../component/SmallMedCard";
+import { LineChart } from "../component/LineChart";
 import { GlobalState } from "../store/appContext";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
@@ -30,7 +31,9 @@ export const DashboardHome = props => {
 					</div>
 				</div>
 				<div className="row charts-row g-0 p-0 m-0">
-					<div className="col-12 ">Charts go here</div>
+					<div className="col-12 ">
+						<LineChart />
+					</div>
 				</div>
 			</div>
 			{props.loggedIn ? "" : <Redirect to="SignIn" />}

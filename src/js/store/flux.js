@@ -4,7 +4,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 			userInfo: [],
 			allUserMedications: [],
 			allUserSymptoms: [],
-			allUserVitals: [],
+			vitalBloodPressure: [
+				{
+					value: "",
+					date: ""
+				},
+				{
+					value: "",
+					date: ""
+				}
+			],
+			allUserVitals: [
+				{
+					oxysaturation: "",
+					date: ""
+				}
+			],
 			allDoctors: [
 				{
 					name: "George Mihov",
@@ -60,11 +75,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 				allSymptoms.push(symptom);
 				setStore({ allUserSymptoms: allSymptoms });
 			},
+			editUserSymptom: symptom => {
+				let allSymptoms = getStore().allUserSymptoms;
+				for (let i = 0; i < allSymptoms.length; i++) {
+					if (symptom.id == allSymptoms[i].id) {
+						allSymptoms[i] = symptom;
+						console.log(symptom.id);
+					}
+				}
+				setStore({ allUserSymptoms: allSymptoms });
+			},
+			deleteUserSymptom: id => {
+				let allSymptoms = getStore().allUserSymptoms;
+				let newSymptomList = allSymptoms.filter(symptom => id != symptom.id);
+				setStore({ allUserSymptoms: newSymptomList });
+			},
 			addUserVital: vital => {
 				let allVitals = getStore().allUserVitals;
 				allVitals.push(vital);
 				setStore({ allUserVitals: allVitals });
 			},
+			editUserVital: vital => {
+				let allVitals = getStore().allUserVitals;
+				for (let i = 0; i < allVitals.length; i++) {
+					if (vital.id == allVitals[i].id) {
+						allVitals[i] = vital;
+						console.log(vital.id);
+					}
+				}
+				setStore({ allUserVitals: allVitals });
+			},
+			deleteUserVital: id => {
+				let allVitals = getStore().allUserVitals;
+				let newVitalList = allVitals.filter(vital => id != vital.id);
+				setStore({ allUserVitals: newVitalList });
+			},
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
