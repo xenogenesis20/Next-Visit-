@@ -71,6 +71,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				allSymptoms.push(symptom);
 				setStore({ allUserSymptoms: allSymptoms });
 			},
+			editUserSymptom: symptom => {
+				let allSymps = getStore().allUserSymptoms;
+				for (let i = 0; i < allSymps.length; i++) {
+					if (symptom.id == allSymps[i].id) {
+						allSymps[i] = symptom;
+						console.log(symptom.id);
+					}
+				}
+				setStore({ allUserSymptoms: allSymps });
+			},
+			addSymptomNote: (id, note) => {
+				let allSymps = getStore().allUserSymptoms;
+				for (let i = 0; i < allSymps.length; i++) {
+					if (id == allSymps[i].id) {
+						allSymps[i].notes.push(note);
+					}
+				}
+			},
 			deleteUserSymptom: id => {
 				let allSymp = getStore().allUserSymptoms;
 				let newSympList = allSymp.filter(symp => id != symp.id);
