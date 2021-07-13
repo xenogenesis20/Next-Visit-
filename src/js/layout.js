@@ -44,11 +44,17 @@ const Layout = () => {
 				<Route exact path="/SignIn">
 					<SignIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 				</Route>
-				<Route exact path="/DashboardMeds" component={DashboardMeds} />
-				<Route exact path="/DashboardVitals" component={DashboardVitals} />
-				<Route exact path="/DashboardSymptoms" component={DashboardSymptoms} />
+				<Route exact path="/DashboardVitals">
+					<DashboardVitals loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+				</Route>
+				<Route exact path="/DashboardSymptoms">
+					<DashboardSymptoms loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+				</Route>
 				<Route exact path="/DashboardHome">
 					<DashboardHome loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+				</Route>
+				<Route exact path="/DashboardMeds">
+					<DashboardMeds loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 				</Route>
 				<Route exact path="/DemoView" component={DemoView} />
 				<Route exact path="/FindDoctor" component={FindDoctor} />

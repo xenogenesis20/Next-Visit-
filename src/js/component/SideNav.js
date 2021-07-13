@@ -16,7 +16,7 @@ import "react-pro-sidebar/dist/css/styles.css";
 import "../../styles/sideNav.scss";
 import { Link } from "react-router-dom";
 
-export const SideNav = () => {
+export const SideNav = props => {
 	//create initial menuCollapse state using useState hook
 	const [menuCollapse, setMenuCollapse] = useState(false);
 
@@ -64,11 +64,13 @@ export const SideNav = () => {
 							<MenuItem icon={<BiCog />}>Settings</MenuItem>
 						</Menu>
 					</SidebarContent>
-					{/* <SidebarFooter>
+					<SidebarFooter>
 						<Menu iconShape="square">
-							<MenuItem icon={<FiLogOut />}>Logout</MenuItem>
+							<MenuItem icon={<FiLogOut />} onClick={() => props.setLoggedIn(false)}>
+								Logout
+							</MenuItem>
 						</Menu>
-					</SidebarFooter> */}
+					</SidebarFooter>
 				</ProSidebar>
 			</div>
 		</>

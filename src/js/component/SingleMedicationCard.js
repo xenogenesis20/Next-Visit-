@@ -10,12 +10,6 @@ export const SingleMedicationCard = props => {
 	const [medications, setMedications] = useState(props.entity);
 	const [medicationData, setMedicationData] = useState([]);
 
-	// const populateEditCard = id => {
-	// 	console.log("edit function id", id);
-	// 	let medToEdit = store.allUserMedications.filter(medication => medication["id"] == id);
-	// 	setMedications(medToEdit[0]);
-	// };
-
 	const handleInput = e => {
 		setMedications({ ...medications, [e.target.name]: e.target.value });
 	};

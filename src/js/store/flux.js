@@ -20,6 +20,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					date: ""
 				}
 			],
+
+			allUserSymptoms: [
+				{
+					id: 2,
+					symptomName: "broken butt",
+					startDate: "07/12/21",
+					severity: "10",
+					location: "butt",
+					frequency: "constant",
+					duration: "all day",
+					notes: [{ date: "", note: "", severity: "" }]
+				}
+			],
+			allUserVitals: [],
+
 			allDoctors: [
 				{
 					name: "George Mihov",
@@ -75,20 +90,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				allSymptoms.push(symptom);
 				setStore({ allUserSymptoms: allSymptoms });
 			},
-			editUserSymptom: symptom => {
-				let allSymptoms = getStore().allUserSymptoms;
-				for (let i = 0; i < allSymptoms.length; i++) {
-					if (symptom.id == allSymptoms[i].id) {
-						allSymptoms[i] = symptom;
-						console.log(symptom.id);
-					}
-				}
-				setStore({ allUserSymptoms: allSymptoms });
-			},
 			deleteUserSymptom: id => {
-				let allSymptoms = getStore().allUserSymptoms;
-				let newSymptomList = allSymptoms.filter(symptom => id != symptom.id);
-				setStore({ allUserSymptoms: newSymptomList });
+				let allSymp = getStore().allUserSymptoms;
+				let newSympList = allSymp.filter(symp => id != symp.id);
+				setStore({ allUserSymptoms: newSympList });
 			},
 			addUserVital: vital => {
 				let allVitals = getStore().allUserVitals;
