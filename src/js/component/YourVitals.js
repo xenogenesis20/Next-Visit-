@@ -8,19 +8,22 @@ export const YourVitals = () => {
 	const { store, actions } = useContext(GlobalState);
 	const [vitalList, setVitalList] = useState([]);
 	const [vitals, setVitals] = useState({
-		height: "",
-		weight: "",
-		heartRate: "",
-		bloodPressure: "",
-		bloodType: "",
-		bodyTemperature: "",
-		oxySaturation: ""
+		vitalName: "",
+		value: "",
+		date: ""
 	});
+
 	const handleInput = e => {
 		setVitals({ ...vitals, [e.target.name]: e.target.value });
 	};
 	const confirmNewVital = vital => {
 		actions.addUserVital(vital);
+		setVitals({
+			id: store.allUserVitals.length,
+			vitalName: "",
+			value: "",
+			date: ""
+		});
 	};
 	useEffect(() => {
 		document.querySelectorAll(".form-outline").forEach(formOutline => {
@@ -53,13 +56,27 @@ export const YourVitals = () => {
 
 	return (
 		<>
-			<h1>Your Vitals</h1>
-			<button type="button" className="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-				Add a new vital.
-			</button>
+			<div className="row">
+				<div className="col">
+					<h1>Your Vitals</h1>
+					<div />
+					<button
+						type="button"
+						className="btn btn-primary"
+						data-mdb-toggle="modal"
+						data-mdb-target="#exampleModal">
+						Add a new vital.
+					</button>
+				</div>
+			</div>
 			{store.allUserVitals &&
 				store.allUserVitals.map((vital, index) => (
-					<SingleVitalCard key={vital.id} entity={vital} onDelete={() => stateSetter(vital.id)} />
+					<SingleVitalCard
+						key={index}
+						entity={vital}
+						id={store.allUserVitals[index].id}
+						onDelete={() => stateSetter(vital.id)}
+					/>
 				))}
 			<div
 				className="modal fade"
@@ -71,35 +88,36 @@ export const YourVitals = () => {
 					<div className="modal-content">
 						<div className="modal-header">
 							<h5 className="modal-title" id="exampleModalLabel">
-								Add a vital
+								Add a Vital
 							</h5>
 							<button type="button" className="btn-close" data-mdb-dismiss="modal" aria-label="Close" />
 						</div>
 						<div className="modal-body">
 							<form>
-								<div className="form-outline bg-light mb-3 p-1">
-									<input
-										type="text"
-										id="rxterms"
+								<div className="form-group bg-light mb-3 p-1">
+									<label htmlFor="exampleFormControlSelect1">Vital Name</label>
+									<select
 										className="form-control"
-										name="medicationName"
-										onChange={handleInput}
-									/>
-									<label className="form-label" htmlFor="rxterms">
-										Vital Name
-									</label>
-									<div>Suggetions here? </div>
+										id="exampleFormControlSelect1"
+										name="vitalName"
+										onChange={handleInput}>
+										<option>Select Vital</option>
+										<option>Weight</option>
+										<option>Height</option>
+										<option>Blood Pressure</option>
+										<option>Heart Rate</option>
+									</select>
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
 									<input
 										type="text"
 										id="drug_strength"
 										className="form-control"
-										name="dose"
+										name="date"
 										onChange={handleInput}
 									/>
 									<label className="form-label" htmlFor="drug_strength">
-										Current dose
+										Date
 									</label>
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
@@ -107,35 +125,11 @@ export const YourVitals = () => {
 										type="number"
 										id="frequency-input"
 										className="form-control"
-										name="frequency"
+										name="value"
 										onChange={handleInput}
 									/>
 									<label className="form-label" htmlFor="frequency-input">
-										How often do you take it
-									</label>
-								</div>
-								<div className="form-outline bg-light mb-3 p-1">
-									<input
-										type="text"
-										id="reason-input"
-										className="form-control"
-										name="reason"
-										onChange={handleInput}
-									/>
-									<label className="form-label" htmlFor="reason-input">
-										Reason for medication
-									</label>
-								</div>
-								<div className="form-outline bg-light mb-3 p-1">
-									<input
-										type="text"
-										id="sideEffects-input"
-										className="form-control"
-										name="sideEffects"
-										onChange={handleInput}
-									/>
-									<label className="form-label" htmlFor="sideEffects-input">
-										Side effects
+										Value
 									</label>
 								</div>
 							</form>

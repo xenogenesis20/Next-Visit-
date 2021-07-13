@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "../../styles/dashboardHome.scss";
 import { SideNav } from "../component/SideNav";
 import { SmallMedCard } from "../component/SmallMedCard";
+import { LineGraph } from "../component/LineGraph";
 import { GlobalState } from "../store/appContext";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
