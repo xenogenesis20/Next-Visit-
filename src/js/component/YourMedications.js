@@ -147,6 +147,7 @@ export const YourMedications = () => {
 										className="form-control"
 										name="dose"
 										onChange={handleInput}
+										value={medications.dose}
 									/>
 									<label className="form-label" htmlFor="drug_strength">
 										Current dose
@@ -159,6 +160,7 @@ export const YourMedications = () => {
 										className="form-control"
 										name="frequency"
 										onChange={handleInput}
+										value={medications.frequency}
 									/>
 									<label className="form-label" htmlFor="frequency-input">
 										How often do you take it
@@ -171,6 +173,7 @@ export const YourMedications = () => {
 										className="form-control"
 										name="reason"
 										onChange={handleInput}
+										value={medications.reason}
 									/>
 									<label className="form-label" htmlFor="reason-input">
 										Reason for medication
@@ -183,6 +186,7 @@ export const YourMedications = () => {
 										className="form-control"
 										name="sideEffects"
 										onChange={handleInput}
+										value={medications.sideEffects}
 									/>
 									<label className="form-label" htmlFor="sideEffects-input">
 										Side effects

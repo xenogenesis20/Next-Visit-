@@ -6,49 +6,35 @@ import { GlobalState } from "../store/appContext";
 
 export const YourSymptoms = () => {
 	const { store, actions } = useContext(GlobalState);
-	const [symptomlist, setSymptomList] = useState([]);
 	const [symptoms, setSymptoms] = useState({
+		id: store.allUserSymptoms.length,
 		symptomName: "",
-		// dose: "",
-		// frequency: "",
-		// reason: "",
-		// sideEffects: "",
-		severity: ""
+		startDate: "",
+		severity: "",
+		location: "",
+		frequency: "",
+		duration: ""
 	});
 	const handleInput = e => {
 		setSymptoms({ ...symptoms, [e.target.name]: e.target.value });
 	};
 	const confirmNewSymptom = sym => {
 		actions.addUserSymptom(sym);
+		setSymptoms({
+			id: store.allUserSymptoms.length,
+			symptomName: "",
+			startDate: "",
+			severity: "",
+			location: "",
+			frequency: "",
+			duration: ""
+		});
 	};
 	useEffect(() => {
 		document.querySelectorAll(".form-outline").forEach(formOutline => {
 			new mdb.Input(formOutline).update();
 		}, []);
 	});
-	let dynamicValue = "adde";
-	const getSymptomList = dynamicValue => {
-		useEffect(() => {
-			fetch(``)
-				.then(function(response) {
-					if (!response.ok) {
-						throw Error(response.statusText);
-					}
-					// Read the response as json.
-					return response.json();
-				})
-				.then(function(responseAsJson) {
-					// Do stuff with the JSON
-					console.log("response log", responseAsJson.results);
-					setSymptomList(responseAsJson.results);
-				})
-				.catch(function(err) {
-					console.log("Fetch Error :-S", err);
-				});
-		}, []);
-	};
-
-	console.log("second log", symptomlist);
 
 	return (
 		<>
@@ -58,10 +44,13 @@ export const YourSymptoms = () => {
 			</button>
 			{store.allUserSymptoms &&
 				store.allUserSymptoms.map((symptom, index) => {
-					console.log(symptom);
 					return (
-						// <SingleSymptomCard key={symptom.id} entity={symptom} onDelete={() => stateSetter(symptom.id)} />
-						<SingleSymptomCard key={index} entity={symptom} onDelete={() => stateSetter(index)} />
+						<SingleSymptomCard
+							key={index}
+							entity={symptom}
+							onDelete={() => stateSetter(index)}
+							id={store.allUserSymptoms[index].id}
+						/>
 					);
 				})}
 			<div
@@ -83,62 +72,80 @@ export const YourSymptoms = () => {
 								<div className="form-outline bg-light mb-3 p-1">
 									<input
 										type="text"
-										id="rxterms"
+										id="symptom"
 										className="form-control"
 										name="symptomName"
 										onChange={handleInput}
+										autoComplete="off"
+										value={symptoms.symptomName}
 									/>
-									<label className="form-label" htmlFor="rxterms">
+									<label className="form-label" htmlFor="symptom">
 										Symptom name
 									</label>
-									<div>Suggetions here? </div>
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
 									<input
 										type="text"
-										id="drug_strength"
+										id="startDate"
 										className="form-control"
-										name="dose"
+										name="startDate"
 										onChange={handleInput}
+										value={symptoms.startDate}
 									/>
-									<label className="form-label" htmlFor="drug_strength">
-										Current dose
+									<label className="form-label" htmlFor="startDate">
+										When did this symptom start
 									</label>
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
 									<input
 										type="number"
-										id="frequency-input"
+										id="severity"
+										className="form-control"
+										name="severity"
+										onChange={handleInput}
+										value={symptoms.severity}
+									/>
+									<label className="form-label" htmlFor="severity">
+										Severity 1-10
+									</label>
+								</div>
+								<div className="form-outline bg-light mb-3 p-1">
+									<input
+										type="text"
+										id="symptomLocation"
+										className="form-control"
+										name="location"
+										onChange={handleInput}
+										value={symptoms.location}
+									/>
+									<label className="form-label" htmlFor="symptomLocation">
+										Location of symptom
+									</label>
+								</div>
+								<div className="form-outline bg-light mb-3 p-1">
+									<input
+										type="text"
+										id="frequency"
 										className="form-control"
 										name="frequency"
 										onChange={handleInput}
+										value={symptoms.frequency}
 									/>
-									<label className="form-label" htmlFor="frequency-input">
-										How often do you take it
+									<label className="form-label" htmlFor="frequency">
+										How often does it occur?
 									</label>
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
 									<input
 										type="text"
-										id="reason-input"
+										id="duration"
 										className="form-control"
-										name="reason"
+										name="duration"
 										onChange={handleInput}
+										value={symptoms.duration}
 									/>
-									<label className="form-label" htmlFor="reason-input">
-										Reason for medication
-									</label>
-								</div>
-								<div className="form-outline bg-light mb-3 p-1">
-									<input
-										type="text"
-										id="sideEffects-input"
-										className="form-control"
-										name="sideEffects"
-										onChange={handleInput}
-									/>
-									<label className="form-label" htmlFor="sideEffects-input">
-										Side effects
+									<label className="form-label" htmlFor="duration">
+										How long does it last?
 									</label>
 								</div>
 							</form>

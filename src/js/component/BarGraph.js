@@ -1,9 +1,9 @@
 import React from "react";
-import { Doughnut } from "react-chartjs-3";
+import { Bar } from "react-chartjs-3";
 
 export const BarGraph = () => {
 	const data = {
-		labels: ["06/25", "06/26", "06/26", "06/27", "May", "June", "July"],
+		labels: ["06/25"],
 		datasets: [
 			{
 				label: "My First dataset",
@@ -12,13 +12,13 @@ export const BarGraph = () => {
 				borderWidth: 1,
 				hoverBackgroundColor: "rgba(255,99,132,0.4)",
 				hoverBorderColor: "rgba(255,99,132,1)",
-				data: [65, 59, 80, 81, 56, 55, 40]
+				data: [50]
 			}
 		]
 	};
 	return (
 		<div>
-			<Doughnut
+			<Bar
 				data={data}
 				width={100}
 				height={500}
