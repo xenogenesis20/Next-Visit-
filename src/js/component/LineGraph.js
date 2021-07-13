@@ -2,7 +2,7 @@ import React from "react";
 import { Line } from "react-chartjs-3";
 
 export const LineGraph = props => {
-    const data = {
+	const data = {
 		labels: ["06/25"],
 		datasets: [
 			{
@@ -16,10 +16,10 @@ export const LineGraph = props => {
 			}
 		]
 	};
-    
-    return (
+
+	return (
 		<div>
-			<Bar
+			<Line
 				data={data}
 				width={100}
 				height={500}
