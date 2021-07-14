@@ -4,12 +4,16 @@ import { GlobalState } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/singleMedCard.scss";
 import * as mdb from "mdb-ui-kit"; // lib
+import { NoteCard } from "./NoteCard";
+import { BarGraph } from "./BarGraph";
 
 export const SingleSymptomCard = props => {
 	const { actions, store } = useContext(GlobalState);
 	const [symptoms, setSymptoms] = useState(props.entity);
 	const [note, setNote] = useState({});
 	const [displayNote, setDisplayNote] = useState(false);
+
+	// console.log(props.entity);
 
 	const handleInput = e => {
 		setSymptoms({ ...symptoms, [e.target.name]: e.target.value });
@@ -140,6 +144,10 @@ export const SingleSymptomCard = props => {
 			) : (
 				""
 			)}
+			{props.entity.notes.map((val, ind) => {
+				return <NoteCard key={ind} symptomNotes={val} />;
+			})}
+			{props.entity.notes.length > 0 ? <BarGraph symptomNotes={props.entity.notes} /> : ""}
 
 			{/* Edit symptom modal */}
 			<div

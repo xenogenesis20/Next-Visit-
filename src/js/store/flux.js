@@ -30,7 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					location: "butt",
 					frequency: "constant",
 					duration: "all day",
-					notes: [{ date: "", note: "", severity: "" }]
+					notes: []
 				}
 			],
 			allUserVitals: [],
@@ -105,8 +105,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				for (let i = 0; i < allSymps.length; i++) {
 					if (id == allSymps[i].id) {
 						allSymps[i].notes.push(note);
+						console.log(allSymps[i]);
 					}
 				}
+				setStore({ allUserSymptoms: allSymps });
 			},
 			deleteUserSymptom: id => {
 				let allSymp = getStore().allUserSymptoms;
