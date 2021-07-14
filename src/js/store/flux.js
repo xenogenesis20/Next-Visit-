@@ -32,7 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					location: "butt",
 					frequency: "constant",
 					duration: "all day",
-					notes: [{ date: "", note: "", severity: "" }]
+					notes: []
 				}
 			],
 			allUserVitals: [],
@@ -99,6 +99,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let allSymptoms = getStore().allUserSymptoms;
 				allSymptoms.push(symptom);
 				setStore({ allUserSymptoms: allSymptoms });
+			},
+			editUserSymptom: symptom => {
+				let allSymps = getStore().allUserSymptoms;
+				for (let i = 0; i < allSymps.length; i++) {
+					if (symptom.id == allSymps[i].id) {
+						allSymps[i] = symptom;
+						console.log(symptom.id);
+					}
+				}
+				setStore({ allUserSymptoms: allSymps });
+			},
+			addSymptomNote: (id, note) => {
+				let allSymps = getStore().allUserSymptoms;
+				for (let i = 0; i < allSymps.length; i++) {
+					if (id == allSymps[i].id) {
+						allSymps[i].notes.push(note);
+						console.log(allSymps[i]);
+					}
+				}
+				setStore({ allUserSymptoms: allSymps });
 			},
 			deleteUserSymptom: id => {
 				let allSymp = getStore().allUserSymptoms;

@@ -13,7 +13,8 @@ export const YourSymptoms = () => {
 		severity: "",
 		location: "",
 		frequency: "",
-		duration: ""
+		duration: "",
+		notes: []
 	});
 	const handleInput = e => {
 		setSymptoms({ ...symptoms, [e.target.name]: e.target.value });
