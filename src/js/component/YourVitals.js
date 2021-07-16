@@ -110,7 +110,7 @@ export const YourVitals = () => {
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
 									<input
-										type="text"
+										type="date"
 										id="drug_strength"
 										className="form-control"
 										name="date"
@@ -138,7 +138,13 @@ export const YourVitals = () => {
 							<button type="button" className="btn btn-secondary" data-mdb-dismiss="modal">
 								Cancel
 							</button>
-							<button type="button" className="btn btn-primary" onClick={() => confirmNewVital(vitals)}>
+							<button
+								type="button"
+								className="btn btn-primary"
+								onClick={() => {
+									confirmNewVital(vitals);
+									console.log(actions.sortVitals("Date", Date.now()));
+								}}>
 								Save changes
 							</button>
 						</div>

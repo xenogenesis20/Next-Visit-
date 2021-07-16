@@ -8,7 +8,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				{
 					value: "",
 					date: ""
-				},
+				}
+			],
+			vitalWeight: [
 				{
 					value: "",
 					date: ""
@@ -59,6 +61,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			sortVitals: (key, value) => {
+				let newVitalsArray = getStore().allUserVitals;
+				return newVitalsArray.filter(vital => {
+					if (key == "Vital Name") return vital.vitalName == value;
+					else if (key == "Date") return vital.date == value;
+				});
+			},
+			sortVitalsByDate: () => {},
 			addUser: user => {
 				let newUser = getStore().userInfo;
 				newUser.push(user);
