@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-3";
 import PropTypes from "prop-types";
+
 function useForceUpdate() {
 	const [value, setValue] = useState(0); // integer state
 	return () => setValue(value => value + 1); // update the state to force render
@@ -51,5 +52,5 @@ export const BarGraph = props => {
 	);
 };
 BarGraph.propTypes = {
-	symptomNotes: PropTypes.object
+	symptomNotes: PropTypes.array
 };

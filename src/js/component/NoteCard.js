@@ -13,7 +13,7 @@ export const NoteCard = props => {
 				<button
 					type="button"
 					className="btn btn-danger btn-floating"
-					onClick={() => actions.editSymptomNote(props.positionOfSymptom, props.notePos)}>
+					onClick={() => actions.deleteSymptomNote(props.positionOfSymptom, props.notePos)}>
 					<i className="fas fa-trash-alt" />
 				</button>
 			</div>
