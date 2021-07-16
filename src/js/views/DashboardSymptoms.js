@@ -10,7 +10,7 @@ export const DashboardSymptoms = props => {
 			<div className="side-nav">
 				<SideNav loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} />
 			</div>
-			<div className="medication-column">
+			<div className="medication-column container-fluid">
 				<YourSymptoms />
 			</div>
 			{props.loggedIn ? "" : <Redirect to="SignIn" />}

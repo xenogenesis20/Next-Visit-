@@ -28,7 +28,8 @@ export const YourSymptoms = () => {
 			severity: "",
 			location: "",
 			frequency: "",
-			duration: ""
+			duration: "",
+			notes: []
 		});
 	};
 	useEffect(() => {
@@ -39,10 +40,18 @@ export const YourSymptoms = () => {
 
 	return (
 		<>
-			<h1>Your Symptoms</h1>
-			<button type="button" className="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-				Add a new symptom.
-			</button>
+			<div className="row">
+				<div className="col">
+					<h1>Your Symptoms</h1>
+					<button
+						type="button"
+						className="btn btn-primary"
+						data-mdb-toggle="modal"
+						data-mdb-target="#exampleModal">
+						Add a new symptom.
+					</button>
+				</div>
+			</div>
 			{store.allUserSymptoms &&
 				store.allUserSymptoms.map((symptom, index) => {
 					return (
@@ -51,6 +60,7 @@ export const YourSymptoms = () => {
 							entity={symptom}
 							onDelete={() => stateSetter(index)}
 							id={store.allUserSymptoms[index].id}
+							positionOfSymptom={index}
 						/>
 					);
 				})}

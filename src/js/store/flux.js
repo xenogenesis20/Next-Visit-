@@ -3,7 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			userInfo: [],
 			allUserMedications: [],
-			allUserSymptoms: [],
+
 			vitalBloodPressure: [
 				{
 					value: "",
@@ -23,7 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			allUserSymptoms: [
 				{
-					id: 2,
+					id: 123124,
 					symptomName: "broken butt",
 					startDate: "07/12/21",
 					severity: "10",
@@ -109,6 +109,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 				setStore({ allUserSymptoms: allSymps });
+			},
+
+			editSymptomNote: (pos, notePos) => {
+				let allSymp = getStore().allUserSymptoms;
+				let newSympList = allSymp.filter(symp => allSymp[pos].notes[notePos] != allSymp[pos].notes[notePos]);
+				allSymp[pos].notes[notePos];
+				setStore({ allUserSymptoms: newSympList });
 			},
 			deleteUserSymptom: id => {
 				let allSymp = getStore().allUserSymptoms;
