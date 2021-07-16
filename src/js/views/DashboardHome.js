@@ -7,6 +7,7 @@ import { GlobalState } from "../store/appContext";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import { BarGraph } from "../component/BarGraph";
+import { Link, useLocation } from "react-router-dom";
 
 export const DashboardHome = props => {
 	const { store, actions } = useContext(GlobalState);
@@ -22,12 +23,21 @@ export const DashboardHome = props => {
 					<div className="col-6 your-medications-box d-flex flex-wrap">
 						{store.allUserMedications &&
 							store.allUserMedications.map((medication, index) => (
-								<SmallMedCard
+								<Link
 									key={index}
-									entity={medication}
-									id={store.allUserMedications[index].id}
-									onDelete={() => stateSetter(medication.id)}
-								/>
+									to={{
+										pathname: "/DashboardMedDetails/" + medication.id,
+										state: {
+											medication
+										}
+									}}>
+									<SmallMedCard
+										key={index}
+										entity={medication}
+										id={store.allUserMedications[index].id}
+										onDelete={() => stateSetter(medication.id)}
+									/>
+								</Link>
 							))}
 					</div>
 				</div>

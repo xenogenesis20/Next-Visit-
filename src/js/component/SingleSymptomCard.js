@@ -104,7 +104,7 @@ export const SingleSymptomCard = props => {
 										<div className="note-wrapper">
 											<div className="form-outline bg-light mb-3 p-1">
 												<input
-													type="text"
+													type="date"
 													id="date"
 													className="form-control"
 													name="date"
@@ -122,6 +122,8 @@ export const SingleSymptomCard = props => {
 											</div>
 											<div className="form-outline bg-light mb-3 p-1">
 												<input
+													min="0"
+													max="10"
 													type="number"
 													id="severity"
 													className="form-control"

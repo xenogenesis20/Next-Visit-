@@ -11,7 +11,7 @@ export const BarGraph = props => {
 		labels: [],
 		datasets: [
 			{
-				label: "My First dataset",
+				label: "Symptom Severity over time",
 				backgroundColor: "rgba(255,99,132,0.2)",
 				borderColor: "rgba(255,99,132,1)",
 				borderWidth: 1,
@@ -45,7 +45,16 @@ export const BarGraph = props => {
 				width={100}
 				height={500}
 				options={{
-					maintainAspectRatio: false
+					maintainAspectRatio: false,
+					scales: {
+						yAxes: [
+							{
+								ticks: {
+									beginAtZero: true
+								}
+							}
+						]
+					}
 				}}
 			/>
 		</div>
