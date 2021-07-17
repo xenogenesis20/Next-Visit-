@@ -61,6 +61,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			// thirtyDMA: (key, value) => {
+			// 	let myArray = getActions().sortVitals(key, value);
+			// 	let average = 25;
+            //     for (key of myArray) {
+			// 		console.log(key.value);
+            //         average += parseInt(key.value);
+            //         if my
+			// 	}
+            //     return (
+            //         if myArray.length() > 0
+
+            //     )
+            //          average;
+                
+				// return average / myArray.length;
+
+				// if len(thirtyDMA)
+			},
 			sortVitals: (key, value) => {
 				let newVitalsArray = getStore().allUserVitals;
 				return newVitalsArray.filter(vital => {
