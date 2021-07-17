@@ -1,23 +1,24 @@
 import React from "react";
-import { YourSymptoms } from "../component/YourSymptoms";
+import "../../styles/dashboard.scss";
 import { SideNav } from "../component/SideNav";
-import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
+import { DetailedSymptom } from "../component/DetailedSymptom";
 
-export const DashboardSymptoms = props => {
+export const DashboardSymptomDetails = props => {
 	return (
 		<div className="dashboard-wrapper d-flex">
 			<div className="side-nav">
 				<SideNav loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} />
 			</div>
 			<div className="medication-column container-fluid">
-				<YourSymptoms />
+				<DetailedSymptom />
 			</div>
 			{props.loggedIn ? "" : <Redirect to="SignIn" />}
 		</div>
 	);
 };
-DashboardSymptoms.propTypes = {
+DashboardSymptomDetails.propTypes = {
 	loggedIn: PropTypes.bool,
 	setLoggedIn: PropTypes.func
 };
