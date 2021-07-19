@@ -31,7 +31,6 @@ symptomName: "broken butt" */}
 					<table className="table">
 						<thead>
 							<tr>
-								<th scope="col">#</th>
 								<th scope="col">Date</th>
 								<th scope="col">Severity</th>
 								<th scope="col">Note</th>
@@ -41,7 +40,6 @@ symptomName: "broken butt" */}
 							{location.state.symptom.notes.map((val, i) => {
 								return (
 									<tr key={i}>
-										<th scope="row">1</th>
 										<td>{val.date}</td>
 										<td>{val.severity}</td>
 										<td>{val.description}</td>
