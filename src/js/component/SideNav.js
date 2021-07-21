@@ -1,5 +1,6 @@
 //import useState hook to create menu collapse state
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 //import react pro sidebar components
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent } from "react-pro-sidebar";
@@ -75,4 +76,8 @@ export const SideNav = props => {
 			</div>
 		</>
 	);
+};
+
+SideNav.propTypes = {
+	setLoggedIn: PropTypes.object
 };

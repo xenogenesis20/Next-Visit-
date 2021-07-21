@@ -3,8 +3,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			userInfo: [],
 			allUserMedications: [],
-
 			vitalBloodPressure: [
+				{
+					value: "",
+					date: ""
+				}
+			],
+			vitalHeartRate: [
+				{
+					value: "",
+					date: ""
+				}
+			],
+			vitalHeight: [
 				{
 					value: "",
 					date: ""
@@ -18,7 +29,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			allUserVitals: [
 				{
-					oxysaturation: "",
+					vitalName: "",
+					value: "",
 					date: ""
 				}
 			],
@@ -64,29 +76,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// thirtyDMA: (key, value) => {
 			// 	let myArray = getActions().sortVitals(key, value);
 			// 	let average = 25;
-            //     for (key of myArray) {
+			//     for (key of myArray) {
 			// 		console.log(key.value);
-            //         average += parseInt(key.value);
-            //         if my
+			//         average += parseInt(key.value);
+			//         if my
 			// 	}
-            //     return (
-            //         if myArray.length() > 0
+			//     return (
+			//         if myArray.length() > 0
 
-            //     )
-            //          average;
-                
-				// return average / myArray.length;
+			//     )
+			//          average;
 
-				// if len(thirtyDMA)
-			},
-			sortVitals: (key, value) => {
-				let newVitalsArray = getStore().allUserVitals;
-				return newVitalsArray.filter(vital => {
-					if (key == "Vital Name") return vital.vitalName == value;
-					else if (key == "Date") return vital.date == value;
-				});
-			},
-			sortVitalsByDate: () => {},
+			// return average / myArray.length;
+
+			// if len(thirtyDMA)
+			// },
+			// sortVitals: (key, value) => {
+			// 	let newVitalsArray = getStore().allUserVitals;
+			// 	return newVitalsArray.filter(vital => {
+			// 		if (key == "Vital Name") return vital.vitalName == value;
+			// 		else if (key == "Date") return vital.date == value;
+			// 	});
+			// },
+			// sortVitalsByDate: () => {},
 			addUser: user => {
 				let newUser = getStore().userInfo;
 				newUser.push(user);
@@ -160,6 +172,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 				allVitals.push(vital);
 				setStore({ allUserVitals: allVitals });
 			},
+			addUserVital: vital => {
+				if (vital.vitalName == "Blood Pressure") {
+					let newVitals = getStore().vitalBloodPressure;
+					newVitals.push(vital);
+					setStore({ vitalBloodPressure: newVitals });
+				} else if (vital.vitalName == "Weight") {
+					let newVitals = getStore().vitalWeight;
+					newVitals.push(vital);
+					setStore({ vitalWeight: newVitals });
+				} else if (vital.vitalName == "Heart Rate") {
+					let newVitals = getStore().vitalHeartRate;
+					newVitals.push(vital);
+					setStore({ vitalHeartRate: newVitals });
+				} else vital.vitalName == "Height";
+				let newVitals = getStore().vitalHeight;
+				newVitals.push(vital);
+				setStore({ vitalHeight: newVitals });
+			},
+
 			editUserVital: vital => {
 				let allVitals = getStore().allUserVitals;
 				for (let i = 0; i < allVitals.length; i++) {

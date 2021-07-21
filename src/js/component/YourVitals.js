@@ -25,6 +25,7 @@ export const YourVitals = () => {
 			date: ""
 		});
 	};
+
 	useEffect(() => {
 		document.querySelectorAll(".form-outline").forEach(formOutline => {
 			new mdb.Input(formOutline).update();
@@ -143,7 +144,7 @@ export const YourVitals = () => {
 								className="btn btn-primary"
 								onClick={() => {
 									confirmNewVital(vitals);
-									console.log(actions.sortVitals("Date", Date.now()));
+									// console.log(actions.sortVitals("Date", Date.now()));
 								}}>
 								Save changes
 							</button>

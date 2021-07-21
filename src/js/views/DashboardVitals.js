@@ -10,7 +10,7 @@ import { Redirect } from "react-router-dom";
 
 export const DashboardVitals = props => {
 	const { store, actions } = useContext(GlobalState);
-	console.log(actions.thirtyDMA("Vital Name", "Weight"));
+	// console.log(actions.thirtyDMA("Vital Name", "Weight"));
 
 	return (
 		<div className="container-fluid m-0 p-0 d-flex linear-bg">
@@ -25,7 +25,9 @@ export const DashboardVitals = props => {
 							<YourVitals />
 						</div>
 					</div>
-					<div className="col-6 your-medications-box d-flex flex-wrap">{/* <VitalStatistics /> */}</div>
+					<div className="col-6 your-medications-box d-flex flex-wrap">
+						<VitalStatistics />
+					</div>
 				</div>
 				<div className="row charts-row g-0 p-0 m-0">
 					<div className="col-12 ">Charts go here</div>
