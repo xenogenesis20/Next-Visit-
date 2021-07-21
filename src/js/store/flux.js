@@ -36,7 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			allUserVitals: [],
-
+			nextVisit: [],
 			allDoctors: [
 				{
 					name: "George Mihov",
