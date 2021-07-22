@@ -25,6 +25,11 @@ export const NextVisit = () => {
 		setsympList([...sympList, symptom]);
 	};
 
+	const deleteSympFromList = id => {
+		let newSympList = sympList.filter(symptom => id != symptom.id);
+		setsympList(newSympList);
+	};
+
 	return (
 		<>
 			<div className="row">
@@ -57,11 +62,7 @@ export const NextVisit = () => {
 							{/* <!-- symptom picker --> */}
 							<div className="form-group bg-light mb-3 p-1">
 								<label htmlFor="exampleFormControlSelect1">Vital Name</label>
-								<select
-									className="form-control"
-									id="exampleFormControlSelect1"
-									name="symptom"
-									onChange={() => addSymptomToDrVisit(symptom)}>
+								<select className="form-control" id="exampleFormControlSelect1" name="symptom">
 									{store.allUserSymptoms.map((symp, ind) => {
 										return <option key={ind}>{symp.symptomName}</option>;
 									})}
@@ -105,7 +106,7 @@ export const NextVisit = () => {
 											return (
 												<div key={ind}>
 													{symp.symptomName}
-													<span>
+													<span onClick={() => deleteSympFromList(symp.id)}>
 														{" "}
 														<FaWindowClose />{" "}
 													</span>
