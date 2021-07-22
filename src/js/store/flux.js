@@ -3,37 +3,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			userInfo: [],
 			allUserMedications: [],
-			vitalBloodPressure: [
-				{
-					value: "",
-					date: ""
-				}
-			],
-			vitalHeartRate: [
-				{
-					value: "",
-					date: ""
-				}
-			],
-			vitalHeight: [
-				{
-					value: "",
-					date: ""
-				}
-			],
+			vitalBloodPressure: [{}],
+			vitalHeartRate: [{}],
+			vitalHeight: [{}],
 			vitalWeight: [
-				{
-					value: "",
-					date: ""
-				}
+				{ date: "2021-07-31", value: 200, vitalName: "Weight" },
+				{ date: "2021-07-15", id: 0, value: 150, vitalName: "Weight" },
+				{ date: "2021-07-01", id: 0, value: 100, vitalName: "Weight" }
 			],
-			allUserVitals: [
-				{
-					vitalName: "",
-					value: "",
-					date: ""
-				}
-			],
+			allUserVitals: [{}],
 
 			allUserSymptoms: [
 				{
