@@ -157,7 +157,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let newVitalList = allVitals.filter(vital => id != vital.id);
 				setStore({ allUserVitals: newVitalList });
 			},
-
+			addVisit: () => {},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

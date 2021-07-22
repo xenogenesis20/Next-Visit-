@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent } from "react-pro-sidebar";
 
 //import icons from react icons
-import { FaArrowRight, FaArrowLeft, FaRegHeart, FaPills } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft, FaRegHeart, FaPills, FaWindowClose } from "react-icons/fa";
 import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import { RiPencilLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
