@@ -22,6 +22,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 
 			vitalBloodPressure: [
+				{
+					id: 1357,
+					name: "Aspirin",
+					dose: "a lot",
+					frequency: "too often",
+					reason: "for fun",
+					sideEffects: "madness and death"
+				},
+				{
+					id: 1359,
+					name: "Morphine",
+					dose: "sufficient",
+					frequency: "not often enough",
+					reason: "for more fun",
+					sideEffects: "awesomness"
+				}
+			],
+
+			vitalBloodPressure: [
 			],
 
 			vitalBloodPressure: [
