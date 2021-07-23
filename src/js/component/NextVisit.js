@@ -14,12 +14,27 @@ export const NextVisit = () => {
 	const [sympList, setsympList] = useState([]);
 	const [medList, setMedList] = useState([]);
 	const [vitalList, setVitalList] = useState([]);
-	const [time, setTime] = useState([]);
+	const [doctorName, setDoctorName] = useState("");
+	const [time, setTime] = useState("");
+	const [date, setDate] = useState("");
 	const [display, setDisplay] = useState(false);
 	const [showForm, setShowForm] = useState(false);
 
 	const handleInput = e => {
 		setVisit({ ...visit, [e.target.name]: e.target.value });
+	};
+
+	const saveDrVisit = () => {
+		actions.addVisit({
+			id: store.allVisits.length,
+			doctor: doctorName,
+			date: date,
+			time: time,
+			symptoms: sympList,
+			meds: medList,
+			vitals: vitalList
+		});
+		setShowForm(!showForm);
 	};
 
 	const deleteSympFromList = id => {
@@ -51,7 +66,7 @@ export const NextVisit = () => {
 									id="visitingDoctor"
 									className="form-control"
 									name="visitingDr"
-									onChange={e => handleInput(e)}
+									onChange={e => setDoctorName(e.target.value)}
 								/>
 								<label className="form-label" htmlFor="visitingDoctor">
 									Visiting doctor:
@@ -65,7 +80,7 @@ export const NextVisit = () => {
 									id="visitDate"
 									className="form-control"
 									name="visitDate"
-									onChange={e => handleInput(e)}
+									onChange={e => setDate(e.target.value)}
 								/>
 								<label className="form-label" htmlFor="visitDate">
 									Date of visit:
@@ -74,7 +89,12 @@ export const NextVisit = () => {
 
 							{/* <!-- time input --> */}
 							<div className="form-outline mb-4">
-								<input type="time" id="visitTime" className="form-control" />
+								<input
+									type="time"
+									id="visitTime"
+									className="form-control"
+									onChange={e => setTime(e.target.value)}
+								/>
 								<label className="form-label" htmlFor="visitTime">
 									Time of visit:
 								</label>
@@ -94,7 +114,6 @@ export const NextVisit = () => {
 								{display && (
 									<div className="autoContainer">
 										{store.allUserVitals.map((vital, i) => {
-											console.log("Vital", vital);
 											return (
 												<div
 													onClick={() => setVitalList([...vitalList, vital])}
@@ -123,7 +142,6 @@ export const NextVisit = () => {
 								{display && (
 									<div className="autoContainer">
 										{store.allUserSymptoms.map((symptom, i) => {
-											console.log(symptom);
 											return (
 												<div
 													onClick={() => setsympList([...sympList, symptom])}
@@ -151,7 +169,6 @@ export const NextVisit = () => {
 								{display && (
 									<div className="autoContainer">
 										{store.allUserMedications.map((med, i) => {
-											console.log("Med", med);
 											return (
 												<div
 													onClick={() => setMedList([...medList, med])}
@@ -172,7 +189,6 @@ export const NextVisit = () => {
 									{/* <!-- Checkbox --> */}
 									<ul className="list-group symp">
 										{vitalList.map((vital, ind) => {
-											console.log("Detail from list", detail);
 											return (
 												<li
 													key={ind}
@@ -191,7 +207,6 @@ export const NextVisit = () => {
 									{/* <!-- Checkbox --> */}
 									<ul className="list-group symp">
 										{sympList.map((symp, ind) => {
-											console.log("Symp", symp);
 											return (
 												<ul
 													key={ind}
@@ -210,7 +225,6 @@ export const NextVisit = () => {
 									{/* <!-- Checkbox --> */}
 									<ul className="list-group symp">
 										{medList.map((med, ind) => {
-											console.log("Med", med);
 											return (
 												<li
 													key={ind}
@@ -229,7 +243,7 @@ export const NextVisit = () => {
 
 							{/* <!-- Submit button --> */}
 						</form>
-						<button className="btn btn-primary btn-block" onClick={() => setShowForm(!showForm)}>
+						<button className="btn btn-primary btn-block" onClick={() => saveDrVisit()}>
 							Save
 						</button>
 					</div>

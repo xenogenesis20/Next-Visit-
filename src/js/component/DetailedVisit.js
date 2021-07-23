@@ -1,22 +1,24 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-export const DetailedSymptom = () => {
+export const DetailedVisit = () => {
 	const location = useLocation();
-	console.log(location.state.symptom);
+	console.log(location.state.visit);
 
 	return (
 		<div className="container ">
 			<div className="row">
 				<div className="col-12">
-					<h1>{location.state.symptom.symptomName}</h1>
+					<h2> Visitng :{location.state.visit.doctor}</h2>
+					<h2> Visit Date :{location.state.visit.date}</h2>
+					<h2> Visit Time :{location.state.visit.time}</h2>
 				</div>
 			</div>
 
 			<div className="row">
 				<div className="col-12">
-					<p>This symptom occurs so often: {location.state.symptom.frequency}</p>
-					<p>The location where I am experiencing this symptom: {location.state.symptom.location}</p>
+					<p>This symptom occurs so often: {"location.state.symptom.frequency"}</p>
+					<p>The location where I am experiencing this symptom: {"location.state.symptom.location"}</p>
 				</div>
 			</div>
 			<div className="row">
@@ -30,7 +32,7 @@ export const DetailedSymptom = () => {
 							</tr>
 						</thead>
 						<tbody>
-							{location.state.symptom.notes.map((val, i) => {
+							{location.state.visit.symptoms[0].notes.map((val, i) => {
 								return (
 									<tr key={i}>
 										<td>{val.date}</td>

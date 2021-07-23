@@ -3,13 +3,13 @@ import "../../styles/SmallMedCard.scss";
 import PropTypes from "prop-types";
 import { GlobalState } from "../store/appContext";
 
-export const SmallSympCard = props => {
+export const SmallVisitCard = props => {
 	const { store, actions } = useContext(GlobalState);
 	// console.log(props.entity);
 	return (
 		<div className="card text-center text-white m-1 single-med-card" style={{ width: "40%", height: "15%" }}>
 			<div className="card-body d-flex justify-content-around align-items-center p-1">
-				<p className="card-title">{props.entity.symptomName}</p>
+				<p className="card-title">{"doctor name"}</p>
 			</div>
 		</div>
 	);
@@ -19,7 +19,7 @@ export const SmallSympCard = props => {
  * Define the data-types for
  * your component's properties
  **/
-SmallSympCard.propTypes = {
+SmallVisitCard.propTypes = {
 	history: PropTypes.object,
 	onDelete: PropTypes.func,
 	entity: PropTypes.object,

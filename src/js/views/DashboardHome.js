@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "../../styles/dashboardHome.scss";
 import { SideNav } from "../component/SideNav";
 import { SmallMedCard } from "../component/SmallMedCard";
+import { SmallVisitCard } from "../component/SmallVisitCard";
 import { LineGraph } from "../component/LineGraph";
 import { GlobalState } from "../store/appContext";
 import PropTypes from "prop-types";
@@ -62,9 +63,25 @@ export const DashboardHome = props => {
 					</div>
 				</div>
 				<div className="row charts-row g-0 p-0 m-0">
-					<div className="col-12 ">Charts go here</div>
-					<div>
-						<BarGraph />
+					<div className="col">
+						{store.allVisits &&
+							store.allVisits.map((visit, index) => (
+								<Link
+									key={index}
+									to={{
+										pathname: "/DashboardVisitDetails/" + visit.id,
+										state: {
+											visit
+										}
+									}}>
+									<SmallVisitCard
+										key={index}
+										entity={visit}
+										id={store.allVisits[index].id}
+										onDelete={() => stateSetter(visit.id)}
+									/>
+								</Link>
+							))}
 					</div>
 				</div>
 			</div>
