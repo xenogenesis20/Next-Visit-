@@ -9,7 +9,7 @@ export const YourVitals = () => {
 	const [vitalList, setVitalList] = useState([]);
 	const [vitals, setVitals] = useState({
 		vitalName: "",
-		value: "",
+		value: 0,
 		date: ""
 	});
 
@@ -21,7 +21,7 @@ export const YourVitals = () => {
 		setVitals({
 			id: store.allUserVitals.length,
 			vitalName: "",
-			value: "",
+			value: 0,
 			date: ""
 		});
 	};

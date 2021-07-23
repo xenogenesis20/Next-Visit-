@@ -51,24 +51,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-			// thirtyDMA: (key, value) => {
-			// 	let myArray = getActions().sortVitals(key, value);
-			// 	let average = 25;
-			//     for (key of myArray) {
-			// 		console.log(key.value);
-			//         average += parseInt(key.value);
-			//         if my
-			// 	}
-			//     return (
-			//         if myArray.length() > 0
-
-			//     )
-			//          average;
-
-			// return average / myArray.length;
-
-			// if len(thirtyDMA)
-			// },
 			// sortVitals: (key, value) => {
 			// 	let newVitalsArray = getStore().allUserVitals;
 			// 	return newVitalsArray.filter(vital => {
@@ -150,23 +132,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 				allVitals.push(vital);
 				setStore({ allUserVitals: allVitals });
 			},
+			sortVital: array => {
+				var sortedVitals = array.sort((a, b) => {
+					return new Date(b.date) - new Date(a.date);
+				});
+				return sortedVitals;
+			},
 			addUserVital: vital => {
 				if (vital.vitalName == "Blood Pressure") {
-					let newVitals = getStore().vitalBloodPressure;
-					newVitals.push(vital);
+					let vitals = getStore().vitalBloodPressure;
+					let newVitals = getActions().sortVital([...vitals, vital]);
 					setStore({ vitalBloodPressure: newVitals });
 				} else if (vital.vitalName == "Weight") {
-					let newVitals = getStore().vitalWeight;
-					newVitals.push(vital);
+					let vitals = getStore().vitalWeight;
+					let newVitals = getActions().sortVital([...vitals, vital]);
 					setStore({ vitalWeight: newVitals });
 				} else if (vital.vitalName == "Heart Rate") {
-					let newVitals = getStore().vitalHeartRate;
-					newVitals.push(vital);
+					let vitals = getStore().vitalHeartRate;
+					let newVitals = getActions().sortVital([...vitals, vital]);
 					setStore({ vitalHeartRate: newVitals });
-				} else vital.vitalName == "Height";
-				let newVitals = getStore().vitalHeight;
-				newVitals.push(vital);
-				setStore({ vitalHeight: newVitals });
+				} else if (vital.vitalName == "Height") {
+					let vitals = getStore().vitalHeight;
+					let newVitals = getActions().sortVital([...vitals, vital]);
+					setStore({ vitalHeight: newVitals });
+				}
 			},
 
 			editUserVital: vital => {
