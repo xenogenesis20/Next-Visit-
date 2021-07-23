@@ -23,22 +23,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			vitalBloodPressure: [
 				{
+					id: 1357,
+					name: "Aspirin",
+					dose: "a lot",
+					frequency: "too often",
+					reason: "for fun",
+					sideEffects: "madness and death"
+				},
+				{
+					id: 1359,
+					name: "Morphine",
+					dose: "sufficient",
+					frequency: "not often enough",
+					reason: "for more fun",
+					sideEffects: "awesomness"
+				}
+			],
+
+			vitalBloodPressure: [
+			],
+
+			vitalBloodPressure: [
+				{
 					value: "",
 					date: ""
 				}
 			],
 			vitalWeight: [
-				{
-					value: "",
-					date: ""
-				}
+				{ date: "2021-07-31", value: 200, vitalName: "Weight" },
+				{ date: "2021-07-15", id: 0, value: 150, vitalName: "Weight" },
+				{ date: "2021-07-01", id: 0, value: 100, vitalName: "Weight" }
 			],
-			allUserVitals: [
-				{
-					oxysaturation: "",
-					date: ""
-				}
-			],
+			allUserVitals: [{}],
 
 			allUserSymptoms: [
 				{
@@ -78,6 +94,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			// sortVitals: (key, value) => {
+			// 	let newVitalsArray = getStore().allUserVitals;
+			// 	return newVitalsArray.filter(vital => {
+			// 		if (key == "Vital Name") return vital.vitalName == value;
+			// 		else if (key == "Date") return vital.date == value;
+			// 	});
+			// },
+			// sortVitalsByDate: () => {},
 			sortVitals: (key, value) => {
 				let newVitalsArray = getStore().allUserVitals;
 				return newVitalsArray.filter(vital => {
@@ -164,6 +188,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				allVitals.push(vital);
 				setStore({ allUserVitals: allVitals });
 			},
+			sortVital: array => {
+				var sortedVitals = array.sort((a, b) => {
+					return new Date(b.date) - new Date(a.date);
+				});
+				return sortedVitals;
+			},
+			addUserVital: vital => {
+				if (vital.vitalName == "Blood Pressure") {
+					let vitals = getStore().vitalBloodPressure;
+					let newVitals = getActions().sortVital([...vitals, vital]);
+					setStore({ vitalBloodPressure: newVitals });
+				} else if (vital.vitalName == "Weight") {
+					let vitals = getStore().vitalWeight;
+					let newVitals = getActions().sortVital([...vitals, vital]);
+					setStore({ vitalWeight: newVitals });
+				} else if (vital.vitalName == "Heart Rate") {
+					let vitals = getStore().vitalHeartRate;
+					let newVitals = getActions().sortVital([...vitals, vital]);
+					setStore({ vitalHeartRate: newVitals });
+				} else if (vital.vitalName == "Height") {
+					let vitals = getStore().vitalHeight;
+					let newVitals = getActions().sortVital([...vitals, vital]);
+					setStore({ vitalHeight: newVitals });
+				}
+			},
+
 			editUserVital: vital => {
 				let allVitals = getStore().allUserVitals;
 				for (let i = 0; i < allVitals.length; i++) {
