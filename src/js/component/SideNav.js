@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent } from "react-pro-sidebar";
 
 //import icons from react icons
-import { FaArrowRight, FaArrowLeft, FaRegHeart, FaPills } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft, FaRegHeart, FaPills, FaWindowClose } from "react-icons/fa";
 import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import { RiPencilLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
@@ -58,6 +58,9 @@ export const SideNav = props => {
 							</MenuItem>
 							<MenuItem icon={<FaPills />}>
 								<Link to="/DashboardSymptoms">Symptoms </Link>
+							</MenuItem>
+							<MenuItem icon={<FaPills />}>
+								<Link to="/DashboardNextVisit">Plan NextVisit </Link>
 							</MenuItem>
 
 							<MenuItem icon={<FaRegHeart />}>Favourite</MenuItem>

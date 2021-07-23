@@ -7,11 +7,7 @@ import { GlobalState } from "../store/appContext";
 export const YourVitals = () => {
 	const { store, actions } = useContext(GlobalState);
 	const [vitalList, setVitalList] = useState([]);
-	const [vitals, setVitals] = useState({
-		vitalName: "",
-		value: 0,
-		date: ""
-	});
+	const [vitals, setVitals] = useState({});
 
 	const handleInput = e => {
 		setVitals({ ...vitals, [e.target.name]: e.target.value });

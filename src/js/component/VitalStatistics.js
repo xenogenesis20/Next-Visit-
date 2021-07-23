@@ -45,7 +45,7 @@ export const VitalStatistics = props => {
 			let average = 0;
 			console.log(slicedVitals);
 			for (let vital of slicedVitals) {
-				sumOfValues += vital["value"];
+				sumOfValues += parseInt(vital["value"]);
 			}
 			average = sumOfValues / slicedVitals.length;
 			return average;
@@ -54,7 +54,7 @@ export const VitalStatistics = props => {
 			let average = 0;
 
 			for (let vital of array) {
-				sumOfValues += vital["value"];
+				sumOfValues += parseInt(vital["value"]);
 				console.log("Vital: ", vital);
 				console.log("Vital Value: ", vital["value"]);
 			}
@@ -77,15 +77,19 @@ export const VitalStatistics = props => {
 	// });
 
 	return (
-		<button
-			type="button"
-			className="btn btn-secondary"
-			data-mdb-dismiss="modal"
-			onClick={() => {
-				console.log(thirtyDMA(store.vitalWeight));
-			}}></button>
-
-		// <div>{thirtyDMA(vitalWeight)}</div>;
+		<>
+			<button
+				type="button"
+				className="btn btn-secondary"
+				data-mdb-dismiss="modal"
+				onClick={() => {
+					console.log(store.vitalWeight);
+					console.log(thirtyDMA(store.vitalWeight));
+				}}></button>
+			<div>
+				<div>{thirtyDMA(store.vitalWeight)}</div>
+			</div>
+		</>
 	);
 };
 

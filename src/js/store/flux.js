@@ -2,10 +2,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			userInfo: [],
-			allUserMedications: [],
-			vitalBloodPressure: [{}],
-			vitalHeartRate: [{}],
-			vitalHeight: [{}],
+			allUserMedications: [
+				{
+					id: 1357,
+					name: "Aspirin",
+					dose: "a lot",
+					frequency: "too often",
+					reason: "for fun",
+					sideEffects: "madness and death"
+				},
+				{
+					id: 1359,
+					name: "Morphine",
+					dose: "sufficient",
+					frequency: "not often enough",
+					reason: "for more fun",
+					sideEffects: "awesomness"
+				}
+			],
+
+			vitalBloodPressure: [
+			],
+
+			vitalBloodPressure: [
+				{
+					value: "",
+					date: ""
+				}
+			],
 			vitalWeight: [
 				{ date: "2021-07-31", value: 200, vitalName: "Weight" },
 				{ date: "2021-07-15", id: 0, value: 150, vitalName: "Weight" },
@@ -26,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			allUserVitals: [],
-
+			allVisits: [],
 			allDoctors: [
 				{
 					name: "George Mihov",
@@ -59,6 +83,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	});
 			// },
 			// sortVitalsByDate: () => {},
+			sortVitals: (key, value) => {
+				let newVitalsArray = getStore().allUserVitals;
+				return newVitalsArray.filter(vital => {
+					if (key == "Vital Name") return vital.vitalName == value;
+					else if (key == "Date") return vital.date == value;
+				});
+			},
+			addVisit: visitDetails => {
+				var nextVisit = getStore().nextVisit;
+				nextVisit.push(visitDetails);
+				setStore({ nextVisit: nextVisit });
+			},
+			sortVitalsByDate: () => {},
 			addUser: user => {
 				let newUser = getStore().userInfo;
 				newUser.push(user);
@@ -173,7 +210,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let newVitalList = allVitals.filter(vital => id != vital.id);
 				setStore({ allUserVitals: newVitalList });
 			},
-
+			addVisit: visitDetails => {
+				var nextVisit = getStore().allVisits;
+				nextVisit.push(visitDetails);
+				setStore({ allVisits: nextVisit });
+			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

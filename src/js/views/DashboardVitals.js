@@ -10,6 +10,7 @@ import { Redirect } from "react-router-dom";
 
 export const DashboardVitals = props => {
 	const { store, actions } = useContext(GlobalState);
+	const {} = useContext();
 	// console.log(actions.thirtyDMA("Vital Name", "Weight"));
 
 	return (
@@ -20,7 +21,7 @@ export const DashboardVitals = props => {
 			<div className="container-fluid p-0 m-0">
 				<div className="row g-0 p-0 m-0 med-and-symptom-row">
 					<div className="col-6 your-symptoms-box">
-						Vitals
+						Vsitals
 						<div className="medication-column container-fluid">
 							<YourVitals />
 						</div>
@@ -32,7 +33,8 @@ export const DashboardVitals = props => {
 				<div className="row charts-row g-0 p-0 m-0">
 					<div className="col-12 ">Charts go here</div>
 					<div>
-						<BarGraph />
+						<BarGraph data={store.vitalWeight} />
+						{/* <BarGraph symptomNotes={props.entity.notes} /> */}
 					</div>
 				</div>
 			</div>
