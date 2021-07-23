@@ -12,22 +12,23 @@ export const NextVisit = () => {
 
 	const { store, actions } = useContext(GlobalState);
 	const [sympList, setsympList] = useState([]);
-	const [medList, setmedList] = useState([]);
-	const [vitalList, setvitalList] = useState([]);
+	const [medList, setMedList] = useState([]);
+	const [vitalList, setVitalList] = useState([]);
+	const [time, setTime] = useState([]);
 	const [display, setDisplay] = useState(false);
 	const [showForm, setShowForm] = useState(false);
-	const [visit, setVisit] = useState([]);
 
-	// SYMPLIST MAP IS NOT DISPLAYING THE NAMES IN THE SELECT INPUT
-	// ALSO NEED X TO REMOVE SYMP FROM LIST USING A FILTER FUNCTION
-
-	const addSymptomToDrVisit = symptom => {
-		setsympList([...sympList, symptom]);
+	const handleInput = e => {
+		setVisit({ ...visit, [e.target.name]: e.target.value });
 	};
 
 	const deleteSympFromList = id => {
 		let newSympList = sympList.filter(symptom => id != symptom.id);
 		setsympList(newSympList);
+	};
+	const deleteMedFromList = id => {
+		let newMedList = medList.filter(med => id != med.id);
+		setMedList(newMedList);
 	};
 
 	return (
@@ -45,7 +46,13 @@ export const NextVisit = () => {
 						<form className="px-4 py-3">
 							{/* <!-- Visiting dr --> */}
 							<div className="form-outline mb-4">
-								<input type="text" id="visitingDoctor" className="form-control" />
+								<input
+									type="text"
+									id="visitingDoctor"
+									className="form-control"
+									name="visitingDr"
+									onChange={e => handleInput(e)}
+								/>
 								<label className="form-label" htmlFor="visitingDoctor">
 									Visiting doctor:
 								</label>
@@ -53,20 +60,54 @@ export const NextVisit = () => {
 
 							{/* <!-- date input --> */}
 							<div className="form-outline mb-4">
-								<input type="date" id="visitDate" className="form-control" />
+								<input
+									type="date"
+									id="visitDate"
+									className="form-control"
+									name="visitDate"
+									onChange={e => handleInput(e)}
+								/>
 								<label className="form-label" htmlFor="visitDate">
 									Date of visit:
 								</label>
 							</div>
 
+							{/* <!-- time input --> */}
+							<div className="form-outline mb-4">
+								<input type="time" id="visitTime" className="form-control" />
+								<label className="form-label" htmlFor="visitTime">
+									Time of visit:
+								</label>
+							</div>
+
 							{/* <!-- symptom picker --> */}
-							<div className="form-group bg-light mb-3 p-1">
-								<label htmlFor="exampleFormControlSelect1">Vital Name</label>
-								<select className="form-control" id="exampleFormControlSelect1" name="symptom">
-									{store.allUserSymptoms.map((symp, ind) => {
-										return <option key={ind}>{symp.symptomName}</option>;
-									})}
-								</select>
+							<div className="form-outline mb-4">
+								<input
+									type="text"
+									id="vitals"
+									className="form-control"
+									onClick={() => setDisplay(!display)}
+								/>
+								<label className="form-label" htmlFor="vitals">
+									Add Vitals relevant to this visit:
+								</label>
+								{display && (
+									<div className="autoContainer">
+										{store.allUserVitals.map((vital, i) => {
+											console.log("Vital", vital);
+											return (
+												<div
+													onClick={() => setVitalList([...vitalList, vital])}
+													className="option"
+													key={i}>
+													<span className="badge badge-pill badge-primary p-3">
+														{vital.name}
+													</span>
+												</div>
+											);
+										})}
+									</div>
+								)}
 							</div>
 
 							<div className="form-outline mb-4">
@@ -85,38 +126,105 @@ export const NextVisit = () => {
 											console.log(symptom);
 											return (
 												<div
-													onClick={() => addSymptomToDrVisit(symptom)}
+													onClick={() => setsympList([...sympList, symptom])}
 													className="option"
 													key={i}>
-													<span>{symptom.symptomName}</span>
+													<span className="badge badge-pill badge-primary p-3">
+														{symptom.symptomName}
+													</span>
 												</div>
 											);
 										})}
 									</div>
 								)}
 							</div>
-
-							{/* <!-- 2 column grid layout for inline styling --> */}
-							<div className="row mb-4">
-								<div className="col d-flex justify-content-center">
-									{/* <!-- Checkbox --> */}
-									<div className="symp">
-										{sympList.map((symp, ind) => {
-											console.log(symp);
+							<div className="form-outline mb-4">
+								<input
+									type="text"
+									id="meds"
+									className="form-control"
+									onClick={() => setDisplay(!display)}
+								/>
+								<label className="form-label" htmlFor="meds">
+									Add medications to this visit:
+								</label>
+								{display && (
+									<div className="autoContainer">
+										{store.allUserMedications.map((med, i) => {
+											console.log("Med", med);
 											return (
-												<div key={ind}>
-													{symp.symptomName}
-													<span onClick={() => deleteSympFromList(symp.id)}>
-														{" "}
-														<FaWindowClose />{" "}
+												<div
+													onClick={() => setMedList([...medList, med])}
+													className="option"
+													key={i}>
+													<span className="badge badge-pill badge-primary p-3">
+														{med.name}
 													</span>
 												</div>
 											);
 										})}
 									</div>
+								)}
+							</div>
+							{/* <!-- 2 column grid layout for inline styling --> */}
+							<div className="row mb-4">
+								<div className="col d-flex justify-content-center">
+									{/* <!-- Checkbox --> */}
+									<ul className="list-group symp">
+										{vitalList.map((vital, ind) => {
+											console.log("Detail from list", detail);
+											return (
+												<li
+													key={ind}
+													className="list-group-item bg-secondary text-light shadow rounded p-3">
+													{vital.name}
+													<span>
+														{" "}
+														<FaWindowClose />{" "}
+													</span>
+												</li>
+											);
+										})}
+									</ul>
 								</div>
-
-								<div className="col">{/* <!-- Simple link --> */}</div>
+								<div className="col d-flex justify-content-center">
+									{/* <!-- Checkbox --> */}
+									<ul className="list-group symp">
+										{sympList.map((symp, ind) => {
+											console.log("Symp", symp);
+											return (
+												<ul
+													key={ind}
+													className="list-group-item bg-secondary text-light shadow rounded p-3">
+													{symp.symptomName}
+													<span onClick={() => deleteSympFromList(symp.id)}>
+														{" "}
+														<FaWindowClose />{" "}
+													</span>
+												</ul>
+											);
+										})}
+									</ul>
+								</div>
+								<div className="col d-flex justify-content-center">
+									{/* <!-- Checkbox --> */}
+									<ul className="list-group symp">
+										{medList.map((med, ind) => {
+											console.log("Med", med);
+											return (
+												<li
+													key={ind}
+													className="list-group-item bg-secondary text-light shadow rounded p-3">
+													{med.name}
+													<span onClick={() => deleteMedFromList(med.id)}>
+														{" "}
+														<FaWindowClose />{" "}
+													</span>
+												</li>
+											);
+										})}
+									</ul>
+								</div>
 							</div>
 
 							{/* <!-- Submit button --> */}
@@ -128,11 +236,14 @@ export const NextVisit = () => {
 				</div>
 			)}
 			<div className="visit-box">
-				{sympList > 0 &&
+				{sympList.length > 0 &&
 					sympList.map((symp, ind) => {
 						return (
 							<div key={ind}>
 								<div className="card">
+									<div className="card-header">
+										<h2>Symptom</h2>
+									</div>
 									<div className="card-body">
 										<div className="list-group">
 											<div className="list-group-item">

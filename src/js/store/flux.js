@@ -2,7 +2,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			userInfo: [],
-			allUserMedications: [],
+			allUserMedications: [
+				{
+					id: 1357,
+					name: "Aspirin",
+					dose: "a lot",
+					frequency: "too often",
+					reason: "for fun",
+					sideEffects: "madness and death"
+				},
+				{
+					id: 1359,
+					name: "Morphine",
+					dose: "sufficient",
+					frequency: "not often enough",
+					reason: "for more fun",
+					sideEffects: "awesomness"
+				}
+			],
 
 			vitalBloodPressure: [
 				{
@@ -36,7 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			allUserVitals: [],
-			nextVisit: [],
+			allVisits: [],
 			allDoctors: [
 				{
 					name: "George Mihov",
@@ -67,6 +84,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (key == "Vital Name") return vital.vitalName == value;
 					else if (key == "Date") return vital.date == value;
 				});
+			},
+			addVisit: visitDetails => {
+				var nextVisit = getStore().nextVisit;
+				nextVisit.push(visitDetails);
+				setStore({ nextVisit: nextVisit });
 			},
 			sortVitalsByDate: () => {},
 			addUser: user => {
