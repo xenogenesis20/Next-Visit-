@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { GlobalState } from "../store/appContext";
 
 export const DetailedSymptom = () => {
+	const { store, actions } = useContext(GlobalState);
 	const location = useLocation();
 	console.log(location.state.symptom);
 

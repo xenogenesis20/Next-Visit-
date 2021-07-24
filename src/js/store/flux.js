@@ -20,37 +20,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 					sideEffects: "awesomness"
 				}
 			],
-
-			vitalBloodPressure: [
-				{
-					id: 1357,
-					name: "Aspirin",
-					dose: "a lot",
-					frequency: "too often",
-					reason: "for fun",
-					sideEffects: "madness and death"
-				},
-				{
-					id: 1359,
-					name: "Morphine",
-					dose: "sufficient",
-					frequency: "not often enough",
-					reason: "for more fun",
-					sideEffects: "awesomness"
-				}
+			vitalHeartRate: [
+				{ date: "2021-07-31", id: 0, value: 65.25, vitalName: "Heart Rate" },
+				{ date: "2021-07-15", id: 0, value: 65.35, vitalName: "Heart Rate" },
+				{ date: "2021-07-01", id: 0, value: 65.4, vitalName: "Heart Rate" }
+			],
+			vitalHeight: [
+				{ date: "2021-07-31", id: 0, value: 65.25, vitalName: "Height" },
+				{ date: "2021-07-15", id: 0, value: 65.35, vitalName: "Height" },
+				{ date: "2021-07-01", id: 0, value: 65.4, vitalName: "Height" }
 			],
 
 			vitalBloodPressure: [
-			],
-
-			vitalBloodPressure: [
-				{
-					value: "",
-					date: ""
-				}
+				{ date: "2021-07-31", id: 0, value: "120/80", vitalName: "Blood Pressure" },
+				{ date: "2021-07-15", id: 0, value: "120/90", vitalName: "Blood Pressure" },
+				{ date: "2021-07-01", id: 0, value: "100/80", vitalName: "Blood Pressure" }
 			],
 			vitalWeight: [
-				{ date: "2021-07-31", value: 200, vitalName: "Weight" },
+				{ date: "2021-07-31", id: 0, value: 200, vitalName: "Weight" },
 				{ date: "2021-07-15", id: 0, value: 150, vitalName: "Weight" },
 				{ date: "2021-07-01", id: 0, value: 100, vitalName: "Weight" }
 			],

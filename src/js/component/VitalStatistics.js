@@ -39,6 +39,21 @@ export const VitalStatistics = props => {
 
 	const thirtyDMA = array => {
 		// let sortedVitals = sortVital(array);
+		if (array[0].vitalName == "Blood Pressure") {
+			let sumOfSystValues = 0;
+			let sumOfDiasValues = 0;
+			let systAverage = 0;
+			let diasAverage = 0;
+
+			for (let vital of array) {
+				// console.log("Vital Value: ", vital["value"].slice(0, 3));
+				sumOfSystValues += parseInt(vital["value"].slice(0, 3));
+				sumOfDiasValues += parseInt(vital["value"].slice(-2));
+			}
+			systAverage = sumOfSystValues / array.length;
+			diasAverage = sumOfDiasValues / array.length;
+			return systAverage + "/" + diasAverage;
+		}
 		if (array.length > 30) {
 			let slicedVitals = array.slice(0, 30);
 			let sumOfValues = 0;
@@ -78,7 +93,7 @@ export const VitalStatistics = props => {
 
 	return (
 		<>
-			<button
+			{/* <button
 				type="button"
 				className="btn btn-secondary"
 				data-mdb-dismiss="modal"
@@ -88,6 +103,60 @@ export const VitalStatistics = props => {
 				}}></button>
 			<div>
 				<div>{thirtyDMA(store.vitalWeight)}</div>
+			</div> */}
+			<div className="col">
+				<table className="table">
+					<thead>
+						<tr>
+							<th scope="col">Vital Name</th>
+							<th scope="col">Date</th>
+							<th scope="col">Value</th>
+							<th scope="col">30 Day Average</th>
+						</tr>
+					</thead>
+					<tbody>
+						{store.vitalWeight.map((val, i) => {
+							return (
+								<tr key={i}>
+									<td>{val.vitalName}</td>
+									<td>{val.date}</td>
+									<td>{val.value}</td>
+									<td>{thirtyDMA(store.vitalWeight)}</td>
+								</tr>
+							);
+						})}
+						{store.vitalHeight.map((val, i) => {
+							return (
+								<tr key={i}>
+									<td>{val.vitalName}</td>
+									<td>{val.date}</td>
+									<td>{val.value}</td>
+									<td>{thirtyDMA(store.vitalHeight)}</td>
+								</tr>
+							);
+						})}
+						{store.vitalHeartRate.map((val, i) => {
+							return (
+								<tr key={i}>
+									<td>{val.vitalName}</td>
+									<td>{val.date}</td>
+									<td>{val.value}</td>
+									<td>{thirtyDMA(store.vitalHeartRate)} bpm</td>
+								</tr>
+							);
+						})}
+						{store.vitalBloodPressure.map((val, i) => {
+							return (
+								<tr key={i}>
+									<td>{val.vitalName}</td>
+									<td>{val.date}</td>
+									<td>{val.value}</td>
+									<td>{thirtyDMA(store.vitalBloodPressure)}</td>
+								</tr>
+							);
+						})}
+					</tbody>
+				</table>
 			</div>
 		</>
 	);
