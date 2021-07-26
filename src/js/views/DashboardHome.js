@@ -69,7 +69,7 @@ export const DashboardHome = props => {
 								<Link
 									key={index}
 									to={{
-										pathname: "/DashboardVisitDetails/" + visit.id,
+										pathname: "/DashboardVisitDetails/" + index,
 										state: {
 											visit
 										}
@@ -78,6 +78,7 @@ export const DashboardHome = props => {
 										key={index}
 										entity={visit}
 										id={store.allVisits[index].id}
+										index={index}
 										onDelete={() => stateSetter(visit.id)}
 									/>
 								</Link>

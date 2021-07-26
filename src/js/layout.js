@@ -18,7 +18,7 @@ import { DemoView } from "./views/DemoView";
 import { FindDoctor } from "./views/FindDoctor";
 import { DashboardMedDetails } from "./views/DashboardMedDetails";
 import { DashboardSymptomDetails } from "./views/DashboardSymptomDetails";
-import { DashboardVisitDetails } from "./views/DashboardVisitDetails";
+import DashboardVisitDetails from "./views/DashboardVisitDetails";
 import { DashboardNextVisit } from "./views/DashboardNextVisit";
 
 //create your first component
@@ -66,7 +66,7 @@ const Layout = () => {
 				<Route exact path="/DashboardSymptomDetails/:theid">
 					<DashboardSymptomDetails loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 				</Route>
-				<Route exact path="/DashboardVisitDetails/:theid">
+				<Route exact path="/DashboardVisitDetails/:index">
 					<DashboardVisitDetails loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 				</Route>
 				<Route exact path="/DashboardNextVisit">
