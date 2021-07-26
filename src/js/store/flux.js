@@ -97,9 +97,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 			addVisit: visitDetails => {
-				var nextVisit = getStore().nextVisit;
-				nextVisit.push(visitDetails);
-				setStore({ nextVisit: nextVisit });
+				var visits = getStore().allVisits;
+				visits.push(visitDetails);
+				setStore({ allVisits: visits });
 			},
 			sortVitalsByDate: () => {},
 			addUser: user => {
@@ -215,11 +215,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let allVitals = getStore().allUserVitals;
 				let newVitalList = allVitals.filter(vital => id != vital.id);
 				setStore({ allUserVitals: newVitalList });
-			},
-			addVisit: visitDetails => {
-				var nextVisit = getStore().allVisits;
-				nextVisit.push(visitDetails);
-				setStore({ allVisits: nextVisit });
 			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {

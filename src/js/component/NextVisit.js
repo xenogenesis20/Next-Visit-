@@ -252,6 +252,7 @@ export const NextVisit = () => {
 			<div className="visit-box">
 				{sympList.length > 0 &&
 					sympList.map((symp, ind) => {
+						console.log(symp);
 						return (
 							<div key={ind}>
 								<div className="card">
@@ -289,6 +290,17 @@ export const NextVisit = () => {
 													<h6 className="mb-1">Symptom Duration:</h6>
 													<h6 className="mb-1">{symp.duration}</h6>
 												</div>
+											</div>
+											<div className="list-group-item">
+												<span>NOTES:</span>
+												{symp.notes.map((sympNote, i) => {
+													return (
+														<div key={i} className="d-flex w-100 justify-content-around">
+															<h6 className="mb-1">Date: {sympNote.date}</h6>
+															<h6 className="mb-1">{sympNote.description}</h6>
+														</div>
+													);
+												})}
 											</div>
 										</div>
 									</div>
