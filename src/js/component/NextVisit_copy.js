@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { GlobalState } from "../store/appContext";
-import {SingleVisitCard} from "../component/SingleVisitCard";
+import { SingleVisitCard } from "../component/SingleVisitCard";
 import { FaWindowClose } from "react-icons/fa";
 import * as mdb from "mdb-ui-kit"; // lib
-
 
 export const NextVisit = () => {
 	useEffect(() => {
@@ -252,14 +251,9 @@ export const NextVisit = () => {
 				</div>
 			)}
 			<div className="visit-box">
-                {
-                    store.allVisits.map(
-                        (visit, i) => {
-                            return <SingleVisitCard visit={visit} key={i} />;
-                        }
-                    )
-                }
-				
+				{store.allVisits.map((visit, i) => {
+					return <SingleVisitCard entity={visit} key={i} />;
+				})}
 			</div>
 		</>
 	);

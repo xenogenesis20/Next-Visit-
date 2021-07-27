@@ -20,8 +20,10 @@ export const SingleMedicationCard = props => {
 
 	useEffect(
 		() => {
-			let str = props.entity.medicationName;
+			let str = props.entity.name;
+
 			let arr = str.split("");
+
 			let newStr = arr[0].trim();
 
 			fetch(`https://api.fda.gov/drug/label.json?search=adverse_reactions:${newStr}`)
@@ -48,9 +50,9 @@ export const SingleMedicationCard = props => {
 		<>
 			<div className="med-card-and-med-info d-flex justify-content-center row mb-2">
 				<div className=" d-flex justify-content-center">
-					<div className="card border border-primary shadow-0" style={{ width: "40vw", height: "45vh" }}>
+					<div className="card m-2" style={{ width: "80vw", height: "30vh" }}>
 						<div className="card-header text-center ">
-							<h3>{props.entity.medicationName}</h3>
+							<h3>{props.entity.name}</h3>
 						</div>
 						<div className="card-body p-2 d-flex" style={{ overflowY: "auto", overflowX: "hidden" }}>
 							<div className="row">
@@ -201,7 +203,7 @@ export const SingleMedicationCard = props => {
 					<div className="modal-content">
 						<div className="modal-header">
 							<h5 className="modal-title" id="addMedicationModal">
-								Edit {medications.medicationName}
+								Edit {medications.name}
 							</h5>
 							<button type="button" className="btn-close" data-mdb-dismiss="modal" aria-label="Close" />
 						</div>
@@ -212,9 +214,9 @@ export const SingleMedicationCard = props => {
 										type="text"
 										id="rxterms"
 										className="form-control"
-										name="medicationName"
+										name="name"
 										onChange={handleInput}
-										value={medications.medicationName}
+										value={medications.name}
 									/>
 									<label className="form-label" htmlFor="rxterms">
 										{"Medication name"}

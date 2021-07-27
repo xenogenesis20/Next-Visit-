@@ -11,7 +11,7 @@ export const YourMedications = () => {
 	const [display, setDisplay] = useState(false);
 	const [medications, setMedications] = useState({
 		id: store.allUserMedications.length,
-		medicationName: "",
+		name: "",
 		dose: "",
 		frequency: "",
 		reason: "",
@@ -32,7 +32,7 @@ export const YourMedications = () => {
 		actions.addUserMedication(med);
 		setMedications({
 			id: store.allUserMedications.length,
-			medicationName: "",
+			name: "",
 			dose: "",
 			frequency: "",
 			reason: "",
@@ -41,11 +41,7 @@ export const YourMedications = () => {
 	};
 	useEffect(
 		() => {
-			fetch(
-				`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${
-					medications.medicationName
-				}`
-			)
+			fetch(`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${medications.name}`)
 				.then(function(response) {
 					if (!response.ok) {
 						throw Error(response.statusText);
@@ -62,7 +58,7 @@ export const YourMedications = () => {
 					console.log("Fetch Error :-S", err);
 				});
 		},
-		[medications.medicationName]
+		[medications.name]
 	);
 
 	useEffect(() => {
@@ -72,7 +68,7 @@ export const YourMedications = () => {
 	});
 
 	const selectMedication = med => {
-		setMedications({ ...medications, medicationName: med });
+		setMedications({ ...medications, name: med });
 		setDisplay(false);
 	};
 
@@ -118,12 +114,12 @@ export const YourMedications = () => {
 										type="text"
 										id="rxterms"
 										className="form-control"
-										name="medicationName"
+										name="name"
 										onChange={handleInput}
 										onClick={() => setDisplay(!display)}
 										// onBlur={() => setDisplay(!display)}
 										autoComplete="off"
-										value={medications.medicationName}
+										value={medications.name}
 									/>
 									<label className="form-label" htmlFor="rxterms">
 										Medication name
