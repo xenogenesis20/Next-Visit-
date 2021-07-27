@@ -155,8 +155,6 @@ export const SingleSymptomCard = props => {
 								</div>
 							</div>
 						</div>
-					</div>
-					<div className="col">
 						{props.entity.notes &&
 							props.entity.notes.map((val, ind) => {
 								return (
