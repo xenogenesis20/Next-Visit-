@@ -41,7 +41,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				{ date: "2021-07-15", id: 0, value: 150, vitalName: "Weight" },
 				{ date: "2021-07-01", id: 0, value: 100, vitalName: "Weight" }
 			],
-			allUserVitals: [{}],
 
 			allUserSymptoms: [
 				{
@@ -81,14 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-			// sortVitals: (key, value) => {
-			// 	let newVitalsArray = getStore().allUserVitals;
-			// 	return newVitalsArray.filter(vital => {
-			// 		if (key == "Vital Name") return vital.vitalName == value;
-			// 		else if (key == "Date") return vital.date == value;
-			// 	});
-			// },
-			// sortVitalsByDate: () => {},
+
 			sortVitals: (key, value) => {
 				let newVitalsArray = getStore().allUserVitals;
 				return newVitalsArray.filter(vital => {
