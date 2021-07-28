@@ -11,7 +11,7 @@ export const DetailedMed = () => {
 	const [medicationData, setMedicationData] = useState([]);
 
 	useEffect(() => {
-		let str = location.state.medication.medicationName;
+		let str = location.state.medication.name;
 		let arr = str.split("(");
 		let newStr = arr[0].trim();
 
@@ -35,22 +35,22 @@ export const DetailedMed = () => {
 		<div className="container ">
 			<div className="row">
 				<div className="col-12">
-					<h1>{location.state.medication.medicationName}</h1>
+					<h1>{location.state.medication.name}</h1>
 				</div>
 			</div>
 			<div className="row">
 				<div className="col-12">
 					<p>Current dose of this medicaion: {location.state.medication.dose}</p>
 					<p>
-						I am currently taking {location.state.medication.medicationName} so often:{" "}
+						I am currently taking {location.state.medication.name} so often:{" "}
 						{location.state.medication.frequency}
 					</p>
 					<p>
-						I am currently taking {location.state.medication.medicationName} to target:{" "}
+						I am currently taking {location.state.medication.name} to target:{" "}
 						{location.state.medication.reason}
 					</p>
 					<p>
-						Side effect I have from taking {location.state.medication.medicationName}:{" "}
+						Side effect I have from taking {location.state.medication.name}:{" "}
 						{location.state.medication.sideEffects}
 					</p>
 				</div>

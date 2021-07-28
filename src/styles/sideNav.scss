@@ -1,11 +1,11 @@
-$sidebar-bg-color: rgb(109, 118, 136) !default;
+$sidebar-bg-color: #2f71e8ff !default;
 $sidebar-color: #fbfbfb !default;
 $sidebar-width: 270px !default;
 $sidebar-collapsed-width: 80px !default;
-$highlight-color: #d8d8d8 !default;
+$highlight-color: #1f1f1f !default;
 $submenu-bg-color: #e6e6e6 !default;
 $submenu-bg-color-collapsed: #2b2b2b !default;
-$icon-bg-color: rgb(30, 124, 161) !default;
+$icon-bg-color: #2f71e8ff !default;
 $icon-size: 35px !default;
 $breakpoint-xs: 480px !default;
 $breakpoint-sm: 576px !default;
@@ -31,6 +31,8 @@ span::before {
 span:hover::before {
   transform: scaleX(1);
   transform-origin: bottom left;
+  cursor: pointer;
+  color: var(--eerie-black)
 }
 
 span::before {
@@ -39,13 +41,17 @@ span::before {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
   inset: 0 0 0 0;
-  background: var(--blue-crayola);
+  background: #D3D3D3;
+  color: var(--eerie-black);
   z-index: -1;
   transition: transform .3s ease;
 }
-
+// span:hover{
+//   color: var(--eerie-black)
+// }
 span {
   position: relative;
+  border-radius: 10%;
 }
 
 

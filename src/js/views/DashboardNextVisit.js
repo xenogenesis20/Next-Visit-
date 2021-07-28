@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/dashboard.scss";
 import { SideNav } from "../component/SideNav";
-import { NextVisit } from "../component/NextVisit";
+import { NextVisit } from "../component/NextVisit_copy";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 

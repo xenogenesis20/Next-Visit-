@@ -43,7 +43,7 @@ export const SingleVitalCard = props => {
 
 	return (
 		<>
-			<div className="card border border-primary shadow-0" style={{ width: "35vw" }}>
+			<div className="card m-2" style={{ width: "35vw" }}>
 				<div className="card-header text-center">
 					<h3>{props.entity.vitalName}</h3>
 				</div>

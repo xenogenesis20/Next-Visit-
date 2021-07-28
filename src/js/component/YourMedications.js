@@ -11,7 +11,7 @@ export const YourMedications = () => {
 	const [display, setDisplay] = useState(false);
 	const [medications, setMedications] = useState({
 		id: store.allUserMedications.length,
-		medicationName: "",
+		name: "",
 		dose: "",
 		frequency: "",
 		reason: "",
@@ -32,13 +32,14 @@ export const YourMedications = () => {
 		actions.addUserMedication(med);
 		setMedications({
 			id: store.allUserMedications.length,
-			medicationName: "",
+			name: "",
 			dose: "",
 			frequency: "",
 			reason: "",
 			sideEffects: ""
 		});
 	};
+<<<<<<< HEAD
 	useEffect(() => {
 		fetch(
 			`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${medications.medicationName}`
@@ -59,6 +60,29 @@ export const YourMedications = () => {
 				console.log("Fetch Error :-S", err);
 			});
 	}, [medications.medicationName]);
+=======
+	useEffect(
+		() => {
+			fetch(`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${medications.name}`)
+				.then(function(response) {
+					if (!response.ok) {
+						throw Error(response.statusText);
+					}
+					// Read the response as json.
+					return response.json();
+				})
+				.then(function(responseAsJson) {
+					// Do stuff with the JSON
+					// console.log("response log", responseAsJson);
+					setMedList(responseAsJson[1]);
+				})
+				.catch(function(err) {
+					console.log("Fetch Error :-S", err);
+				});
+		},
+		[medications.name]
+	);
+>>>>>>> 522ff99ef0f99c7ceab9c1ed17b893a6c3747d3f
 
 	useEffect(() => {
 		document.querySelectorAll(".form-outline").forEach(formOutline => {
@@ -67,7 +91,7 @@ export const YourMedications = () => {
 	});
 
 	const selectMedication = med => {
-		setMedications({ ...medications, medicationName: med });
+		setMedications({ ...medications, name: med });
 		setDisplay(false);
 	};
 
@@ -113,12 +137,12 @@ export const YourMedications = () => {
 										type="text"
 										id="rxterms"
 										className="form-control"
-										name="medicationName"
+										name="name"
 										onChange={handleInput}
 										onClick={() => setDisplay(!display)}
 										// onBlur={() => setDisplay(!display)}
 										autoComplete="off"
-										value={medications.medicationName}
+										value={medications.name}
 									/>
 									<label className="form-label" htmlFor="rxterms">
 										Medication name

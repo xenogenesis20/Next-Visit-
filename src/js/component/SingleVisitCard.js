@@ -38,9 +38,9 @@ export const SingleVisitCard = props => {
 			<div className="med-card-and-med-info d-flex justify-content-center row mb-2">
 				<div className=" d-flex justify-content-center">
 					<div className="col">
-						<div className="card border border-primary shadow-0" style={{ width: "40vw", height: "45vh" }}>
+						<div className="card m-2" style={{ width: "80vw", height: "30vh" }}>
 							<div className="card-header text-center">
-								<h3>{props.entity.symptomName}</h3>
+								<h3>{"props.entity.symptomName"}</h3>
 							</div>
 							<div className="card-body p-2">
 								{/* Start med info inside card body */}

@@ -9,7 +9,7 @@ export const SmallMedCard = props => {
 	return (
 		<div className="card text-center text-white m-1 single-med-card" style={{ width: "40%", height: "15%" }}>
 			<div className="card-body d-flex justify-content-around align-items-center p-1">
-				<p className="card-title">{props.entity.medicationName}</p>
+				<p className="card-title">{props.entity.name}</p>
 				<p className="card-title">{props.entity.dose}</p>
 				<p className="card-title">{props.entity.frequency}</p>
 			</div>

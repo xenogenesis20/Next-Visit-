@@ -38,7 +38,7 @@ export const SingleSymptomCard = props => {
 			<div className="med-card-and-med-info d-flex justify-content-center row mb-2">
 				<div className=" d-flex justify-content-center">
 					<div className="col">
-						<div className="card border border-primary shadow-0" style={{ width: "40vw", height: "45vh" }}>
+						<div className="card" style={{}}>
 							<div className="card-header text-center">
 								<h3>{props.entity.symptomName}</h3>
 							</div>
@@ -155,8 +155,6 @@ export const SingleSymptomCard = props => {
 								</div>
 							</div>
 						</div>
-					</div>
-					<div className="col">
 						{props.entity.notes &&
 							props.entity.notes.map((val, ind) => {
 								return (
