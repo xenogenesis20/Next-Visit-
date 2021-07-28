@@ -5,24 +5,23 @@
     
 }
 .your-medications-box{
-    background-color: rgb(141, 141, 141);
+    background-color: #D3D3D3;
     height: 100%;
-    border: 2px;
-    border-color: var(--cyan-process);
+    border: 2px solid var(--cyan-process);
+    
     overflow-y: auto;
 
 }
 .your-symptoms-box{
-    background-color: rgb(65, 65, 65);
+    background-color: #D3D3D3;
     height: 100%;
-    border: 2px;
-    border-color: var(--cyan-process);
+    border: 2px solid var(--cyan-process);
+    
 }
 .charts-row{
-    background-color: rgb(17, 17, 63);
+    background-color: #D3D3D3;
     height: 50vh;
-    border: 2px;
-    border-color: var(--cyan-process);
+    border: 2px solid var(--cyan-process);
 }
 .linear-bg{
     background: linear-gradient(10deg, rgba(0,69,195,1) 0%, rgba(47,113,232,1) 50%, rgba(0,38,106,1) 100%);

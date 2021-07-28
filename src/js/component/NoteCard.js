@@ -5,7 +5,7 @@ import { GlobalState } from "../store/appContext";
 export const NoteCard = props => {
 	const { store, actions } = useContext(GlobalState);
 	return (
-		<div className="card">
+		<div className="card" style={{ width: "33%" }}>
 			<div className="card-header">
 				<button type="button" className="btn btn-primary btn-floating">
 					<i className="fas fa-pencil-alt mr-3" />

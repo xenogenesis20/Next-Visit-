@@ -12,11 +12,11 @@ export const BarGraph = props => {
 		datasets: [
 			{
 				label: "Symptom Severity over time",
-				backgroundColor: "rgba(255,99,132,0.2)",
-				borderColor: "rgba(255,99,132,1)",
+				backgroundColor: "rgba(92,119,254,0.2)",
+				borderColor: "rgba(4,35,188,1)",
 				borderWidth: 1,
-				hoverBackgroundColor: "rgba(255,99,132,0.4)",
-				hoverBorderColor: "rgba(255,99,132,1)",
+				hoverBackgroundColor: "rgba(92,119,254,0.4)",
+				hoverBorderColor: "rgba(4,35,188,1)",
 				data: []
 			}
 		]
@@ -33,8 +33,8 @@ export const BarGraph = props => {
 			}
 			setData(newDataLables);
 		}
-		console.log(data);
-		console.log(props.symptomNotes);
+		// console.log(data);
+		// console.log(props.symptomNotes);
 	});
 
 	return (
