@@ -1,6 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			apiAddress: "https://3000-scarlet-cicada-21qc8m3c.ws-us11.gitpod.io",
+			endpoint: "",
 			userInfo: [],
 			allUserMedications: [
 				{
@@ -80,7 +82,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-
 			sortVitals: (key, value) => {
 				let newVitalsArray = getStore().allUserVitals;
 				return newVitalsArray.filter(vital => {
@@ -191,6 +192,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let newVitals = getActions().sortVital([...vitals, vital]);
 					setStore({ vitalHeight: newVitals });
 				}
+				fetch(getStore().apiAddress + "/maikel/" + "vital", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(vital)
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						console.log(responseJson);
+
+						// setStore({ vitals: responseJson.vitals });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			},
 
 			editUserVital: vital => {
@@ -230,6 +250,90 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			login: (username, password) => {
+				fetch(getStore().apiAddress + endpoint + entity_id, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						username: "pedro",
+						password: "soccer"
+					})
+				})
+					.then(function(response) {
+						if (!response.status) {
+							throw Error(response.statusText);
+						}
+						if (response.status == 401) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						// console.log(responseAsJson);
+						// setStore({ users: responseAsJson.token });
+						localStorage.setItem("jwt-token", responseAsJson.token);
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
+			// get_auth: (username, password) => {
+			// 	// retrieve token form localStorage
+			// 	const token = localStorage.getItem("jwt-token");
+
+			// 	fetch(getStore().apiAddress + "/auth", {
+			// 		method: "GET",
+			// 		headers: { Authorization: "Bearer " + token } // ⬅ authorization token
+			// 	})
+			// 		.then(resp => {
+			// 			if (resp.ok) resp.json();
+			// 			else if (resp.status === 403) {
+			// 				console.log("Missing or invalid token");
+			// 			} else {
+			// 				throw Error("Unknown error");
+			// 			}
+			// 		})
+			// 		.then(data => {
+			// 			// success
+			// 			console.log("This is the data your requested", data);
+			// 		})
+			// 		.catch(error => console.error("There has been an uknown error", error));
+			// },
+			addToVitals: (
+				vital_name,
+				date = request_body["date"],
+				value = request_body["value"],
+				username = username
+			) => {
+				let endpoint = "";
+				if (entity_type == "person") {
+					endpoint = "/favorite/person/";
+				} else {
+					endpoint = "/favorite/planet/";
+				}
+				fetch(getStore().apiAddress + endpoint + entity_id, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						entity_name: entity_name,
+						username: getStore().user
+					})
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						console.log(responseJson);
+
+						setStore({ favorites: responseJson.favorites });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			}
 		}
 	};

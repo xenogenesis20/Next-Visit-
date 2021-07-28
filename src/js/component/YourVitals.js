@@ -15,7 +15,7 @@ export const YourVitals = () => {
 	const confirmNewVital = vital => {
 		actions.addUserVital(vital);
 		setVitals({
-			id: store.allUserVitals.length,
+			// id: store.allUserVitals.length,
 			vitalName: "",
 			value: 0,
 			date: ""

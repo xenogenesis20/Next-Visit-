@@ -39,11 +39,8 @@ export const YourMedications = () => {
 			sideEffects: ""
 		});
 	};
-<<<<<<< HEAD
 	useEffect(() => {
-		fetch(
-			`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${medications.medicationName}`
-		)
+		fetch(`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${medications.name}`)
 			.then(function(response) {
 				if (!response.ok) {
 					throw Error(response.statusText);
@@ -59,30 +56,7 @@ export const YourMedications = () => {
 			.catch(function(err) {
 				console.log("Fetch Error :-S", err);
 			});
-	}, [medications.medicationName]);
-=======
-	useEffect(
-		() => {
-			fetch(`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${medications.name}`)
-				.then(function(response) {
-					if (!response.ok) {
-						throw Error(response.statusText);
-					}
-					// Read the response as json.
-					return response.json();
-				})
-				.then(function(responseAsJson) {
-					// Do stuff with the JSON
-					// console.log("response log", responseAsJson);
-					setMedList(responseAsJson[1]);
-				})
-				.catch(function(err) {
-					console.log("Fetch Error :-S", err);
-				});
-		},
-		[medications.name]
-	);
->>>>>>> 522ff99ef0f99c7ceab9c1ed17b893a6c3747d3f
+	}, [medications.name]);
 
 	useEffect(() => {
 		document.querySelectorAll(".form-outline").forEach(formOutline => {
