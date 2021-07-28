@@ -9,6 +9,7 @@ import { BarGraph } from "./BarGraph";
 
 export const SingleVisitCard = props => {
 	const { actions, store } = useContext(GlobalState);
+
 	const [symptoms, setSymptoms] = useState(props.entity);
 	const [note, setNote] = useState({});
 	const [displayNote, setDisplayNote] = useState(false);
@@ -38,47 +39,65 @@ export const SingleVisitCard = props => {
 			<div className="med-card-and-med-info d-flex justify-content-center row mb-2">
 				<div className=" d-flex justify-content-center">
 					<div className="col">
-						<div className="card m-2" style={{ width: "80vw", height: "30vh" }}>
+						<div className="card m-2" style={{ width: "80vw" }}>
 							<div className="card-header text-center">
-								<h3>{"props.entity.symptomName"}</h3>
+								<h3>Dr. {props.entity.doctor}</h3>
 							</div>
 							<div className="card-body p-2">
 								{/* Start med info inside card body */}
 								<div className="list-group">
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
-											<h6 className="mb-1">Start Date:</h6>
-											<h6 className="mb-1">{props.entity.startDate} </h6>
+										<div className="d-flex w-100 justify-content-between px-5">
+											<h6 className="mb-1">Date:</h6>
+											<h6 className="mb-1">{props.entity.date} </h6>
 										</div>
 									</div>
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
-											<h6 className="mb-1">How severe is the symptom:</h6>
-											<h6 className="mb-1">{props.entity.severity}</h6>
+										<div className="d-flex w-100 justify-content-between px-5">
+											<h6 className="mb-1">Time:</h6>
+											<h6 className="mb-1">{props.entity.time}</h6>
 										</div>
 									</div>
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
-											<h6 className="mb-1">Symptom location:</h6>
-											<h6 className="mb-1">{props.entity.location}</h6>
+										<div className="d-flex w-100 justify-content-between px-5">
+											<h6 className="mb-1">Symptoms added:</h6>
+											<h6 className="mb-1">
+												{props.entity.symptoms.map((symptom, i) => (
+													<span style={{ background: "lightgray" }} key={i}>
+														{symptom.symptomName},
+													</span>
+												))}
+											</h6>
 										</div>
 									</div>
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
-											<h6 className="mb-1">Symptom Frequency:</h6>
-											<h6 className="mb-1">{props.entity.frequency}</h6>
+										<div className="d-flex w-100 justify-content-between px-5">
+											<h6 className="mb-1">Medications added:</h6>
+											<h6 className="mb-1">
+												{props.entity.meds.map((med, i) => (
+													<span style={{ background: "lightgray" }} key={i}>
+														{med.name},{" "}
+													</span>
+												))}
+											</h6>
 										</div>
 									</div>
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
-											<h6 className="mb-1">Symptom Duration:</h6>
-											<h6 className="mb-1">{props.entity.duration}</h6>
+										<div className="d-flex w-100 justify-content-between px-5">
+											<h6 className="mb-1">Vitals added:</h6>
+											<h6 className="mb-1">
+												{props.entity.vitals.map((vital, i) => (
+													<span style={{ background: "lightgray" }} key={i}>
+														{"vital name"}
+													</span>
+												))}
+											</h6>
 										</div>
 									</div>
 								</div>
 								{/* End med info inside card body */}
 								<div className="card-footer">
-									<div className="d-flex w-100 justify-content-around m-1">
+									<div className="d-flex w-100 justify-content-between px-5 m-1">
 										<button
 											type="button"
 											className="btn btn-primary"

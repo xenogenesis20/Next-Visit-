@@ -57,7 +57,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			allUserVitals: [],
-			allVisits: [],
+			allVisits: [
+				{
+					id: 0,
+					doctor: "George",
+					date: "12/02/2021",
+					time: "9:45 AM",
+					symptoms: [
+						{
+							id: 123124,
+							symptomName: "broken butt",
+							startDate: "07/12/21",
+							severity: "10",
+							location: "butt",
+							frequency: "constant",
+							duration: "all day",
+							notes: [{ date: "08/02/2021", description: "Getting better" }]
+						}
+					],
+					meds: [],
+					vitals: []
+				}
+			],
 			allDoctors: [
 				{
 					name: "George Mihov",
