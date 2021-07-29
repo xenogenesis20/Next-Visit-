@@ -54,14 +54,21 @@ span {
   border-radius: 10%;
 }
 
-
-
 //  #header {
 //      position: absolute;
 //      width: 220px;
 //    }
   #sidenav .pro-sidebar {
     height: 100vh;
+  }
+
+  .pro-menu-item {
+      font-size: 1.4em !important;
+  }
+
+  .pro-menu-item:hover {
+      background: lightgray;
+      box-shadow: 1 1 2 5 darkgray;
   }
 //    #header .closemenu {
 //      color: #000;
