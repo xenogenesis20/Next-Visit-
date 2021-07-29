@@ -3,7 +3,10 @@ import { GlobalState } from "../store/appContext";
 import "../../styles/dashboard.scss";
 import { SideNav } from "../component/SideNav";
 import { YourVitals } from "../component/YourVitals";
-import { BarGraph } from "../component/BarGraph";
+import { BarGraphWeight } from "../component/BarGraphWeight";
+import { BarGraphHeight } from "../component/BarGraphHeight";
+import { BarGraphHeartRate } from "../component/BarGraphHeartRate";
+import { BarGraphBloodPressure } from "../component/BarGraphBloodPressure";
 import { VitalStatistics } from "../component/VitalStatistics";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
@@ -19,17 +22,18 @@ export const DashboardVitals = props => {
 				<SideNav loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} />
 			</div>
 			<div className="medication-column container-fluid">
-				<div className="row g-0 p-0 m-0 med-and-symptom-row">
-					<div className="col-6 h-25 medication-column container-fluid">
-						<YourVitals />
-					</div>
+				<div className="row d-block g-0 p-0 m-0 med-and-symptom-row">
+					<YourVitals />
+
 					<VitalStatistics />
 				</div>
-				<div className="row charts-row g-0 p-0 m-0">
+				<div className="row d-block">
 					<div className="col-12 ">Charts go here</div>
 					<div>
-						<BarGraph data={store.vitalWeight} />
-						{/* <BarGraph symptomNotes={props.entity.notes} /> */}
+						<BarGraphWeight />
+                        <BarGraphBloodPressure />
+                        <BarGraphHeight />
+                        <BarGraphHeartRate />
 					</div>
 				</div>
 			</div>

@@ -175,23 +175,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return sortedVitals;
 			},
 			addUserVital: vital => {
-				if (vital.vitalName == "Blood Pressure") {
-					let vitals = getStore().vitalBloodPressure;
-					let newVitals = getActions().sortVital([...vitals, vital]);
-					setStore({ vitalBloodPressure: newVitals });
-				} else if (vital.vitalName == "Weight") {
-					let vitals = getStore().vitalWeight;
-					let newVitals = getActions().sortVital([...vitals, vital]);
-					setStore({ vitalWeight: newVitals });
-				} else if (vital.vitalName == "Heart Rate") {
-					let vitals = getStore().vitalHeartRate;
-					let newVitals = getActions().sortVital([...vitals, vital]);
-					setStore({ vitalHeartRate: newVitals });
-				} else if (vital.vitalName == "Height") {
-					let vitals = getStore().vitalHeight;
-					let newVitals = getActions().sortVital([...vitals, vital]);
-					setStore({ vitalHeight: newVitals });
-				}
 				fetch(getStore().apiAddress + "/maikel/" + "vital", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -204,9 +187,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(function(responseAsJson) {
-						console.log(responseJson);
-
-						// setStore({ vitals: responseJson.vitals });
+						console.log(responseAsJson);
+						if (vital.vitalName == "Blood Pressure") {
+							setStore({ vitalBloodPressure: responseAsJson });
+						} else if (vital.vitalName == "Weight") {
+							setStore({ vitalWeight: responseAsJson });
+						} else if (vital.vitalName == "Heart Rate") {
+							setStore({ vitalHeartRate: responseAsJson });
+						} else if (vital.vitalName == "Height") {
+							setStore({ vitalHeight: responseAsJson });
+						}
 					})
 					.catch(function(error) {
 						console.log("Looks like there was a problem: \n", error);
@@ -223,11 +213,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				setStore({ allUserVitals: allVitals });
 			},
+			// deleteUserVital: id => {
+			// 	let allVitals = getStore().allUserVitals;
+			// 	let newVitalList = allVitals.filter(vital => id != vital.id);
+			// 	setStore({ allUserVitals: newVitalList });
+			// },
 			deleteUserVital: id => {
-				let allVitals = getStore().allUserVitals;
-				let newVitalList = allVitals.filter(vital => id != vital.id);
-				setStore({ allUserVitals: newVitalList });
+				fetch(getStore().apiAddress + "/maikel/vital/" + id, {
+					method: "DELETE",
+					headers: { "Content-Type": "application/json" }
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						console.log(responseAsJson);
+						if (responseAsJson[0].vital_name == "Blood Pressure") {
+							setStore({ vitalBloodPressure: responseAsJson });
+						} else if (responseAsJson[0].vital_name == "Weight") {
+							setStore({ vitalWeight: responseAsJson });
+						} else if (responseAsJson[0].vital_name == "Heart Rate") {
+							setStore({ vitalHeartRate: responseAsJson });
+						} else if (responseAsJson[0].vital_name == "Height") {
+							setStore({ vitalHeight: responseAsJson });
+						}
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			},
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
