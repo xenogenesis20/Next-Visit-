@@ -18,28 +18,31 @@ export const SingleMedicationCard = props => {
 		actions.editUserMedication(med);
 	};
 
-	useEffect(() => {
-		let str = props.entity.name;
+	useEffect(
+		() => {
+			let str = props.entity.name;
 
-		let arr = str.split("");
+			let arr = str.split("");
 
-		let newStr = arr[0].trim();
+			let newStr = arr[0].trim();
 
-		fetch(`https://api.fda.gov/drug/label.json?search=adverse_reactions:${newStr}`)
-			.then(function(response) {
-				if (!response.ok) {
-					throw Error(response.statusText);
-				}
-				return response.json();
-			})
-			.then(function(responseAsJson) {
-				// console.log("response log", responseAsJson);
-				setMedicationData(responseAsJson.results);
-			})
-			.catch(function(err) {
-				console.log("Fetch Error :-S", err);
-			});
-	}, [medications]);
+			fetch(`https://api.fda.gov/drug/label.json?search=adverse_reactions:${newStr}`)
+				.then(function(response) {
+					if (!response.ok) {
+						throw Error(response.statusText);
+					}
+					return response.json();
+				})
+				.then(function(responseAsJson) {
+					// console.log("response log", responseAsJson);
+					setMedicationData(responseAsJson.results);
+				})
+				.catch(function(err) {
+					console.log("Fetch Error :-S", err);
+				});
+		},
+		[medications]
+	);
 	// console.log("Props Entity", props.entity);
 	console.log("Props Entity", props.entity.id);
 
@@ -47,7 +50,7 @@ export const SingleMedicationCard = props => {
 		<>
 			<div className="med-card-and-med-info d-flex justify-content-center row mb-2">
 				<div className=" d-flex justify-content-center">
-					<div className="card m-2" style={{ width: "80vw", height: "30vh" }}>
+					<div className="card m-2" style={{ width: "80vw", height: "45vh" }}>
 						<div className="card-header text-center ">
 							<h3>{props.entity.name}</h3>
 						</div>

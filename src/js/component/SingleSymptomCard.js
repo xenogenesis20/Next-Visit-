@@ -38,7 +38,7 @@ export const SingleSymptomCard = props => {
 			<div className="med-card-and-med-info d-flex justify-content-center row mb-2">
 				<div className=" d-flex justify-content-center">
 					<div className="col d-flex flex-wrap">
-						<div className="card" style={{}}>
+						<div className="card" style={{ width: "100%" }}>
 							<div className="card-header text-center">
 								<h3>{props.entity.symptomName}</h3>
 							</div>
@@ -167,13 +167,7 @@ export const SingleSymptomCard = props => {
 								);
 							})}
 					</div>
-					<div className="col">
-						{props.entity.notes && props.entity.notes.length > 0 ? (
-							<BarGraph symptomNotes={props.entity.notes} />
-						) : (
-							""
-						)}
-					</div>
+					<div className="col">{<BarGraph symptomNotes={props.entity.notes} />}</div>
 				</div>
 			</div>
 

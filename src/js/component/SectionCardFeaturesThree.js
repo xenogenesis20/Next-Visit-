@@ -22,7 +22,7 @@ export const SectionCardFeaturesThree = () => {
 				</p>
 				<Link to="/SignUp">
 					<button type="button" className="btn btn-primary">
-						SIGN UP!
+						Sign up!
 					</button>
 				</Link>{" "}
 			</div>

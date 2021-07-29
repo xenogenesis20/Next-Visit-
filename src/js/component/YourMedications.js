@@ -39,24 +39,27 @@ export const YourMedications = () => {
 			sideEffects: ""
 		});
 	};
-	useEffect(() => {
-		fetch(`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${medications.name}`)
-			.then(function(response) {
-				if (!response.ok) {
-					throw Error(response.statusText);
-				}
-				// Read the response as json.
-				return response.json();
-			})
-			.then(function(responseAsJson) {
-				// Do stuff with the JSON
-				// console.log("response log", responseAsJson);
-				setMedList(responseAsJson[1]);
-			})
-			.catch(function(err) {
-				console.log("Fetch Error :-S", err);
-			});
-	}, [medications.name]);
+	useEffect(
+		() => {
+			fetch(`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${medications.name}`)
+				.then(function(response) {
+					if (!response.ok) {
+						throw Error(response.statusText);
+					}
+					// Read the response as json.
+					return response.json();
+				})
+				.then(function(responseAsJson) {
+					// Do stuff with the JSON
+					// console.log("response log", responseAsJson);
+					setMedList(responseAsJson[1]);
+				})
+				.catch(function(err) {
+					console.log("Fetch Error :-S", err);
+				});
+		},
+		[medications.name]
+	);
 
 	useEffect(() => {
 		document.querySelectorAll(".form-outline").forEach(formOutline => {

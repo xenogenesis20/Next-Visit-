@@ -31,9 +31,9 @@ export const DashboardVitals = props => {
 					<div className="col-12 ">Charts go here</div>
 					<div>
 						<BarGraphWeight />
-                        <BarGraphBloodPressure />
-                        <BarGraphHeight />
-                        <BarGraphHeartRate />
+						<BarGraphBloodPressure />
+						<BarGraphHeight />
+						<BarGraphHeartRate />
 					</div>
 				</div>
 			</div>
