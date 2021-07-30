@@ -6,9 +6,9 @@ import PropTypes from "prop-types";
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent } from "react-pro-sidebar";
 
 //import icons from react icons
-import { FaArrowRight, FaArrowLeft, FaRegHeart, FaPills, FaWindowClose } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft, FaRegHeart, FaPills, FaWeight, FaCalendarAlt } from "react-icons/fa";
 import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
-import { RiPencilLine } from "react-icons/ri";
+import { RiPencilLine, RiHealthBookLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
 import { RiDashboardLine } from "react-icons/ri";
 
@@ -44,22 +44,22 @@ export const SideNav = props => {
 					</SidebarHeader>
 					<SidebarContent>
 						<Menu iconShape="square">
-							<MenuItem active={true} icon={<FiHome />}>
+							<MenuItem icon={<FiHome />}>
 								<Link to="/">Home</Link>
 							</MenuItem>
 							<MenuItem icon={<RiDashboardLine />}>
 								<Link to="/DashboardHome">Dashboard </Link>
 							</MenuItem>
-							<MenuItem icon={<FaPills />}>
+							<MenuItem icon={<FaWeight />}>
 								<Link to="/DashboardVitals">Vitals </Link>
 							</MenuItem>
 							<MenuItem icon={<FaPills />}>
 								<Link to="/DashboardMeds">Medications </Link>
 							</MenuItem>
-							<MenuItem icon={<FaPills />}>
+							<MenuItem icon={<RiHealthBookLine />}>
 								<Link to="/DashboardSymptoms">Symptoms </Link>
 							</MenuItem>
-							<MenuItem icon={<FaPills />}>
+							<MenuItem icon={<FaCalendarAlt />}>
 								<Link to="/DashboardNextVisit">Plan NextVisit </Link>
 							</MenuItem>
 						</Menu>
