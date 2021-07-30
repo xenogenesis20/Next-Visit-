@@ -42,7 +42,7 @@ body {
   // background: url(../img/vecteezy_blue-background_wk1120.jpg) no-repeat center
   //   center fixed;
   // background-color: var(--blue-crayola) !important;
-  background: rgb(210, 228, 233) !important;
+  background: rgb(237, 248, 252) !important;
 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -67,7 +67,12 @@ body {
 // }
 footer {
   // background: url(../img/2650401.jpg) no-repeat center center fixed;
-  background-color: red;
+  background: #F0F0F0;
+  background: -moz-linear-gradient(45deg, #F0F0F0 0%, #C3DCE8 43%, #F0F0F0 100%);
+  background: -webkit-linear-gradient(45deg, #F0F0F0 0%, #C3DCE8 43%, #F0F0F0 100%);
+  background: linear-gradient(45deg, #F0F0F0 0%, #C3DCE8 43%, #F0F0F0 100%);
+  border: 5px outset #29b9f080;
+    border-radius: 0px 40px 0px 40px;
 }
 
 
@@ -117,5 +122,17 @@ footer {
   height: 40vh;
   width: 30vw;
 }
-
-
+.hero-bg{
+  background: #29B9F0;
+  background: -moz-linear-gradient(45deg, #29B9F0 0%, #2F71E8 43%, #29B9F0 100%);
+  background: -webkit-linear-gradient(45deg, #29B9F0 0%, #2F71E8 43%, #29B9F0 100%);
+  background: linear-gradient(45deg, #29B9F0 0%, #2F71E8 43%, #29B9F0 100%);
+    
+  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+  border: 5px outset #29b9f080;
+  border-radius: 0px 40px 0px 40px;
+}
+.logo-img{
+  border-radius: 50%;
+}

@@ -27,12 +27,12 @@ export const Home = props => {
 						<SectionCardFeaturesOne />
 					</div>
 				</div>
-				<div className="row m-5">
+				<div className="row m-5 section-row2">
 					<div className="col">
 						<SectionCardFeaturesTwo />
 					</div>
 				</div>
-				<div className="row m-5">
+				<div className="row m-5 section-row">
 					<div className="col">
 						<SectionCardFeaturesThree />
 					</div>
