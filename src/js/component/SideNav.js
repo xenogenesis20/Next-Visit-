@@ -6,11 +6,12 @@ import PropTypes from "prop-types";
 import { ProSidebar, Menu, MenuItem, SidebarHeader, SidebarFooter, SidebarContent } from "react-pro-sidebar";
 
 //import icons from react icons
-import { FaArrowRight, FaArrowLeft, FaRegHeart, FaPills, FaWindowClose } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft, FaRegHeart, FaPills, FaWeight, FaCalendarAlt } from "react-icons/fa";
 import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
-import { RiPencilLine } from "react-icons/ri";
+import { RiPencilLine, RiHealthBookLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
 import { RiDashboardLine } from "react-icons/ri";
+import logo from "../../img/logo4.png";
 
 //import sidebar css from react-pro-sidebar module and our custom css
 import "react-pro-sidebar/dist/css/styles.css";
@@ -35,7 +36,7 @@ export const SideNav = props => {
 					<SidebarHeader>
 						<div className="logotext">
 							{/* small and big change using menucollapse state */}
-							<p>{menuCollapse ? "N|V" : "NEXT VISIT"}</p>
+							<p>{menuCollapse ? "N|V" : <img src={logo} />}</p>
 						</div>
 						<div className="closemenu" onClick={menuIconClick}>
 							{/* changing menu collapse icon on click */}
@@ -44,22 +45,22 @@ export const SideNav = props => {
 					</SidebarHeader>
 					<SidebarContent>
 						<Menu iconShape="square">
-							<MenuItem active={true} icon={<FiHome />}>
+							<MenuItem icon={<FiHome />}>
 								<Link to="/">Home</Link>
 							</MenuItem>
 							<MenuItem icon={<RiDashboardLine />}>
 								<Link to="/DashboardHome">Dashboard </Link>
 							</MenuItem>
-							<MenuItem icon={<FaPills />}>
+							<MenuItem icon={<FaWeight />}>
 								<Link to="/DashboardVitals">Vitals </Link>
 							</MenuItem>
 							<MenuItem icon={<FaPills />}>
 								<Link to="/DashboardMeds">Medications </Link>
 							</MenuItem>
-							<MenuItem icon={<FaPills />}>
+							<MenuItem icon={<RiHealthBookLine />}>
 								<Link to="/DashboardSymptoms">Symptoms </Link>
 							</MenuItem>
-							<MenuItem icon={<FaPills />}>
+							<MenuItem icon={<FaCalendarAlt />}>
 								<Link to="/DashboardNextVisit">Plan NextVisit </Link>
 							</MenuItem>
 						</Menu>

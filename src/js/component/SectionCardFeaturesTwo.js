@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import dmmeds from "../../img/DBmeds.jpg";
 import dbsymp from "../../img/dbsymp.jpg";
 import drvis from "../../img/drvis.jpg";
+import gif from "../../img/Animation.gif";
 export const SectionCardFeaturesTwo = () => {
 	return (
 		<div className="">
@@ -18,7 +19,9 @@ export const SectionCardFeaturesTwo = () => {
 				<div className="col">
 					<img src={drvis} alt="" />
 				</div>
-				<div className="col">img4</div>
+				<div className="col">
+					<img src={gif} alt="" />
+				</div>
 			</div>
 		</div>
 	);
