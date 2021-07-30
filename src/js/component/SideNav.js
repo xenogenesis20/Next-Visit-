@@ -11,6 +11,7 @@ import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-i
 import { RiPencilLine, RiHealthBookLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
 import { RiDashboardLine } from "react-icons/ri";
+import logo from "../../img/logo4.png";
 
 //import sidebar css from react-pro-sidebar module and our custom css
 import "react-pro-sidebar/dist/css/styles.css";
@@ -35,7 +36,7 @@ export const SideNav = props => {
 					<SidebarHeader>
 						<div className="logotext">
 							{/* small and big change using menucollapse state */}
-							<p>{menuCollapse ? "N|V" : "NEXT VISIT"}</p>
+							<p>{menuCollapse ? "N|V" : <img src={logo} />}</p>
 						</div>
 						<div className="closemenu" onClick={menuIconClick}>
 							{/* changing menu collapse icon on click */}
