@@ -6,7 +6,7 @@ export const SectionCardFeaturesThree = () => {
 		<>
 			<div className="row d-flex justify-content-center">
 				<div className="col text-center">
-					<h1>Testemonials</h1>
+					<h1>Testimonials</h1>
 				</div>
 			</div>
 			<div className="row">
