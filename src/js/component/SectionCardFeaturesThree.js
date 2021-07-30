@@ -20,7 +20,7 @@ export const SectionCardFeaturesThree = () => {
 								alt="woman avatar"
 							/>
 						</div>
-						<div className="card-body text-center">
+						<div className="card-body text-center gray-bg">
 							<h4 className="card-title font-weight-bold">George Mihov</h4>
 							<hr />
 							<p>I use Next Visit to easily keep track of all of my health issues.</p>
@@ -37,7 +37,7 @@ export const SectionCardFeaturesThree = () => {
 								alt="woman avatar"
 							/>
 						</div>
-						<div className="card-body text-center">
+						<div className="card-body text-center gray-bg">
 							<h4 className="card-title font-weight-bold">Nate Archer</h4>
 							<hr />
 							<p>
@@ -56,7 +56,7 @@ export const SectionCardFeaturesThree = () => {
 								alt="woman avatar"
 							/>
 						</div>
-						<div className="card-body text-center">
+						<div className="card-body text-center gray-bg">
 							<h4 className="card-title font-weight-bold">Antoniya Nemtserova</h4>
 							<hr />
 							<p>Next visit is easy to use and provides good to know information about medications.</p>
@@ -73,7 +73,7 @@ export const SectionCardFeaturesThree = () => {
 								alt="woman avatar"
 							/>
 						</div>
-						<div className="card-body text-center">
+						<div className="card-body text-center gray-bg">
 							<h4 className="card-title font-weight-bold">Nate Archer</h4>
 							<hr />
 							<p>
