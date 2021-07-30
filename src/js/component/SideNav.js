@@ -62,10 +62,6 @@ export const SideNav = props => {
 							<MenuItem icon={<FaPills />}>
 								<Link to="/DashboardNextVisit">Plan NextVisit </Link>
 							</MenuItem>
-
-							<MenuItem icon={<FaRegHeart />}>Favourite</MenuItem>
-							<MenuItem icon={<RiPencilLine />}>Home</MenuItem>
-							<MenuItem icon={<BiCog />}>Settings</MenuItem>
 						</Menu>
 					</SidebarContent>
 					<SidebarFooter>

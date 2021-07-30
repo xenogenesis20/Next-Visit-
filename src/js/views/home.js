@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/home.scss";
+import pic from "../../img/2650401.jpg";
 import { Header } from "../component/Header";
 import { Footer } from "../component/footer";
 import { Navbar } from "../component/navbar";
@@ -13,23 +14,30 @@ export const Home = props => {
 		<>
 			<Navbar loggedIn={props.loggedIn} />
 			<div className="container-fluid landing-page-container">
-				<div className="row">
+				<div className="row m-5">
 					<div className="col-12">
 						<Header />
 					</div>
 				</div>
-				<div className="row">
+				<div className="row m-5 section-row">
+					<div className="col-6">
+						<img src={pic} alt="" />
+					</div>
 					<div className="col">
 						<SectionCardFeaturesOne />
 					</div>
+				</div>
+				<div className="row m-5">
 					<div className="col">
 						<SectionCardFeaturesTwo />
 					</div>
+				</div>
+				<div className="row m-5">
 					<div className="col">
 						<SectionCardFeaturesThree />
 					</div>
 				</div>
-				<div className="row">
+				<div className="row m-5">
 					<div className="col-12">
 						<Footer />
 					</div>

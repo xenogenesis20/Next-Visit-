@@ -1,31 +1,88 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "../../styles/findDoctor.scss";
 export const SectionCardFeaturesThree = () => {
 	return (
-		<div className="card text-center " style={{ backgroundColor: "#f5f5ff" }}>
-			<div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-				<img
-					src="https://image.freepik.com/free-vector/holistic-medicine-abstract-concept-vector-illustration-alternative-natural-medicine-holistic-mental-therapy-whole-body-treatment-health-practice-disease-integrative-doctor-abstract-metaphor_335657-1696.jpg"
-					className="img-fluid"
-				/>
-				<a href="#!">
-					<div className="mask" style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }} />
-				</a>
+		<>
+			<div className="row d-flex justify-content-center">
+				<div className="col text-center">
+					<h1>Testemonials</h1>
+				</div>
 			</div>
-
-			<div className="card-body">
-				<h5 className="card-title">View all of your information on the dashboard</h5>
-				<p className="card-text">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae mollitia deserunt quod eligendi
-					exercitationem dignissimos! Numquam nulla asperiores modi, unde, voluptatum nam
-				</p>
-				<Link to="/SignUp">
-					<button type="button" className="btn btn-primary">
-						SIGN UP!
-					</button>
-				</Link>{" "}
+			<div className="row">
+				<div className="col">
+					<div className="card testimonial-card m-2 " style={{ width: "250px", height: "380px" }}>
+						<div className="card-up aqua-gradient" />
+						<div className="avatar mx-auto white">
+							<img
+								src="https://avatars.githubusercontent.com/u/53583283?v=4"
+								className="rounded-circle img-fluid"
+								alt="woman avatar"
+							/>
+						</div>
+						<div className="card-body text-center">
+							<h4 className="card-title font-weight-bold">George Mihov</h4>
+							<hr />
+							<p>I use Next Visit to easily keep track of all of my health issues.</p>
+						</div>
+					</div>
+				</div>
+				<div className="col">
+					<div className="card testimonial-card m-2 " style={{ width: "250px", height: "380px" }}>
+						<div className="card-up aqua-gradient" />
+						<div className="avatar mx-auto white">
+							<img
+								src="https://avatars.githubusercontent.com/u/81258767?v=4"
+								className="rounded-circle img-fluid"
+								alt="woman avatar"
+							/>
+						</div>
+						<div className="card-body text-center">
+							<h4 className="card-title font-weight-bold">Nate Archer</h4>
+							<hr />
+							<p>
+								Next Visit is easy to use and my Doctors appreciate the information I bring to visits.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div className="col">
+					<div className="card testimonial-card m-2 " style={{ width: "250px", height: "380px" }}>
+						<div className="card-up aqua-gradient" />
+						<div className="avatar mx-auto white">
+							<img
+								src="https://avatars.githubusercontent.com/u/72631274?v=4"
+								className="rounded-circle img-fluid"
+								alt="woman avatar"
+							/>
+						</div>
+						<div className="card-body text-center">
+							<h4 className="card-title font-weight-bold">Antoniya Nemtserova</h4>
+							<hr />
+							<p>Next visit is easy to use and provides good to know information about medications.</p>
+						</div>
+					</div>
+				</div>
+				<div className="col">
+					<div className="card testimonial-card m-2 " style={{ width: "250px", height: "380px" }}>
+						<div className="card-up aqua-gradient" />
+						<div className="avatar mx-auto white">
+							<img
+								src="https://avatars.githubusercontent.com/u/81258767?v=4"
+								className="rounded-circle img-fluid"
+								alt="woman avatar"
+							/>
+						</div>
+						<div className="card-body text-center">
+							<h4 className="card-title font-weight-bold">Nate Archer</h4>
+							<hr />
+							<p>
+								Next Visit is easy to use and my Doctors appreciate the information I bring to visits.
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };

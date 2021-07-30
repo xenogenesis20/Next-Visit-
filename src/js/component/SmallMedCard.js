@@ -7,8 +7,8 @@ export const SmallMedCard = props => {
 	const { store, actions } = useContext(GlobalState);
 
 	return (
-		<div className="card text-center text-white m-1 single-med-card" style={{ width: "40%", height: "15%" }}>
-			<div className="card-body d-flex justify-content-around align-items-center p-1">
+		<div className="card text-center text-white m-1 single-med-card" style={{ width: "50%", height: "50%" }}>
+			<div className="card-body d-flex  align-items-center p-1">
 				<p className="card-title">{props.entity.name}</p>
 				<p className="card-title">{props.entity.dose}</p>
 				<p className="card-title">{props.entity.frequency}</p>

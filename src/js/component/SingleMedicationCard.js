@@ -47,7 +47,7 @@ export const SingleMedicationCard = props => {
 		<>
 			<div className="med-card-and-med-info d-flex justify-content-center row mb-2">
 				<div className=" d-flex justify-content-center">
-					<div className="card m-2" style={{ width: "80vw", height: "30vh" }}>
+					<div className="card m-2" style={{ width: "80vw", height: "45vh" }}>
 						<div className="card-header text-center ">
 							<h3>{props.entity.name}</h3>
 						</div>

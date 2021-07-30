@@ -30,7 +30,7 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #006c97; 
+  background: #0376a3; 
 }
 }
 .signup-box {
@@ -42,13 +42,14 @@ body {
   // background: url(../img/vecteezy_blue-background_wk1120.jpg) no-repeat center
   //   center fixed;
   // background-color: var(--blue-crayola) !important;
-  background: linear-gradient(40deg, #006bc9, #58d8ff) !important;
+  background: rgb(210, 228, 233) !important;
 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+  font-size: 18px;
   // margin-top: 100px;
 }
 // .landing-page-container{
