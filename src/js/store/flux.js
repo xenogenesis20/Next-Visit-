@@ -47,10 +47,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			allUserSymptoms: [
 				{
 					id: 123124,
-					symptomName: "broken butt",
+					symptomName: "Heart palpitations",
 					startDate: "07/12/21",
 					severity: "10",
-					location: "butt",
+					location: "chest",
+					frequency: "constant",
+					duration: "all day",
+					notes: []
+				},
+				{
+					id: 323124,
+					symptomName: "Migrane",
+					startDate: "09/12/21",
+					severity: "8",
+					location: "head",
 					frequency: "constant",
 					duration: "all day",
 					notes: []

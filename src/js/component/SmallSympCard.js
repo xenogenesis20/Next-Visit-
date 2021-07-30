@@ -5,11 +5,24 @@ import { GlobalState } from "../store/appContext";
 
 export const SmallSympCard = props => {
 	const { store, actions } = useContext(GlobalState);
-	// console.log(props.entity);
+
 	return (
-		<div className="card text-center text-white m-1 single-med-card" style={{ width: "40%", height: "15%" }}>
-			<div className="card-body d-flex justify-content-around align-items-center p-1">
-				<p className="card-title">{props.entity.symptomName}</p>
+		<div
+			className="card text-center text-dark bg-light my-4 mx-3 p-3 border border-primary rounded shadow"
+			style={{ width: "24rem" }}>
+			<div className="card-body d-block justify-content-between align-items-center p-1">
+				<p className="card-title d-flex justify-content-between">
+					<span>{props.entity.symptomName}</span>
+					<span>Start date: {props.entity.startDate}</span>
+				</p>
+				<div className="mt-2 pt-2 border-top d-flex justify-content-around">
+					<button type="button" className="btn btn-primary btn-sm">
+						Details
+					</button>
+					<button type="button" className="btn btn-secondary btn-sm" data-bs-dismiss="toast">
+						Delete
+					</button>
+				</div>
 			</div>
 		</div>
 	);

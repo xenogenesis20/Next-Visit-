@@ -39,18 +39,34 @@
   width: 50vw;
 }
 body {
-  // background: url(../img/vecteezy_blue-background_wk1120.jpg) no-repeat center
-  //   center fixed;
-  // background-color: var(--blue-crayola) !important;
-  background: rgb(210, 228, 233) !important;
+    // background: url(../img/vecteezy_blue-background_wk1120.jpg) no-repeat center
+    // center fixed;
+    // background-color: var(--blue-crayola) !important;
+    // background: #353b49 !important;
+    background: #676767 !important; 
+    // background: rgb(210, 228, 233) !important;
 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
-  font-size: 18px;
-  // margin-top: 100px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: white;
+    // margin-top: 100px;
+}
+
+a {
+    color: rgb(98, 99, 100);
+}
+
+a:hover {
+    color: rgb(98, 99, 100);
+}
+
+.section-title {
+    color: white;
+    text-shadow: 2px 2px 6px black;
 }
 // .landing-page-container{
 //   margin-top: 100px;

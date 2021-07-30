@@ -19,9 +19,10 @@ export const DashboardHome = props => {
 			<div className="side-nav">
 				<SideNav loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} />
 			</div>
-			<div className="container-fluid p-0 m-0">
-				<div className="row g-0 p-0 m-0 med-and-symptom-row">
-					<div className="col-6 your-symptoms-box">
+			<div className="dashboard p-0 m-0">
+				<div className="row d-flex" style={{ height: "100vh" }}>
+					<div className="col-4 your-symptoms-box">
+						<h1 className="section-title text-center my-3">Symptoms</h1>
 						{store.allUserSymptoms &&
 							store.allUserSymptoms.map((symptom, index) => (
 								<Link
@@ -41,7 +42,8 @@ export const DashboardHome = props => {
 								</Link>
 							))}
 					</div>
-					<div className="col-6 your-medications-box d-flex flex-wrap">
+					<div className="col-4 your-medications-box">
+						<h1 className="section-title text-center my-3">Medications</h1>
 						{store.allUserMedications &&
 							store.allUserMedications.map((medication, index) => (
 								<Link
@@ -61,9 +63,8 @@ export const DashboardHome = props => {
 								</Link>
 							))}
 					</div>
-				</div>
-				<div className="row charts-row g-0 p-0 m-0">
-					<div className="col">
+					<div className="col-4 g-0 p-0 m-0">
+						<h1 className="section-title text-center my-3">Doctor visits</h1>
 						{store.allVisits &&
 							store.allVisits.map((visit, index) => (
 								<Link
