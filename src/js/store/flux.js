@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			apiAddress: "https://3000-scarlet-cicada-21qc8m3c.ws-us11.gitpod.io",
+			apiAddress: "https://3000-scarlet-cicada-21qc8m3c.ws-us13.gitpod.io",
 			endpoint: "",
 			userInfo: [],
 			allUserMedications: [
@@ -122,11 +122,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				setStore({ userInfo: newUser });
 			},
+			// addUserMedication: medication => {
+			// 	let allMedications = getStore().allUserMedications;
+			// 	allMedications.push(medication);
+			// 	setStore({ allUserMedications: allMedications });
+			// },
 			addUserMedication: medication => {
-				let allMedications = getStore().allUserMedications;
-				allMedications.push(medication);
-				setStore({ allUserMedications: allMedications });
+				fetch(getStore().apiAddress + "/maikel/" + "medication", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(medication)
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						console.log(responseAsJson);
+						setStore({ allUserMedications: responseAsJson });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			},
+
 			editUserMedication: medication => {
 				let allMeds = getStore().allUserMedications;
 				for (let i = 0; i < allMeds.length; i++) {
@@ -208,7 +229,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(function(responseAsJson) {
-						console.log(responseAsJson);
+						console.log("Vital Response:", responseAsJson);
 						if (vital.vitalName == "Blood Pressure") {
 							setStore({ vitalBloodPressure: responseAsJson });
 						} else if (vital.vitalName == "Weight") {

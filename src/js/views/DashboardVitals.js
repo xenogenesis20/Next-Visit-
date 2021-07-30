@@ -22,18 +22,20 @@ export const DashboardVitals = props => {
 				<SideNav loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} />
 			</div>
 			<div className="medication-column container-fluid">
-				<div className="row d-block g-0 p-0 m-0 med-and-symptom-row">
+				<div
+					className="row d-block g-0 p-0 m-0 med-and-symptom-row"
+					style={{ height: 500, overflowX: "scroll" }}>
 					<YourVitals />
 
 					<VitalStatistics />
 				</div>
 				<div className="row d-block">
-					<div className="col-12 ">Charts go here</div>
+					<div className="col-12 ">Vitals Charts</div>
 					<div>
 						<BarGraphWeight />
-                        <BarGraphBloodPressure />
-                        <BarGraphHeight />
-                        <BarGraphHeartRate />
+						<BarGraphBloodPressure />
+						<BarGraphHeight />
+						<BarGraphHeartRate />
 					</div>
 				</div>
 			</div>
