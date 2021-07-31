@@ -21,6 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					reason: "for more fun",
 					sideEffects: "awesomness"
 				}
+
 			],
 			vitalHeartRate: [
 				{ date: "2021-07-31", id: 0, value: 65.25, vitalName: "Heart Rate" },
@@ -45,26 +46,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 
 			allUserSymptoms: [
-				{
-					id: 123124,
-					symptomName: "Heart palpitations",
-					startDate: "07/12/21",
-					severity: "10",
-					location: "chest",
-					frequency: "constant",
-					duration: "all day",
-					notes: []
-				},
-				{
-					id: 323124,
-					symptomName: "Migrane",
-					startDate: "09/12/21",
-					severity: "8",
-					location: "head",
-					frequency: "constant",
-					duration: "all day",
-					notes: []
-				}
+				// {
+				// 	id: 123124,
+				// 	symptomName: "Heart palpitations",
+				// 	startDate: "07/12/21",
+				// 	severity: "10",
+				// 	location: "chest",
+				// 	frequency: "constant",
+				// 	duration: "all day",
+				// 	notes: []
+				// },
+				// {
+				// 	id: 323124,
+				// 	symptomName: "Migrane",
+				// 	startDate: "09/12/21",
+				// 	severity: "8",
+				// 	location: "head",
+				// 	frequency: "constant",
+				// 	duration: "all day",
+				// 	notes: []
+				// }
 			],
 			allUserVitals: [],
 			allVisits: [
@@ -168,15 +169,53 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				setStore({ allUserMedications: allMeds });
 			},
+			// deleteUserMedication: id => {
+			// 	let allMeds = getStore().allUserMedications;
+			// 	let newMedList = allMeds.filter(med => id != med.id);
+			// 	setStore({ allUserMedications: newMedList });
+			// },
 			deleteUserMedication: id => {
-				let allMeds = getStore().allUserMedications;
-				let newMedList = allMeds.filter(med => id != med.id);
-				setStore({ allUserMedications: newMedList });
+				fetch(getStore().apiAddress + "/maikel/medication/" + id, {
+					method: "DELETE",
+					headers: { "Content-Type": "application/json" }
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						console.log(responseAsJson);
+						setStore({ allUserMedications: responseAsJson });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			},
+
 			addUserSymptom: symptom => {
-				let allSymptoms = getStore().allUserSymptoms;
-				allSymptoms.push(symptom);
-				setStore({ allUserSymptoms: allSymptoms });
+				// let allSymptoms = getStore().allUserSymptoms;
+				// allSymptoms.push(symptom);
+				// setStore({ allUserSymptoms: allSymptoms });
+				fetch(getStore().apiAddress + "/maikel/" + "symptom", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(symptom)
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						console.log(responseAsJson);
+						setStore({ allUserSymptoms: responseAsJson });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			},
 			editUserSymptom: symptom => {
 				let allSymps = getStore().allUserSymptoms;
@@ -210,10 +249,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// console.log(allSymp[pos].notes[notePos].id);
 				setStore({ allUserSymptoms: allSymp });
 			},
+			// deleteUserSymptom: id => {
+			// 	let allSymp = getStore().allUserSymptoms;
+			// 	let newSympList = allSymp.filter(symp => id != symp.id);
+			// 	setStore({ allUserSymptoms: newSympList });
+			// },
 			deleteUserSymptom: id => {
-				let allSymp = getStore().allUserSymptoms;
-				let newSympList = allSymp.filter(symp => id != symp.id);
-				setStore({ allUserSymptoms: newSympList });
+				fetch(getStore().apiAddress + "/maikel/symptom/" + id, {
+					method: "DELETE",
+					headers: { "Content-Type": "application/json" }
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						console.log(responseAsJson);
+						setStore({ allUserSymptoms: responseAsJson });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			},
 			addUserVital: vital => {
 				let allVitals = getStore().allUserVitals;
