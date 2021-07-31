@@ -102,7 +102,7 @@ export const SingleSymptomCard = props => {
 									</div>
 									{displayNote ? (
 										<div className="note-wrapper">
-											<div className="form-outline bg-light mb-3 p-1">
+											<div className="form-outline bg-white mb-3 p-1">
 												<input
 													type="date"
 													id="date"
@@ -140,7 +140,7 @@ export const SingleSymptomCard = props => {
 											</div>
 											<button
 												type="button"
-												className="btn btn-success"
+												className="btn btn-success mx-auto"
 												onClick={() => confirmNewNote(props.id, note)}>
 												Save note
 											</button>

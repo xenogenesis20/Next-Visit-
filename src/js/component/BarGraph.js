@@ -39,7 +39,9 @@ export const BarGraph = props => {
 
 	return (
 		<div>
-			<button onClick={forceUpdate}>Refresh</button>
+			<button className="btn btn-lg btn-secondary" onClick={forceUpdate}>
+				Visualize
+			</button>
 			<Bar
 				data={data}
 				width={100}

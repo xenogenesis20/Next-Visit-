@@ -41,7 +41,7 @@ export const SingleVisitCard = props => {
 					<div className="col">
 						<div className="card m-2" style={{ width: "80vw" }}>
 							<div className="card-header text-center">
-								<h3>Dr. {props.entity.doctor}</h3>
+								<h3>Visiting: Dr. {props.entity.doctor}</h3>
 							</div>
 							<div className="card-body p-2">
 								{/* Start med info inside card body */}
@@ -135,9 +135,9 @@ export const SingleVisitCard = props => {
 														})
 													}
 												/>
-												<label className="form-label" htmlFor="startDate">
+												{/* <label className="form-label" htmlFor="startDate">
 													Date 00/00/0000:
-												</label>
+												</label> */}
 											</div>
 											<div className="form-outline bg-light mb-3 p-1">
 												<input
