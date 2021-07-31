@@ -236,6 +236,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				setStore({ allUserSymptoms: allSymps });
 			},
+			addSymptomNote: (id, note) => {
+				fetch(getStore().apiAddress + "/maikel/" + id + "/note", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(note)
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						console.log("Symptom Note Response:", responseAsJson);
+						setStore({ allUserSymptoms: responseAsJson });
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
 
 			deleteSymptomNote: (pos, notePos) => {
 				let allSymp = getStore().allUserSymptoms;
