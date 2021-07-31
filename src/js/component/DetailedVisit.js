@@ -59,7 +59,7 @@ export const DetailedVisit = props => {
 															<td>{symp.duration}</td>
 														</tr>
 														<tr>
-															<td colSpan="5">
+															<td colSpan="5" className="p-0">
 																<table className="table mb-0">
 																	<thead>
 																		<tr>
