@@ -27,7 +27,7 @@ export const DetailedVisit = props => {
 											<h6 className="mb-1">Visit Date:</h6>
 											<h6 className="mb-1">{visit.date}</h6>
 										</div>
-										<div className="d-flex w-100 justify-content-center border-start border-3 border-primary">
+										<div className="d-flex w-100 justify-content-center border-start border-primary">
 											<h6 className="mb-1">Visit Time:</h6>
 											<h6 className="mb-1">{visit.time}</h6>
 										</div>
@@ -36,7 +36,7 @@ export const DetailedVisit = props => {
 							</div>
 							<div className="row mb-4">
 								<div className="list-group">
-									<h4 className="my-3 px-3">Symptoms</h4>
+									<h4 className="p-3 border-bottom border-primary">Symptoms</h4>
 									<table className="table">
 										<thead>
 											<tr>
@@ -85,6 +85,66 @@ export const DetailedVisit = props => {
 																	</tbody>
 																</table>
 															</td>
+														</tr>
+													</>
+												);
+											})}
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+							<div className="row mb-4">
+								<div className="list-group">
+									<h4 className="p-3 border-bottom border-primary">Medications</h4>
+									<table className="table">
+										<thead>
+											<tr>
+												<th scope="col">Medication</th>
+												<th scope="col">Dose</th>
+												<th scope="col">Frequency</th>
+												<th scope="col">Reason</th>
+												<th scope="col">Side effects</th>
+											</tr>
+										</thead>
+										<tbody>
+											{visit.meds.map((med, i) => {
+												return (
+													<>
+														<tr key={i}>
+															<td>{med.name}</td>
+															<td>{med.dose}</td>
+															<td>{med.frequency}</td>
+															<td>{med.reason}</td>
+															<td>{med.side_effects}</td>
+														</tr>
+													</>
+												);
+											})}
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+							<div className="row mb-4">
+								<div className="list-group">
+									<h4 className="p-3 border-bottom border-primary">Vitals</h4>
+									<table className="table">
+										<thead>
+											<tr>
+												<th scope="col">Vital</th>
+												<th scope="col">Date</th>
+												<th scope="col">Value</th>
+											</tr>
+										</thead>
+										<tbody>
+											{visit.vitals.map((vital, i) => {
+												return (
+													<>
+														<tr key={i}>
+															<td>{vital.vitalName}</td>
+															<td>{vital.date}</td>
+															<td>{vital.value}</td>
 														</tr>
 													</>
 												);

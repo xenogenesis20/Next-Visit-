@@ -83,7 +83,7 @@ export const SingleVisitCard = props => {
 											<h6 className="mb-1">Vitals added:</h6>
 											<h6 className="mb-1">
 												{props.entity.vitals.map((vital, i) => (
-													<span key={i}>{"vital name"}</span>
+													<span key={i}>{vital.vitalName}</span>
 												))}
 											</h6>
 										</div>
@@ -315,7 +315,6 @@ SingleVisitCard.propTypes = {
 	onDelete: PropTypes.func,
 	entity: PropTypes.object,
 	id: PropTypes.number,
-	key: PropTypes.number,
 	positionOfSymptom: PropTypes.number
 };
 

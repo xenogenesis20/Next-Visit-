@@ -10,7 +10,7 @@ export const YourMedications = () => {
 	const [medList, setMedList] = useState(null);
 	const [display, setDisplay] = useState(false);
 	const [medications, setMedications] = useState({
-		id: store.allUserMedications.length,
+		// id: store.allUserMedications.length,
 		name: "",
 		dose: "",
 		frequency: "",
@@ -31,13 +31,14 @@ export const YourMedications = () => {
 	const confirmNewMedication = med => {
 		actions.addUserMedication(med);
 		setMedications({
-			id: store.allUserMedications.length,
+			// id: store.allUserMedications.length,
 			name: "",
 			dose: "",
 			frequency: "",
 			reason: "",
 			sideEffects: ""
 		});
+		console.log("confirmNewMedications ran");
 	};
 	useEffect(() => {
 		fetch(`https://clinicaltables.nlm.nih.gov/api/rxterms/v3/search?sf=DISPLAY_NAME&terms=${medications.name}`)
@@ -193,7 +194,8 @@ export const YourMedications = () => {
 								<button
 									type="button"
 									className="btn btn-primary"
-									onClick={() => confirmNewMedication(medications)}>
+									onClick={() => confirmNewMedication(medications)}
+									data-mdb-dismiss="modal">
 									Save changes
 								</button>
 							</div>

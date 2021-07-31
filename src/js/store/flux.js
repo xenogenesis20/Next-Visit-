@@ -2,7 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			// apiAddress: "https://3000-scarlet-cicada-21qc8m3c.ws-us13.gitpod.io",
-			apiAddress: "https://3000-azure-yak-0zyy24p1.ws-us13.gitpod.io",
+			// apiAddress: "https://3000-azure-yak-0zyy24p1.ws-us13.gitpod.io",
+			apiAddress: "https://3000-plum-sturgeon-mlykhiq2.ws-us13.gitpod.io",
 			endpoint: "",
 			userInfo: [],
 			allUserMedications: [
@@ -86,7 +87,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 							notes: [{ date: "08/02/2021", description: "Getting better" }]
 						}
 					],
-					meds: [],
+					meds: [
+						{
+							dose: "24mg",
+							frequency: "often",
+							id: 2,
+							name: "ZOCOR (Oral Pill)",
+							reason: "Bad reasons",
+							side_effects: "Terrifying"
+						}
+					],
 					vitals: []
 				}
 			],
@@ -121,9 +131,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					else if (key == "Date") return vital.date == value;
 				});
 			},
-			addVisit: visitDetails => {
+			addVisit: (doctorName, date, time, sympList, medList, vitalList) => {
 				var visits = getStore().allVisits;
-				visits.push(visitDetails);
+				var newVitals = [];
+				for (let vital of getStore().vitalHeartRate) {
+					if (vitalList.includes(vital.vitalName)) newVitals.push(vital);
+				}
+				for (let vital of getStore().vitalHeight) {
+					if (vitalList.includes(vital.vitalName)) newVitals.push(vital);
+				}
+				for (let vital of getStore().vitalBloodPressure) {
+					if (vitalList.includes(vital.vitalName)) newVitals.push(vital);
+				}
+				for (let vital of getStore().vitalWeight) {
+					if (vitalList.includes(vital.vitalName)) newVitals.push(vital);
+				}
+				var newVisit = {
+					id: getStore().allVisits.length,
+					doctor: doctorName,
+					date: date,
+					time: time,
+					symptoms: sympList,
+					meds: medList,
+					vitals: newVitals
+				};
+				visits.push(newVisit);
 				setStore({ allVisits: visits });
 			},
 			sortVitalsByDate: () => {},
