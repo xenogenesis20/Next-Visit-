@@ -63,9 +63,7 @@ export const SingleVisitCard = props => {
 											<h6 className="mb-1">Symptoms added:</h6>
 											<h6 className="mb-1">
 												{props.entity.symptoms.map((symptom, i) => (
-													<span style={{ background: "lightgray" }} key={i}>
-														{symptom.symptomName},
-													</span>
+													<span key={i}>{symptom.symptomName},</span>
 												))}
 											</h6>
 										</div>
@@ -75,9 +73,7 @@ export const SingleVisitCard = props => {
 											<h6 className="mb-1">Medications added:</h6>
 											<h6 className="mb-1">
 												{props.entity.meds.map((med, i) => (
-													<span style={{ background: "lightgray" }} key={i}>
-														{med.name},{" "}
-													</span>
+													<span key={i}>{med.name}, </span>
 												))}
 											</h6>
 										</div>
@@ -87,9 +83,7 @@ export const SingleVisitCard = props => {
 											<h6 className="mb-1">Vitals added:</h6>
 											<h6 className="mb-1">
 												{props.entity.vitals.map((vital, i) => (
-													<span style={{ background: "lightgray" }} key={i}>
-														{"vital name"}
-													</span>
+													<span key={i}>{"vital name"}</span>
 												))}
 											</h6>
 										</div>
@@ -98,17 +92,15 @@ export const SingleVisitCard = props => {
 								{/* End med info inside card body */}
 								<div className="card-footer">
 									<div className="d-flex w-100 justify-content-between px-5 m-1">
-										<button
-											type="button"
-											className="btn btn-primary"
-											data-mdb-toggle="modal"
-											data-mdb-target={`#editSymp-${props.id}`}>
-											Edit
-											<i className="fas fa-pencil-alt mr-3" />
-										</button>
+										<Link to={"/DashboardVisitDetails/" + props.entity.id}>
+											<button type="button" className="btn btn-primary">
+												Details
+												<i className="fas fa-pencil-alt mr-3" />
+											</button>
+										</Link>
 										<button
 											className="btn btn btn-danger"
-											onClick={() => actions.deleteUserSymptom(props.id)}>
+											onClick={() => actions.deleteUserSymptom(props.entity.id)}>
 											Delete
 											<i className="fas fa-trash-alt" />
 										</button>
@@ -131,7 +123,7 @@ export const SingleVisitCard = props => {
 														setNote({
 															...note,
 															date: e.target.value,
-															id: `${props.id}${props.entity.notes.length}`
+															id: `${props.entity.id}${props.entity.notes.length}`
 														})
 													}
 												/>
@@ -164,7 +156,7 @@ export const SingleVisitCard = props => {
 											<button
 												type="button"
 												className="btn btn-success"
-												onClick={() => confirmNewNote(props.id, note)}>
+												onClick={() => confirmNewNote(props.entity.id, note)}>
 												Save note
 											</button>
 										</div>
@@ -201,7 +193,7 @@ export const SingleVisitCard = props => {
 			{/* Edit symptom modal */}
 			<div
 				className="modal fade"
-				id={`editSymp-${props.id}`}
+				id={`editSymp-${props.entity.id}`}
 				tabIndex="-1"
 				aria-labelledby="addSymptomModal"
 				aria-hidden="true">

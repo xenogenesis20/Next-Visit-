@@ -170,8 +170,31 @@ footer {
     color: white;
 }
 
+.detailed-visit .card {
+    color: rgb(48, 47, 47) !important;
+}
+
+.detailed-visit .card-header {
+    background: white !important;
+    color: rgb(48, 47, 47) !important;
+}
+
 .list-group {
     box-shadow: 1px 1px 5px gray;
+}
+
+.detailed-visit table {
+  color: rgb(48,47,47);
+}
+.detailed-visit tr {
+  color: rgb(48,47,47);
+}
+.detailed-visit th {
+  color: rgb(48,47,47);
+}
+.detailed-visit td {
+  color: rgb(48,47,47);
+
 }
 
 table{
