@@ -58,7 +58,7 @@ export const VitalStatistics = props => {
 			let slicedVitals = array.slice(0, 30);
 			let sumOfValues = 0;
 			let average = 0;
-			console.log(slicedVitals);
+			// console.log(slicedVitals);
 			for (let vital of slicedVitals) {
 				sumOfValues += parseInt(vital["value"]);
 			}
@@ -70,11 +70,11 @@ export const VitalStatistics = props => {
 
 			for (let vital of array) {
 				sumOfValues += parseInt(vital["value"]);
-				console.log("Vital: ", vital);
-				console.log("Vital Value: ", vital["value"]);
+				// console.log("Vital: ", vital);
+				// console.log("Vital Value: ", vital["value"]);
 			}
 			average = sumOfValues / array.length;
-			console.log("Average: ", average);
+			// console.log("Average: ", average);
 			return average;
 		}
 	};

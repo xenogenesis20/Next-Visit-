@@ -5,6 +5,36 @@ import { Redirect } from "react-router-dom";
 import { Navbar } from "../component/navbar";
 
 export const SignIn = props => {
+	const [user, setUser] = useState({
+		password: null,
+		username: null
+	});
+
+	const logIn = () => {
+		fetch(store.apiAddress + "/user", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(user)
+		})
+			.then(function(response) {
+				if (!response.ok) {
+					// add new modal for incorrect data
+					alert("Incorect date or user exists");
+					throw Error(response.statusText);
+				}
+
+				return response.json();
+			})
+			.then(function(responseAsJson) {
+				console.log(responseAsJson);
+				props.setLoggedIn(true);
+				sessionStorage.setItem("user");
+			})
+			.catch(function(error) {
+				alert("Incorect date or user exists");
+				console.log("Looks like there was a problem: \n", error);
+			});
+	};
 	return (
 		<>
 			<Navbar />

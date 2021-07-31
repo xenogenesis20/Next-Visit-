@@ -14,11 +14,11 @@ export const BarGraphHeight = props => {
 		datasets: [
 			{
 				label: "Height over Time",
-				backgroundColor: "rgba(255,99,132,0.2)",
-				borderColor: "rgba(255,99,132,1)",
+				backgroundColor: "rgba(92,119,254,0.2)",
+				borderColor: "rgba(4,35,188,1)",
 				borderWidth: 1,
-				hoverBackgroundColor: "rgba(255,99,132,0.4)",
-				hoverBorderColor: "rgba(255,99,132,1)",
+				hoverBackgroundColor: "rgba(92,119,254,0.4)",
+				hoverBorderColor: "rgba(4,35,188,1)",
 				data: []
 			}
 		]
@@ -35,8 +35,8 @@ export const BarGraphHeight = props => {
 			}
 			setData(newDataLables);
 		}
-		console.log(data);
-		console.log(store.vitalHeight);
+		// console.log(data);
+		// console.log(store.vitalHeight);
 	});
 
 	return (

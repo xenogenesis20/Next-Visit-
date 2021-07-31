@@ -114,6 +114,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			registerNewUser: user => {
+				fetch(getStore().apiAddress + "/user", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(user)
+				})
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						console.log(responseAsJson);
+					})
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
+			},
 			sortVitals: (key, value) => {
 				let newVitalsArray = getStore().allUserVitals;
 				return newVitalsArray.filter(vital => {
