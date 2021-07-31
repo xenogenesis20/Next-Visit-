@@ -8,7 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				{
 					id: 1357,
 					name: "Aspirin",
-					dose: "a lot",
+					dose: "100 mg",
 					frequency: "too often",
 					reason: "for fun",
 					sideEffects: "madness and death"
@@ -16,7 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				{
 					id: 1359,
 					name: "Morphine",
-					dose: "sufficient",
+					dose: "200 mg",
 					frequency: "not often enough",
 					reason: "for more fun",
 					sideEffects: "awesomness"
