@@ -111,14 +111,10 @@ export const SingleSymptomCard = props => {
 													onChange={e =>
 														setNote({
 															...note,
-															date: e.target.value,
-															id: `${props.id}${props.entity.notes.length}`
+															date: e.target.value
 														})
 													}
 												/>
-												{/* <label className="form-label" htmlFor="startDate">
-													Date 00/00/0000:
-												</label> */}
 											</div>
 											<div className="form-outline bg-light mb-3 p-1">
 												<input
