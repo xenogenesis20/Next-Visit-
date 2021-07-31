@@ -20,7 +20,7 @@ export const DashboardHome = props => {
 				<SideNav loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} />
 			</div>
 			<div className="dashboard p-0 m-0">
-				<div className="row d-flex" style={{ height: "100vh" }}>
+				<div className="row d-flex justify-content-center" style={{ height: "100vh" }}>
 					<div className="col-4 your-symptoms-box">
 						<h1 className="section-title text-center my-3">Symptoms</h1>
 						{store.allUserSymptoms &&
