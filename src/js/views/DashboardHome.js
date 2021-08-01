@@ -13,7 +13,7 @@ import { SmallSympCard } from "../component/SmallSympCard";
 
 export const DashboardHome = props => {
 	const { store, actions } = useContext(GlobalState);
-
+	console.log(store);
 	return (
 		<div className="container-fluid m-0 p-0 d-flex linear-bg">
 			<div className="side-nav">

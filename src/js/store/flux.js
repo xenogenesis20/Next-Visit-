@@ -2,103 +2,103 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			// apiAddress: "https://3000-scarlet-cicada-21qc8m3c.ws-us13.gitpod.io",
-			// apiAddress: "https://3000-azure-yak-0zyy24p1.ws-us13.gitpod.io",
-			apiAddress: "https://3000-plum-sturgeon-mlykhiq2.ws-us13.gitpod.io",
+			apiAddress: "https://3000-azure-yak-0zyy24p1.ws-us13.gitpod.io",
+			// apiAddress: "https://3000-plum-sturgeon-mlykhiq2.ws-us13.gitpod.io",
 			endpoint: "",
 			userInfo: [],
 			allUserMedications: [
-				{
-					id: 1357,
-					name: "Aspirin",
-					dose: "100 mg",
-					frequency: "too often",
-					reason: "for fun",
-					sideEffects: "madness and death"
-				},
-				{
-					id: 1359,
-					name: "Morphine",
-					dose: "200 mg",
-					frequency: "not often enough",
-					reason: "for more fun",
-					sideEffects: "awesomness"
-				}
+				// {
+				// 	id: 1357,
+				// 	name: "Aspirin",
+				// 	dose: "100 mg",
+				// 	frequency: "too often",
+				// 	reason: "for fun",
+				// 	sideEffects: "madness and death"
+				// },
+				// {
+				// 	id: 1359,
+				// 	name: "Morphine",
+				// 	dose: "200 mg",
+				// 	frequency: "not often enough",
+				// 	reason: "for more fun",
+				// 	sideEffects: "awesomness"
+				// }
 			],
 			vitalHeartRate: [
-				{ date: "2021-07-31", id: 0, value: 65.25, vitalName: "Heart Rate" },
-				{ date: "2021-07-15", id: 0, value: 65.35, vitalName: "Heart Rate" },
-				{ date: "2021-07-01", id: 0, value: 65.4, vitalName: "Heart Rate" }
+				// { date: "2021-07-31", id: 0, value: 65.25, vitalName: "Heart Rate" },
+				// { date: "2021-07-15", id: 0, value: 65.35, vitalName: "Heart Rate" },
+				// { date: "2021-07-01", id: 0, value: 65.4, vitalName: "Heart Rate" }
 			],
 			vitalHeight: [
-				{ date: "2021-07-31", id: 0, value: 65.25, vitalName: "Height" },
-				{ date: "2021-07-15", id: 0, value: 65.35, vitalName: "Height" },
-				{ date: "2021-07-01", id: 0, value: 65.4, vitalName: "Height" }
+				// { date: "2021-07-31", id: 0, value: 65.25, vitalName: "Height" },
+				// { date: "2021-07-15", id: 0, value: 65.35, vitalName: "Height" },
+				// { date: "2021-07-01", id: 0, value: 65.4, vitalName: "Height" }
 			],
 
 			vitalBloodPressure: [
-				{ date: "2021-07-31", id: 0, value: "120/80", vitalName: "Blood Pressure" },
-				{ date: "2021-07-15", id: 0, value: "120/90", vitalName: "Blood Pressure" },
-				{ date: "2021-07-01", id: 0, value: "100/80", vitalName: "Blood Pressure" }
+				// { date: "2021-07-31", id: 0, value: "120/80", vitalName: "Blood Pressure" },
+				// { date: "2021-07-15", id: 0, value: "120/90", vitalName: "Blood Pressure" },
+				// { date: "2021-07-01", id: 0, value: "100/80", vitalName: "Blood Pressure" }
 			],
 			vitalWeight: [
-				{ date: "2021-07-31", id: 0, value: 200, vitalName: "Weight" },
-				{ date: "2021-07-15", id: 0, value: 150, vitalName: "Weight" },
-				{ date: "2021-07-01", id: 0, value: 100, vitalName: "Weight" }
+				// { date: "2021-07-31", id: 0, value: 200, vitalName: "Weight" },
+				// { date: "2021-07-15", id: 0, value: 150, vitalName: "Weight" },
+				// { date: "2021-07-01", id: 0, value: 100, vitalName: "Weight" }
 			],
 
 			allUserSymptoms: [
-				{
-					id: 123124,
-					symptomName: "Heart palpitations",
-					startDate: "07/12/21",
-					severity: "10",
-					location: "chest",
-					frequency: "constant",
-					duration: "all day",
-					notes: []
-				},
-				{
-					id: 323124,
-					symptomName: "Migrane",
-					startDate: "09/12/21",
-					severity: "8",
-					location: "head",
-					frequency: "constant",
-					duration: "all day",
-					notes: []
-				}
+				// {
+				// 	id: 123124,
+				// 	symptomName: "Heart palpitations",
+				// 	startDate: "07/12/21",
+				// 	severity: "10",
+				// 	location: "chest",
+				// 	frequency: "constant",
+				// 	duration: "all day",
+				// 	notes: []
+				// },
+				// {
+				// 	id: 323124,
+				// 	symptomName: "Migrane",
+				// 	startDate: "09/12/21",
+				// 	severity: "8",
+				// 	location: "head",
+				// 	frequency: "constant",
+				// 	duration: "all day",
+				// 	notes: []
+				// }
 			],
 			allUserVitals: [],
 			allVisits: [
-				{
-					id: 0,
-					doctor: "George",
-					date: "12/02/2021",
-					time: "9:45 AM",
-					symptoms: [
-						{
-							id: 123124,
-							symptomName: "broken butt",
-							startDate: "07/12/21",
-							severity: "10",
-							location: "butt",
-							frequency: "constant",
-							duration: "all day",
-							notes: [{ date: "08/02/2021", description: "Getting better" }]
-						}
-					],
-					meds: [
-						{
-							dose: "24mg",
-							frequency: "often",
-							id: 2,
-							name: "ZOCOR (Oral Pill)",
-							reason: "Bad reasons",
-							side_effects: "Terrifying"
-						}
-					],
-					vitals: []
-				}
+				// {
+				// 	id: 0,
+				// 	doctor: "George",
+				// 	date: "12/02/2021",
+				// 	time: "9:45 AM",
+				// 	symptoms: [
+				// 		{
+				// 			id: 123124,
+				// 			symptomName: "broken butt",
+				// 			startDate: "07/12/21",
+				// 			severity: "10",
+				// 			location: "butt",
+				// 			frequency: "constant",
+				// 			duration: "all day",
+				// 			notes: [{ date: "08/02/2021", description: "Getting better" }]
+				// 		}
+				// 	],
+				// 	meds: [
+				// 		{
+				// 			dose: "24mg",
+				// 			frequency: "often",
+				// 			id: 2,
+				// 			name: "ZOCOR (Oral Pill)",
+				// 			reason: "Bad reasons",
+				// 			side_effects: "Terrifying"
+				// 		}
+				// 	],
+				// 	vitals: []
+				// }
 			],
 			allDoctors: [
 				{
@@ -124,6 +124,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			setUserData: data => {
+				setStore({ allUserSymptoms: data.symptoms });
+				setStore({ allUserVitals: data.vitals });
+				setStore({ allUserMedications: data.medications });
+			},
 			registerNewUser: user => {
 				fetch(getStore().apiAddress + "/user", {
 					method: "POST",
@@ -190,7 +195,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	setStore({ allUserMedications: allMedications });
 			// },
 			addUserMedication: medication => {
-				fetch(getStore().apiAddress + "/maikel/" + "medication", {
+				fetch(getStore().apiAddress + `/${sessionStorage.getItem("user")}/` + "medication", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(medication)
@@ -226,7 +231,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	setStore({ allUserMedications: newMedList });
 			// },
 			deleteUserMedication: id => {
-				fetch(getStore().apiAddress + "/maikel/medication/" + id, {
+				fetch(getStore().apiAddress + `/${sessionStorage.getItem("user")}/medication/` + id, {
 					method: "DELETE",
 					headers: { "Content-Type": "application/json" }
 				})
@@ -249,7 +254,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// let allSymptoms = getStore().allUserSymptoms;
 				// allSymptoms.push(symptom);
 				// setStore({ allUserSymptoms: allSymptoms });
-				fetch(getStore().apiAddress + "/maikel/" + "symptom", {
+				console.log(sessionStorage.getItem("user"));
+				fetch(getStore().apiAddress + `/${sessionStorage.getItem("user")}/` + "symptom", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(symptom)
@@ -289,7 +295,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ allUserSymptoms: allSymps });
 			},
 			addSymptomNote: (id, note) => {
-				fetch(getStore().apiAddress + "/maikel/" + id + "/note", {
+				fetch(getStore().apiAddress + `/${sessionStorage.getItem("user")}/` + id + "/note", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(note)
@@ -326,7 +332,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	setStore({ allUserSymptoms: newSympList });
 			// },
 			deleteUserSymptom: id => {
-				fetch(getStore().apiAddress + "/maikel/symptom/" + id, {
+				fetch(getStore().apiAddress + `/${sessionStorage.getItem("user")}/symptom/` + id, {
 					method: "DELETE",
 					headers: { "Content-Type": "application/json" }
 				})
@@ -356,7 +362,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return sortedVitals;
 			},
 			addUserVital: vital => {
-				fetch(getStore().apiAddress + "/maikel/" + "vital", {
+				fetch(getStore().apiAddress + `/${sessionStorage.getItem("user")}/` + "vital", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(vital)
@@ -400,7 +406,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	setStore({ allUserVitals: newVitalList });
 			// },
 			deleteUserVital: id => {
-				fetch(getStore().apiAddress + "/maikel/vital/" + id, {
+				fetch(getStore().apiAddress + `/${sessionStorage.getItem("user")}/vital/` + id, {
 					method: "DELETE",
 					headers: { "Content-Type": "application/json" }
 				})
@@ -450,33 +456,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			login: (username, password) => {
-				fetch(getStore().apiAddress + endpoint + entity_id, {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({
-						username: "pedro",
-						password: "soccer"
-					})
-				})
-					.then(function(response) {
-						if (!response.status) {
-							throw Error(response.statusText);
-						}
-						if (response.status == 401) {
-							throw Error(response.statusText);
-						}
-						return response.json();
-					})
-					.then(function(responseAsJson) {
-						// console.log(responseAsJson);
-						// setStore({ users: responseAsJson.token });
-						localStorage.setItem("jwt-token", responseAsJson.token);
-					})
-					.catch(function(error) {
-						console.log("Looks like there was a problem: \n", error);
-					});
-			},
+
 			// get_auth: (username, password) => {
 			// 	// retrieve token form localStorage
 			// 	const token = localStorage.getItem("jwt-token");
