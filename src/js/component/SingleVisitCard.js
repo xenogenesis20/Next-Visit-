@@ -78,7 +78,7 @@ export const SingleVisitCard = props => {
 											</h6>
 										</div>
 									</div>
-									<div className="list-group-item">
+									{/* <div className="list-group-item">
 										<div className="d-flex w-100 justify-content-between px-5">
 											<h6 className="mb-1">Vitals added:</h6>
 											<h6 className="mb-1">
@@ -87,7 +87,7 @@ export const SingleVisitCard = props => {
 												))}
 											</h6>
 										</div>
-									</div>
+									</div> */}
 								</div>
 								{/* End med info inside card body */}
 								<div className="card-footer">
@@ -191,7 +191,7 @@ export const SingleVisitCard = props => {
 			</div>
 
 			{/* Edit symptom modal */}
-			<div
+			{/* <div
 				className="modal fade"
 				id={`editSymp-${props.entity.id}`}
 				tabIndex="-1"
@@ -300,7 +300,7 @@ export const SingleVisitCard = props => {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
 			{/* Edit symptom modal */}
 		</>
 	);

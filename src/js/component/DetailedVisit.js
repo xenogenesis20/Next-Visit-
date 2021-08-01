@@ -10,7 +10,7 @@ export const DetailedVisit = props => {
 	return (
 		<div className="container-fluid detailed-visit">
 			<div className="row">
-				<h2>Doctor Visit</h2>
+				<h2 className="text-center shadow">Doctor Visit</h2>
 			</div>
 
 			<div className="row">
