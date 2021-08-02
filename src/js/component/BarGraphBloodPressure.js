@@ -14,11 +14,11 @@ export const BarGraphBloodPressure = props => {
 		datasets: [
 			{
 				label: "Blood Pressure over Time",
-				backgroundColor: "rgba(255,99,132,0.2)",
-				borderColor: "rgba(255,99,132,1)",
+				backgroundColor: "rgba(92,119,254,0.2)",
+				borderColor: "rgba(4,35,188,1)",
 				borderWidth: 1,
-				hoverBackgroundColor: "rgba(255,99,132,0.4)",
-				hoverBorderColor: "rgba(255,99,132,1)",
+				hoverBackgroundColor: "rgba(92,119,254,0.4)",
+				hoverBorderColor: "rgba(4,35,188,1)",
 				data: []
 			}
 		]
@@ -31,12 +31,12 @@ export const BarGraphBloodPressure = props => {
 			newDataLables.datasets[0].data = [];
 			for (let i = 0; i < store.vitalBloodPressure.length; i++) {
 				newDataLables.labels.push(store.vitalBloodPressure[i].date);
+				console.log("date : ", store.vitalBloodPressure[i].date);
 				newDataLables.datasets[0].data.push(parseInt(store.vitalBloodPressure[i].value));
 			}
 			setData(newDataLables);
 		}
 		console.log(data);
-		console.log(store.vitalBloodPressure);
 	});
 
 	return (
@@ -46,15 +46,23 @@ export const BarGraphBloodPressure = props => {
 			</button>
 			<Bar
 				data={data}
-				width={100}
-				height={500}
+				width={300}
+				height={600}
 				options={{
+					scaleShowValues: true,
 					maintainAspectRatio: false,
 					scales: {
 						yAxes: [
 							{
 								ticks: {
 									beginAtZero: true
+								}
+							}
+						],
+						xAxes: [
+							{
+								ticks: {
+									autoSkip: false
 								}
 							}
 						]

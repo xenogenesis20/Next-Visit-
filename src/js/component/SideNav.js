@@ -79,5 +79,5 @@ export const SideNav = props => {
 };
 
 SideNav.propTypes = {
-	setLoggedIn: PropTypes.object
+	setLoggedIn: PropTypes.func
 };

@@ -170,8 +170,35 @@ footer {
     color: white;
 }
 
+.detailed-visit .card {
+    color: rgb(48, 47, 47) !important;
+}
+
+.detailed-visit .card-header {
+    background: white !important;
+    color: rgb(48, 47, 47) !important;
+}
+
 .list-group {
     box-shadow: 1px 1px 5px gray;
+}
+
+.detailed-visit table {
+  color: rgb(48,47,47);
+}
+.detailed-visit tr {
+  color: rgb(48,47,47);
+}
+.detailed-visit th {
+  color: rgb(48,47,47);
+}
+.detailed-visit td {
+  color: rgb(48,47,47);
+
+}
+
+.modal-content {
+    color: #676767;
 }
 
 table{
@@ -186,4 +213,15 @@ th{
 td{
   color: white;
 
+}
+.signup-box{
+  width: 60vw;
+  height: 60vh;
+}
+.modal-body, .modal-header, .modal-footer{
+  color: black;
+}
+.chartjs-render-monitor{
+  width: 100%;
+  height: 30vh;
 }

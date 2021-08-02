@@ -1,10 +1,51 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import "../../styles/signin.scss";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import { Navbar } from "../component/navbar";
+import { GlobalState } from "../store/appContext";
 
 export const SignIn = props => {
+	const { store, actions } = useContext(GlobalState);
+	const [user, setUser] = useState({
+		password: null,
+		username: null
+	});
+
+	const logIn = e => {
+		console.log(user);
+		e.preventDefault();
+		fetch(store.apiAddress + "/login", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(user)
+		})
+			.then(function(response) {
+				if (!response.ok) {
+					// add new modal for incorrect data
+					alert("Incorect date or user exists");
+					throw Error(response.statusText);
+				}
+
+				return response.json();
+			})
+			.then(function(responseAsJson) {
+				console.log(responseAsJson);
+				actions.setUserData(responseAsJson);
+				props.setLoggedIn(true);
+
+				sessionStorage.setItem("user", user.username);
+			})
+			.catch(function(error) {
+				alert("invalid username or password");
+				console.log("Looks like there was a problem: \n", error);
+			});
+	};
+
+	const handleInput = e => {
+		setUser({ ...user, [e.target.name]: e.target.value });
+	};
+
 	return (
 		<>
 			<Navbar />
@@ -26,14 +67,20 @@ export const SignIn = props => {
 							</div>
 						</div>
 						<div className="card-body">
-							<form>
+							<form onSubmit={e => logIn(e)}>
 								<div className="input-group form-group">
 									<div className="input-group-prepend">
 										<span className="input-group-text">
 											<i className="fas fa-user" />
 										</span>
 									</div>
-									<input type="text" className="form-control" placeholder="username" />
+									<input
+										type="text"
+										className="form-control"
+										placeholder="username"
+										onChange={handleInput}
+										name="username"
+									/>
 								</div>
 								<div className="input-group form-group">
 									<div className="input-group-prepend">
@@ -41,13 +88,19 @@ export const SignIn = props => {
 											<i className="fas fa-key" />
 										</span>
 									</div>
-									<input type="password" className="form-control" placeholder="password" />
+									<input
+										name="password"
+										type="password"
+										className="form-control"
+										placeholder="password"
+										onChange={handleInput}
+									/>
 								</div>
 								<div className="row align-items-center remember">
 									<input type="checkbox" />
 									Remember Me
 								</div>
-								<div className="form-group" onClick={() => props.setLoggedIn(true)}>
+								<div className="form-group">
 									<input type="submit" value="Login" className="btn float-right login_btn" />
 								</div>
 							</form>

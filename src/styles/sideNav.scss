@@ -35,17 +35,17 @@ span:hover::before {
   color: var(--eerie-black)
 }
 
-span::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  inset: 0 0 0 0;
-  background: #D3D3D3;
-  color: var(--eerie-black);
-  z-index: -1;
-  transition: transform .3s ease;
-}
+// span::before {
+//   content: " ";
+//   display: block;
+//   position: absolute;
+//   top: 0; right: 0; bottom: 0; left: 0;
+//   inset: 0 0 0 0;
+//   background: #D3D3D3;
+//   color: var(--eerie-black);
+//   z-index: -1;
+//   transition: transform .3s ease;
+// }
 // span:hover{
 //   color: var(--eerie-black)
 // }

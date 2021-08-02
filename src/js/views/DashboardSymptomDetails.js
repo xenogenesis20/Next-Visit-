@@ -18,6 +18,7 @@ export const DashboardSymptomDetails = props => {
 		</div>
 	);
 };
+
 DashboardSymptomDetails.propTypes = {
 	loggedIn: PropTypes.bool,
 	setLoggedIn: PropTypes.func
