@@ -23,9 +23,11 @@ span {
     text-transform: capitalize;
 }
 .feature-box{
-  height: 90%;
+  height: 98%;
   background-color: #676767;
   border-radius: 20px;
+  -webkit-box-shadow: 1px 3px 15px 5px rgba(138, 138, 138, 0.486); 
+box-shadow: 1px 3px 15px 5px rgba(160, 160, 160, 0.49);
 }
 .section-row{
   background: #29B9F0;

@@ -47,7 +47,7 @@ export const SingleMedicationCard = props => {
 		<>
 			<div className="med-card-and-med-info d-flex justify-content-center row mb-2">
 				<div className=" d-flex justify-content-center">
-					<div className="card m-2" style={{ width: "80vw", height: "45vh" }}>
+					<div className="card m-2 card-shadow" style={{ width: "80vw", height: "45vh" }}>
 						<div className="card-header text-center ">
 							<h3>{props.entity.name}</h3>
 						</div>
@@ -56,25 +56,25 @@ export const SingleMedicationCard = props => {
 								<div className="col-4">
 									<div className="list-group">
 										<div className="list-group-item">
-											<div className="d-flex w-100 justify-content-around">
+											<div className="d-flex w-100 justify-content-between">
 												<h6 className="mb-1">Current Dose:</h6>
 												<h6 className="mb-1">{props.entity.dose} </h6>
 											</div>
 										</div>
 										<div className="list-group-item">
-											<div className="d-flex w-100 justify-content-around">
+											<div className="d-flex w-100 justify-content-between">
 												<h6 className="mb-1">How often do you take it:</h6>
 												<h6 className="mb-1">{props.entity.frequency}</h6>
 											</div>
 										</div>
 										<div className="list-group-item">
-											<div className="d-flex w-100 justify-content-around">
+											<div className="d-flex w-100 justify-content-between">
 												<h6 className="mb-1">Symptom target:</h6>
 												<h6 className="mb-1">{props.entity.reason}</h6>
 											</div>
 										</div>
 										<div className="list-group-item">
-											<div className="d-flex w-100 justify-content-around">
+											<div className="d-flex w-100 justify-content-between">
 												<h6 className="mb-1">Side effects:</h6>
 												<h6 className="mb-1">{props.entity.sideEffects}</h6>
 											</div>
