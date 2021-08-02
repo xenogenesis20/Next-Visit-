@@ -21,7 +21,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					reason: "for more fun",
 					sideEffects: "awesomness"
 				}
-
 			],
 			vitalHeartRate: [
 				{ date: "2021-07-31", id: 0, value: 65.25, vitalName: "Heart Rate" },
