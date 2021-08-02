@@ -7,22 +7,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 			endpoint: "",
 			userInfo: [],
 			allUserMedications: [
-				// {
-				// 	id: 1357,
-				// 	name: "Aspirin",
-				// 	dose: "100 mg",
-				// 	frequency: "too often",
-				// 	reason: "for fun",
-				// 	sideEffects: "madness and death"
-				// },
-				// {
-				// 	id: 1359,
-				// 	name: "Morphine",
-				// 	dose: "200 mg",
-				// 	frequency: "not often enough",
-				// 	reason: "for more fun",
-				// 	sideEffects: "awesomness"
-				// }
+				{
+					id: 1357,
+					name: "Aspirin",
+					dose: "100 mg",
+					frequency: "too often",
+					reason: "for fun",
+					sideEffects: "madness and death"
+				},
+				{
+					id: 1359,
+					name: "Morphine",
+					dose: "200 mg",
+					frequency: "not often enough",
+					reason: "for more fun",
+					sideEffects: "awesomness"
+				}
 			],
 			vitalHeartRate: [
 				// { date: "2021-07-31", id: 0, value: 65.25, vitalName: "Heart Rate" },
