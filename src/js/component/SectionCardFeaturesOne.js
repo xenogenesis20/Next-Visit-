@@ -34,8 +34,8 @@ export const SectionCardFeaturesOne = () => {
 				</div>
 			</div>
 			<div className="row">
-				<div className="col">
-					<div className="feature-box">
+				<div className="col mt-4">
+					<div className="feature-box p-5">
 						<h3 className="m-2 p-2">Plan your Next Visit</h3>
 						<p className="m-2 p-2">
 							With Next Visit, you can plan your upcoming doctor appointments with information you have
