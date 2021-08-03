@@ -23,7 +23,7 @@ export const SignIn = props => {
 			.then(function(response) {
 				if (!response.ok) {
 					// add new modal for incorrect data
-					alert("Incorect date or user exists");
+					alert("Incorect data or user exists");
 					throw Error(response.statusText);
 				}
 

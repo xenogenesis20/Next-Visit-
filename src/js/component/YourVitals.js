@@ -116,9 +116,6 @@ export const YourVitals = () => {
 										name="date"
 										onChange={handleInput}
 									/>
-									<label className="form-label" htmlFor="drug_strength">
-										Date
-									</label>
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
 									<input

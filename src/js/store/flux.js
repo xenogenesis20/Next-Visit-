@@ -2,8 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			// apiAddress: "https://3000-scarlet-cicada-21qc8m3c.ws-us13.gitpod.io",
-			apiAddress: "https://3000-azure-yak-0zyy24p1.ws-us13.gitpod.io",
-			// apiAddress: "https://3000-plum-sturgeon-mlykhiq2.ws-us13.gitpod.io",
+			// apiAddress: "https://3000-azure-yak-0zyy24p1.ws-us13.gitpod.io",
+			apiAddress: "https://3000-plum-sturgeon-mlykhiq2.ws-us14.gitpod.io",
 			endpoint: "",
 			userInfo: [],
 			allUserMedications: [
@@ -366,7 +366,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return sortedVitals;
 			},
 			addUserVital: vital => {
-				fetch(getStore().apiAddress + `/${sessionStorage.getItem("user")}/` + "vital", {
+				fetch(getStore().apiAddress + `/Georgi/` + "vital", {
+					// fetch(getStore().apiAddress + `/${sessionStorage.getItem("user")}/` + "vital", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(vital)
@@ -377,16 +378,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 						return response.json();
 					})
-					.then(function(responseAsJson) {
-						console.log("Vital Response:", responseAsJson);
+					.then(function(updatedVital) {
+						console.log("Vital Response:", updatedVital);
 						if (vital.vitalName == "Blood Pressure") {
-							setStore({ vitalBloodPressure: responseAsJson });
+							setStore({ vitalBloodPressure: updatedVital });
 						} else if (vital.vitalName == "Weight") {
-							setStore({ vitalWeight: responseAsJson });
+							setStore({ vitalWeight: updatedVital });
 						} else if (vital.vitalName == "Heart Rate") {
-							setStore({ vitalHeartRate: responseAsJson });
+							setStore({ vitalHeartRate: updatedVital });
 						} else if (vital.vitalName == "Height") {
-							setStore({ vitalHeight: responseAsJson });
+							setStore({ vitalHeight: updatedVital });
 						}
 					})
 					.catch(function(error) {
