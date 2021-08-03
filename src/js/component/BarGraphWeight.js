@@ -9,6 +9,7 @@ function useForceUpdate() {
 }
 export const BarGraphWeight = props => {
 	const { store, actions } = useContext(GlobalState);
+	const forceUpdate = useForceUpdate();
 	const [data, setData] = useState({
 		labels: [],
 		datasets: [
@@ -23,7 +24,16 @@ export const BarGraphWeight = props => {
 			}
 		]
 	});
-	const forceUpdate = useForceUpdate();
+
+	const legend = {
+		display: true,
+		position: "top",
+		labels: {
+			fontColor: "#FFFFFF",
+			fontSize: 16
+		}
+	};
+
 	useEffect(() => {
 		if (store.vitalWeight) {
 			let newDataLables = data;
@@ -47,18 +57,23 @@ export const BarGraphWeight = props => {
 			<Bar
 				data={data}
 				width={100}
-				height={500}
+				height={200}
 				options={{
+					legend: {
+						labels: {
+							fontColor: "black"
+						}
+					},
 					maintainAspectRatio: false,
 					legend: {
-						labels: { fontColor: "white", fontSize: 16 }
+						labels: { fontColor: "black", fontSize: 16 }
 					},
 					scales: {
 						yAxes: [
 							{
 								ticks: {
 									beginAtZero: true,
-									fontColor: "white",
+									fontColor: "black",
 									fontSize: 16
 								}
 							}
@@ -66,7 +81,7 @@ export const BarGraphWeight = props => {
 						xAxes: [
 							{
 								ticks: {
-									fontColor: "white",
+									fontColor: "black",
 									stepSize: 1,
 									beginAtZero: true,
 									fontSize: 16

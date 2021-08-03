@@ -126,7 +126,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			setUserData: data => {
 				setStore({ allUserSymptoms: data.symptoms });
-				setStore({ allUserVitals: data.vitals });
+				setStore({ vitalBloodPressure: data.vitals.blood_pressure });
+				setStore({ vitalHeartRate: data.vitals.heart_rate });
+				setStore({ vitalHeight: data.vitals.height });
+				setStore({ vitalWeight: data.vitals.weight });
+
 				setStore({ allUserMedications: data.medications });
 			},
 			registerNewUser: user => {
@@ -350,11 +354,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
-			addUserVital: vital => {
-				let allVitals = getStore().allUserVitals;
-				allVitals.push(vital);
-				setStore({ allUserVitals: allVitals });
-			},
+			// addUserVital: vital => {
+			// 	let allVitals = getStore().allUserVitals;
+			// 	allVitals.push(vital);
+			// 	setStore({ allUserVitals: allVitals });
+			// },
 			sortVital: array => {
 				var sortedVitals = array.sort((a, b) => {
 					return new Date(b.date) - new Date(a.date);
@@ -362,7 +366,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return sortedVitals;
 			},
 			addUserVital: vital => {
-				fetch(getStore().apiAddress + `/${sessionStorage.getItem("user")}/` + "vital", {
+				fetch(getStore().apiAddress + `/Georgi/` + "vital", {
+					// fetch(getStore().apiAddress + `/${sessionStorage.getItem("user")}/` + "vital", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(vital)
@@ -373,16 +378,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 						return response.json();
 					})
-					.then(function(responseAsJson) {
-						console.log("Vital Response:", responseAsJson);
+					.then(function(updatedVital) {
+						console.log("Vital Response:", updatedVital);
 						if (vital.vitalName == "Blood Pressure") {
-							setStore({ vitalBloodPressure: responseAsJson });
+							setStore({ vitalBloodPressure: updatedVital });
 						} else if (vital.vitalName == "Weight") {
-							setStore({ vitalWeight: responseAsJson });
+							setStore({ vitalWeight: updatedVital });
 						} else if (vital.vitalName == "Heart Rate") {
-							setStore({ vitalHeartRate: responseAsJson });
+							setStore({ vitalHeartRate: updatedVital });
 						} else if (vital.vitalName == "Height") {
-							setStore({ vitalHeight: responseAsJson });
+							setStore({ vitalHeight: updatedVital });
 						}
 					})
 					.catch(function(error) {

@@ -46,18 +46,18 @@ export const BarGraph = props => {
 			<Bar
 				data={data}
 				width={100}
-				height={500}
+				height={200}
 				options={{
 					maintainAspectRatio: false,
 					legend: {
-						labels: { fontColor: "white", fontSize: 16 }
+						labels: { fontColor: "black", fontSize: 16 }
 					},
 					scales: {
 						yAxes: [
 							{
 								ticks: {
 									beginAtZero: true,
-									fontColor: "white",
+									fontColor: "black",
 									fontSize: 16
 								}
 							}
@@ -65,7 +65,7 @@ export const BarGraph = props => {
 						xAxes: [
 							{
 								ticks: {
-									fontColor: "white",
+									fontColor: "black",
 									stepSize: 1,
 									beginAtZero: true,
 									fontSize: 16

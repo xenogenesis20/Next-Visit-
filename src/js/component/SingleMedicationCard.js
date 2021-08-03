@@ -55,25 +55,25 @@ export const SingleMedicationCard = props => {
 							<div className="row">
 								<div className="col-4">
 									<div className="list-group">
-										<div className="list-group-item">
+										<div className="list-group-item py-3">
 											<div className="d-flex w-100 justify-content-between">
 												<h6 className="mb-1">Current Dose:</h6>
 												<h6 className="mb-1">{props.entity.dose} </h6>
 											</div>
 										</div>
-										<div className="list-group-item">
+										<div className="list-group-item py-3">
 											<div className="d-flex w-100 justify-content-between">
 												<h6 className="mb-1">How often do you take it:</h6>
 												<h6 className="mb-1">{props.entity.frequency}</h6>
 											</div>
 										</div>
-										<div className="list-group-item">
+										<div className="list-group-item py-3">
 											<div className="d-flex w-100 justify-content-between">
 												<h6 className="mb-1">Symptom target:</h6>
 												<h6 className="mb-1">{props.entity.reason}</h6>
 											</div>
 										</div>
-										<div className="list-group-item">
+										<div className="list-group-item py-3">
 											<div className="d-flex w-100 justify-content-between">
 												<h6 className="mb-1">Side effects:</h6>
 												<h6 className="mb-1">{props.entity.sideEffects}</h6>
