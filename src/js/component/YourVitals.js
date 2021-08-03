@@ -27,27 +27,27 @@ export const YourVitals = () => {
 			new mdb.Input(formOutline).update();
 		}, []);
 	});
-	let dynamicValue = "adde";
-	const getVitalList = dynamicValue => {
-		useEffect(() => {
-			fetch(``)
-				.then(function(response) {
-					if (!response.ok) {
-						throw Error(response.statusText);
-					}
-					// Read the response as json.
-					return response.json();
-				})
-				.then(function(responseAsJson) {
-					// Do stuff with the JSON
-					console.log("response log", responseAsJson.results);
-					setVitalList(responseAsJson.results);
-				})
-				.catch(function(err) {
-					console.log("Fetch Error :-S", err);
-				});
-		}, []);
-	};
+	// let dynamicValue = "adde";
+	// const getVitalList = dynamicValue => {
+	// 	useEffect(() => {
+	// 		fetch(``)
+	// 			.then(function(response) {
+	// 				if (!response.ok) {
+	// 					throw Error(response.statusText);
+	// 				}
+	// 				// Read the response as json.
+	// 				return response.json();
+	// 			})
+	// 			.then(function(responseAsJson) {
+	// 				// Do stuff with the JSON
+	// 				console.log("response log", responseAsJson.results);
+	// 				setVitalList(responseAsJson.results);
+	// 			})
+	// 			.catch(function(err) {
+	// 				console.log("Fetch Error :-S", err);
+	// 			});
+	// 	}, []);
+	// };
 
 	console.log("second log", vitalList);
 
@@ -98,7 +98,10 @@ export const YourVitals = () => {
 										id="exampleFormControlSelect1"
 										name="vitalName"
 										onChange={handleInput}>
-										<option>Select Vital</option>
+										<option selected disabled>
+											Select Vital
+										</option>
+
 										<option>Weight</option>
 										<option>Height</option>
 										<option>Blood Pressure</option>
@@ -119,7 +122,7 @@ export const YourVitals = () => {
 								</div>
 								<div className="form-outline bg-light mb-3 p-1">
 									<input
-										type="number"
+										type="text"
 										id="frequency-input"
 										className="form-control"
 										name="value"

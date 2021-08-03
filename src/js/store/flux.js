@@ -126,7 +126,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			setUserData: data => {
 				setStore({ allUserSymptoms: data.symptoms });
-				setStore({ allUserVitals: data.vitals });
+				setStore({ vitalBloodPressure: data.vitals.blood_pressure });
+				setStore({ vitalHeartRate: data.vitals.heart_rate });
+				setStore({ vitalHeight: data.vitals.height });
+				setStore({ vitalWeight: data.vitals.weight });
+
 				setStore({ allUserMedications: data.medications });
 			},
 			registerNewUser: user => {
@@ -350,11 +354,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Looks like there was a problem: \n", error);
 					});
 			},
-			addUserVital: vital => {
-				let allVitals = getStore().allUserVitals;
-				allVitals.push(vital);
-				setStore({ allUserVitals: allVitals });
-			},
+			// addUserVital: vital => {
+			// 	let allVitals = getStore().allUserVitals;
+			// 	allVitals.push(vital);
+			// 	setStore({ allUserVitals: allVitals });
+			// },
 			sortVital: array => {
 				var sortedVitals = array.sort((a, b) => {
 					return new Date(b.date) - new Date(a.date);
