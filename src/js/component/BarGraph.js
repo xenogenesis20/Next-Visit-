@@ -46,7 +46,7 @@ export const BarGraph = props => {
 			<Bar
 				data={data}
 				width={100}
-				height={500}
+				height={200}
 				options={{
 					maintainAspectRatio: false,
 					scales: {

@@ -225,3 +225,7 @@ td{
   width: 100%;
   height: 30vh;
 }
+
+.chartjs-size-monitor canvas {
+    height: 300px !important;
+}

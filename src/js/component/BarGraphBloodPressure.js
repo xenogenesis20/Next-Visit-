@@ -47,7 +47,7 @@ export const BarGraphBloodPressure = props => {
 			<Bar
 				data={data}
 				width={300}
-				height={600}
+				height={200}
 				options={{
 					scaleShowValues: true,
 					maintainAspectRatio: false,
