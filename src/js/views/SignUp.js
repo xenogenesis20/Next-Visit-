@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import * as mdb from "mdb-ui-kit"; // lib
 import { GlobalState } from "../store/appContext";
 import { ModalToSignIn } from "../component/ModalToSignIn";
+import { Link, useLocation } from "react-router-dom";
 
 export const SignUp = () => {
 	const { store, actions } = useContext(GlobalState);
@@ -104,7 +105,8 @@ export const SignUp = () => {
 													</div>
 
 													<div className="d-flex flex-row align-items-center mb-4">
-														<i className="fas fa-lock fa-lg me-3 fa-fw"></i>
+														<i className="fas fa-phone fa-lg me-3 fa-fw"></i>
+
 														<div className="form-outline flex-fill mb-0">
 															<input
 																type="number"
@@ -121,8 +123,8 @@ export const SignUp = () => {
 													</div>
 
 													<div className="d-flex flex-row align-items-center mb-4">
-														<i className="fas fa-house-user fa-lg me-3 fa-fw"></i>
-														<i className="fas fa-house-user"></i>
+														<i className="fas fa-home fa-lg me-3 fa-fw"></i>
+
 														<div className="form-outline flex-fill mb-0">
 															<input
 																type="text"
@@ -138,7 +140,8 @@ export const SignUp = () => {
 														</div>
 													</div>
 													<div className="d-flex flex-row align-items-center mb-4">
-														<i className="fas fa-key fa-lg me-3 fa-fw"></i>
+														<i className="fas fa-id-badge fa-lg me-3 fa-fw"></i>
+
 														<div className="form-outline flex-fill mb-0">
 															<input
 																type="text"
@@ -184,9 +187,14 @@ export const SignUp = () => {
 													</div>
 
 													<div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-														<button type="submit" className="btn btn-primary btn-lg">
+														<button type="submit" className="btn btn-primary btn-lg m-3">
 															Register
 														</button>
+														<Link to="/">
+															<button className="btn btn-danger btn-lg m-3">
+																Cancel
+															</button>
+														</Link>
 													</div>
 												</form>
 											</div>

@@ -49,20 +49,27 @@ export const BarGraphBloodPressure = props => {
 				width={300}
 				height={200}
 				options={{
-					scaleShowValues: true,
 					maintainAspectRatio: false,
+					legend: {
+						labels: { fontColor: "white", fontSize: 16 }
+					},
 					scales: {
 						yAxes: [
 							{
 								ticks: {
-									beginAtZero: true
+									beginAtZero: true,
+									fontColor: "white",
+									fontSize: 16
 								}
 							}
 						],
 						xAxes: [
 							{
 								ticks: {
-									autoSkip: false
+									fontColor: "white",
+									stepSize: 1,
+									beginAtZero: true,
+									fontSize: 16
 								}
 							}
 						]

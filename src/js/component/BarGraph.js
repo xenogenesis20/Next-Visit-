@@ -49,11 +49,26 @@ export const BarGraph = props => {
 				height={200}
 				options={{
 					maintainAspectRatio: false,
+					legend: {
+						labels: { fontColor: "white", fontSize: 16 }
+					},
 					scales: {
 						yAxes: [
 							{
 								ticks: {
-									beginAtZero: true
+									beginAtZero: true,
+									fontColor: "white",
+									fontSize: 16
+								}
+							}
+						],
+						xAxes: [
+							{
+								ticks: {
+									fontColor: "white",
+									stepSize: 1,
+									beginAtZero: true,
+									fontSize: 16
 								}
 							}
 						]
