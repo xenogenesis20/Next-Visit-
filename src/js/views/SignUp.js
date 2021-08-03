@@ -187,13 +187,11 @@ export const SignUp = () => {
 													</div>
 
 													<div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-														<button type="submit" className="btn btn-primary btn-lg m-3">
+														<button type="submit" className="btn-primary btn-lg m-3">
 															Register
 														</button>
 														<Link to="/">
-															<button className="btn btn-danger btn-lg m-3">
-																Cancel
-															</button>
+															<button className="btn-danger btn-lg m-3">Cancel</button>
 														</Link>
 													</div>
 												</form>

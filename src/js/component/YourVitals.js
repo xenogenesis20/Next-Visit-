@@ -66,7 +66,7 @@ export const YourVitals = () => {
 					</button>
 				</div>
 			</div>
-			{store.allUserVitals &&
+			{/* {store.allUserVitals &&
 				store.allUserVitals.map((vital, index) => (
 					<SingleVitalCard
 						key={index}
@@ -74,7 +74,7 @@ export const YourVitals = () => {
 						id={store.allUserVitals[index].id}
 						onDelete={() => stateSetter(vital.id)}
 					/>
-				))}
+				))} */}
 			<div
 				className="modal fade"
 				id="exampleModal"
