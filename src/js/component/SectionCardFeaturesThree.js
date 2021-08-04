@@ -68,7 +68,7 @@ export const SectionCardFeaturesThree = () => {
 						<div className="card-up aqua-gradient" />
 						<div className="avatar mx-auto white">
 							<img
-								src="https://www.linkedin.com/in/maikel-martinez-445115205/detail/photo/"
+								src="https://avatars.githubusercontent.com/u/78182780?v=4"
 								className="rounded-circle img-fluid"
 								alt="woman avatar"
 							/>
