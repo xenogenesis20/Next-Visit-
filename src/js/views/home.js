@@ -20,7 +20,7 @@ export const Home = props => {
 					</div>
 				</div>
 				<div className="row m-5 section-row">
-					<div className="col-6">
+					<div className="col-6 d-flex align-items-center">
 						<img src={pic} alt="" />
 					</div>
 					<div className="col">
