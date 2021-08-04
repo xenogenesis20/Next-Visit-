@@ -42,8 +42,10 @@ export const NextVisit = () => {
 
 	return (
 		<>
-			<div className="row">
-				<div className="col">PLan your next doctor visit.</div>
+			<div className="row p-3">
+				<div className="col text-center">
+					<h3>PLan your next doctor visit.</h3>
+				</div>
 			</div>
 
 			<button type="button" className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
