@@ -1,8 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			apiAddress: "https://3000-scarlet-cicada-21qc8m3c.ws-us14.gitpod.io",
-			// apiAddress: "https://3000-azure-yak-0zyy24p1.ws-us14.gitpod.io",
+			// apiAddress: "https://3000-scarlet-cicada-21qc8m3c.ws-us14.gitpod.io",
+			apiAddress: "https://3000-azure-yak-0zyy24p1.ws-us14.gitpod.io",
 			// apiAddress: "https://3000-plum-sturgeon-mlykhiq2.ws-us13.gitpod.io",
 			endpoint: "",
 			userInfo: [],
@@ -70,35 +70,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			allUserVitals: [],
 			allVisits: [
-				// {
-				// 	id: 0,
-				// 	doctor: "George",
-				// 	date: "12/02/2021",
-				// 	time: "9:45 AM",
-				// 	symptoms: [
-				// 		{
-				// 			id: 123124,
-				// 			symptomName: "broken butt",
-				// 			startDate: "07/12/21",
-				// 			severity: "10",
-				// 			location: "butt",
-				// 			frequency: "constant",
-				// 			duration: "all day",
-				// 			notes: [{ date: "08/02/2021", description: "Getting better" }]
-				// 		}
-				// 	],
-				// 	meds: [
-				// 		{
-				// 			dose: "24mg",
-				// 			frequency: "often",
-				// 			id: 2,
-				// 			name: "ZOCOR (Oral Pill)",
-				// 			reason: "Bad reasons",
-				// 			side_effects: "Terrifying"
-				// 		}
-				// 	],
-				// 	vitals: []
-				// }
+				{
+					id: 0,
+					doctor: "Hannibal Lector",
+					date: "12/02/2021",
+					time: "9:45 AM",
+					symptoms: [
+						{
+							id: 123124,
+							symptomName: "Seizures",
+							startDate: "07/12/21",
+							severity: "10",
+							location: "entire body",
+							frequency: "1 per month",
+							duration: "Under 1 minute",
+							notes: [{ date: "08/02/2021", description: "Getting better" }]
+						}
+					],
+					meds: [
+						{
+							dose: "24mg",
+							frequency: "often",
+							id: 2,
+							name: "ZOCOR (Oral Pill)",
+							reason: "Bad reasons",
+							side_effects: "Terrifying"
+						}
+					],
+					vitals: []
+				}
 			],
 			allDoctors: [
 				{

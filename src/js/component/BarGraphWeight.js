@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Bar } from "react-chartjs-3";
+import { Bar, Line } from "react-chartjs-3";
 import PropTypes from "prop-types";
 import { GlobalState } from "../store/appContext";
 

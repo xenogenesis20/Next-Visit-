@@ -78,7 +78,7 @@ export const SingleMedicationCard = props => {
 										<div className="list-group-item py-3">
 											<div className="d-flex w-100 justify-content-between">
 												<h6 className="mb-1">Side effects:</h6>
-												<h6 className="mb-1">{props.entity.sideEffects}</h6>
+												<h6 className="mb-1">{props.entity.side_effects}</h6>
 											</div>
 										</div>
 									</div>
