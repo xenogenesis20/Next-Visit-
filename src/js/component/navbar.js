@@ -21,7 +21,7 @@ export const Navbar = props => {
 				</button>
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav  me-auto mb-2 mb-lg-0">
-						<li className="nav-item">
+						{/* <li className="nav-item">
 							<Link to="/">
 								<a href="#about-card" className="anchor nav-link">
 									Features
@@ -34,7 +34,7 @@ export const Navbar = props => {
 									About Us
 								</a>
 							</Link>
-						</li>
+						</li> */}
 						{props.loggedIn ? (
 							""
 						) : (
@@ -63,11 +63,11 @@ export const Navbar = props => {
 						) : (
 							""
 						)}
-						<li className="nav-item">
+						{/* <li className="nav-item">
 							<Link className="nav-link" to="/FindDoctor">
 								Find a doctor
 							</Link>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 			</div>

@@ -37,8 +37,8 @@ export const SingleSymptomCard = props => {
 		<>
 			<div className="med-card-and-med-info d-flex justify-content-center row mb-2">
 				<div className=" d-flex justify-content-center">
-					<div className="col d-flex flex-wrap">
-						<div className="card" style={{ width: "100%" }}>
+					<div className="col-6 p-2 d-flex flex-wrap">
+						<div className="card m-2" style={{ width: "100%" }}>
 							<div className="card-header text-center">
 								<h3>{props.entity.symptomName}</h3>
 							</div>
@@ -46,31 +46,31 @@ export const SingleSymptomCard = props => {
 								{/* Start med info inside card body */}
 								<div className="list-group">
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
+										<div className="d-flex w-100 justify-content-between">
 											<h6 className="mb-1">Start Date:</h6>
 											<h6 className="mb-1">{props.entity.startDate} </h6>
 										</div>
 									</div>
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
+										<div className="d-flex w-100 justify-content-between">
 											<h6 className="mb-1">How severe is the symptom:</h6>
 											<h6 className="mb-1">{props.entity.severity}</h6>
 										</div>
 									</div>
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
+										<div className="d-flex w-100 justify-content-between">
 											<h6 className="mb-1">Symptom location:</h6>
 											<h6 className="mb-1">{props.entity.location}</h6>
 										</div>
 									</div>
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
+										<div className="d-flex w-100 justify-content-between">
 											<h6 className="mb-1">Symptom Frequency:</h6>
 											<h6 className="mb-1">{props.entity.frequency}</h6>
 										</div>
 									</div>
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
+										<div className="d-flex w-100 justify-content-between">
 											<h6 className="mb-1">Symptom Duration:</h6>
 											<h6 className="mb-1">{props.entity.duration}</h6>
 										</div>
@@ -163,7 +163,7 @@ export const SingleSymptomCard = props => {
 								);
 							})}
 					</div>
-					<div className="col">{<BarGraph symptomNotes={props.entity.notes} />}</div>
+					<div className="col-6 p-2">{<BarGraph symptomNotes={props.entity.notes} />}</div>
 				</div>
 			</div>
 

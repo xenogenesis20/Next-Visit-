@@ -40,8 +40,8 @@ export const YourSymptoms = () => {
 
 	return (
 		<>
-			<div className="row">
-				<div className="col">
+			<div className="row p-3">
+				<div className="col text-center">
 					<h1>Your Symptoms</h1>
 					<button
 						type="button"

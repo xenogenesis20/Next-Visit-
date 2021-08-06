@@ -1,9 +1,9 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			// apiAddress: "https://3000-scarlet-cicada-21qc8m3c.ws-us13.gitpod.io",
-			// apiAddress: "https://3000-azure-yak-0zyy24p1.ws-us13.gitpod.io",
-			apiAddress: "https://3000-plum-sturgeon-mlykhiq2.ws-us14.gitpod.io",
+			// apiAddress: "https://3000-scarlet-cicada-21qc8m3c.ws-us14.gitpod.io",
+			apiAddress: "https://3000-azure-yak-0zyy24p1.ws-us14.gitpod.io",
+			// apiAddress: "https://3000-plum-sturgeon-mlykhiq2.ws-us13.gitpod.io",
 			endpoint: "",
 			userInfo: [],
 			allUserMedications: [
@@ -70,35 +70,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			allUserVitals: [],
 			allVisits: [
-				// {
-				// 	id: 0,
-				// 	doctor: "George",
-				// 	date: "12/02/2021",
-				// 	time: "9:45 AM",
-				// 	symptoms: [
-				// 		{
-				// 			id: 123124,
-				// 			symptomName: "broken butt",
-				// 			startDate: "07/12/21",
-				// 			severity: "10",
-				// 			location: "butt",
-				// 			frequency: "constant",
-				// 			duration: "all day",
-				// 			notes: [{ date: "08/02/2021", description: "Getting better" }]
-				// 		}
-				// 	],
-				// 	meds: [
-				// 		{
-				// 			dose: "24mg",
-				// 			frequency: "often",
-				// 			id: 2,
-				// 			name: "ZOCOR (Oral Pill)",
-				// 			reason: "Bad reasons",
-				// 			side_effects: "Terrifying"
-				// 		}
-				// 	],
-				// 	vitals: []
-				// }
+				{
+					id: 0,
+					doctor: "Hannibal Lector",
+					date: "12/02/2021",
+					time: "9:45 AM",
+					symptoms: [
+						{
+							id: 123124,
+							symptomName: "Seizures",
+							startDate: "07/12/21",
+							severity: "10",
+							location: "entire body",
+							frequency: "1 per month",
+							duration: "Under 1 minute",
+							notes: [{ date: "08/02/2021", description: "Getting better" }]
+						}
+					],
+					meds: [
+						{
+							dose: "24mg",
+							frequency: "often",
+							id: 2,
+							name: "ZOCOR (Oral Pill)",
+							reason: "Bad reasons",
+							side_effects: "Terrifying"
+						}
+					],
+					vitals: []
+				}
 			],
 			allDoctors: [
 				{
@@ -366,8 +366,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return sortedVitals;
 			},
 			addUserVital: vital => {
-				fetch(getStore().apiAddress + `/Georgi/` + "vital", {
-					// fetch(getStore().apiAddress + `/${sessionStorage.getItem("user")}/` + "vital", {
+				// fetch(getStore().apiAddress + `/Georgi/` + "vital", {
+				fetch(getStore().apiAddress + `/${sessionStorage.getItem("user")}/` + "vital", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(vital)
@@ -381,13 +381,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(function(updatedVital) {
 						console.log("Vital Response:", updatedVital);
 						if (vital.vitalName == "Blood Pressure") {
-							setStore({ vitalBloodPressure: updatedVital });
+							setStore({ vitalBloodPressure: [...getStore().vitalBloodPressure, vital] });
 						} else if (vital.vitalName == "Weight") {
-							setStore({ vitalWeight: updatedVital });
+							setStore({ vitalWeight: [...getStore().vitalWeight, vital] });
 						} else if (vital.vitalName == "Heart Rate") {
-							setStore({ vitalHeartRate: updatedVital });
+							setStore({ vitalHeartRate: [...getStore().vitalHeartRate, vital] });
 						} else if (vital.vitalName == "Height") {
-							setStore({ vitalHeight: updatedVital });
+							setStore({ vitalHeight: [...getStore().vitalHeight, vital] });
 						}
 					})
 					.catch(function(error) {

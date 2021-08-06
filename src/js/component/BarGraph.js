@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-3";
+import { Bar, Line } from "react-chartjs-3";
 import PropTypes from "prop-types";
 
 function useForceUpdate() {
@@ -29,7 +29,7 @@ export const BarGraph = props => {
 			newDataLables.datasets[0].data = [];
 			for (let i = 0; i < props.symptomNotes.length; i++) {
 				newDataLables.labels.push(props.symptomNotes[i].date);
-				console.log("Bargraph dates", newDataLables.labels.push(props.symptomNotes[i].date));
+				console.log("Bargraph dates", newDataLables.labels, props.symptomNotes[i].date);
 				newDataLables.datasets[0].data.push(parseInt(props.symptomNotes[i].severity));
 			}
 			setData(newDataLables);
@@ -50,14 +50,14 @@ export const BarGraph = props => {
 				options={{
 					maintainAspectRatio: false,
 					legend: {
-						labels: { fontColor: "white", fontSize: 16 }
+						labels: { fontColor: "black", fontSize: 16 }
 					},
 					scales: {
 						yAxes: [
 							{
 								ticks: {
 									beginAtZero: true,
-									fontColor: "white",
+									fontColor: "black",
 									fontSize: 16
 								}
 							}
@@ -65,7 +65,7 @@ export const BarGraph = props => {
 						xAxes: [
 							{
 								ticks: {
-									fontColor: "white",
+									fontColor: "black",
 									stepSize: 1,
 									beginAtZero: true,
 									fontSize: 16

@@ -32,7 +32,7 @@ export const DetailedMed = () => {
 	}, []);
 
 	return (
-		<div className="container ">
+		<div className="container " style={{ color: "black" }}>
 			<div className="row">
 				<div className="col-12">
 					<h1>{location.state.medication.name}</h1>
@@ -55,9 +55,7 @@ export const DetailedMed = () => {
 					</p>
 				</div>
 			</div>
-			<Link to="/DashboardHome">
-				<button className="btn btn-primary">Back to Dashboard</button>
-			</Link>
+
 			<div className="row">
 				<div>
 					{/* Nav tabs start */}
@@ -114,6 +112,9 @@ export const DetailedMed = () => {
 						</TabPanel>
 					</Tabs>
 					{/* Nav tabs end */}
+					<Link to="/DashboardHome">
+						<button className="btn btn-primary m-2 p-2">Back to Dashboard</button>
+					</Link>
 				</div>
 			</div>
 		</div>

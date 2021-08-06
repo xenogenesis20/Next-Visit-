@@ -21,7 +21,7 @@ export const DashboardHome = props => {
 			</div>
 			<div className="dashboard p-0 m-0 w-100">
 				<div className="row d-flex justify-content-center" style={{ height: "100vh" }}>
-					<div className="col-4 your-symptoms-box">
+					<div className="col-4 your-symptoms-box" style={{ paddingLeft: "24px" }}>
 						<h1 className="section-title text-center my-3">Symptoms</h1>
 						{store.allUserSymptoms &&
 							store.allUserSymptoms.map((symptom, index) => (

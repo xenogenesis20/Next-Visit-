@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Bar } from "react-chartjs-3";
+import { Bar, Line } from "react-chartjs-3";
 import PropTypes from "prop-types";
 import { GlobalState } from "../store/appContext";
 
@@ -61,19 +61,19 @@ export const BarGraphWeight = props => {
 				options={{
 					legend: {
 						labels: {
-							fontColor: "white"
+							fontColor: "black"
 						}
 					},
 					maintainAspectRatio: false,
 					legend: {
-						labels: { fontColor: "white", fontSize: 16 }
+						labels: { fontColor: "black", fontSize: 16 }
 					},
 					scales: {
 						yAxes: [
 							{
 								ticks: {
 									beginAtZero: true,
-									fontColor: "white",
+									fontColor: "black",
 									fontSize: 16
 								}
 							}
@@ -81,7 +81,7 @@ export const BarGraphWeight = props => {
 						xAxes: [
 							{
 								ticks: {
-									fontColor: "white",
+									fontColor: "black",
 									stepSize: 1,
 									beginAtZero: true,
 									fontSize: 16

@@ -72,8 +72,8 @@ export const YourMedications = () => {
 
 	return (
 		<>
-			<div className="row">
-				<div className="col">
+			<div className="row p-3">
+				<div className="col text-center">
 					<h1>Your Medications</h1>
 					<div />
 					<button type="button" className="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#addMed">

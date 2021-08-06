@@ -8,7 +8,7 @@ export const DetailedSymptom = () => {
 	console.log(location.state.symptom);
 
 	return (
-		<div className="container ">
+		<div className="container " style={{ color: "black" }}>
 			<div className="row">
 				<div className="col-12">
 					<h1>{location.state.symptom.symptomName}</h1>
