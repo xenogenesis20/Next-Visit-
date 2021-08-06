@@ -46,31 +46,31 @@ export const SingleSymptomCard = props => {
 								{/* Start med info inside card body */}
 								<div className="list-group">
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
+										<div className="d-flex w-100 justify-content-between">
 											<h6 className="mb-1">Start Date:</h6>
 											<h6 className="mb-1">{props.entity.startDate} </h6>
 										</div>
 									</div>
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
+										<div className="d-flex w-100 justify-content-between">
 											<h6 className="mb-1">How severe is the symptom:</h6>
 											<h6 className="mb-1">{props.entity.severity}</h6>
 										</div>
 									</div>
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
+										<div className="d-flex w-100 justify-content-between">
 											<h6 className="mb-1">Symptom location:</h6>
 											<h6 className="mb-1">{props.entity.location}</h6>
 										</div>
 									</div>
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
+										<div className="d-flex w-100 justify-content-between">
 											<h6 className="mb-1">Symptom Frequency:</h6>
 											<h6 className="mb-1">{props.entity.frequency}</h6>
 										</div>
 									</div>
 									<div className="list-group-item">
-										<div className="d-flex w-100 justify-content-around">
+										<div className="d-flex w-100 justify-content-between">
 											<h6 className="mb-1">Symptom Duration:</h6>
 											<h6 className="mb-1">{props.entity.duration}</h6>
 										</div>

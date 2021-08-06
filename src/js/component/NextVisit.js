@@ -44,7 +44,7 @@ export const NextVisit = () => {
 		<>
 			<div className="row p-3">
 				<div className="col text-center">
-					<h1>PLan your next doctor visit.</h1>
+					<h1>Plan your next doctor visit.</h1>
 				</div>
 			</div>
 

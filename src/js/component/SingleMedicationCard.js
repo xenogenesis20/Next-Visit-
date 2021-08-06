@@ -21,9 +21,11 @@ export const SingleMedicationCard = props => {
 	useEffect(() => {
 		let str = props.entity.name;
 
-		let arr = str.split("");
+		let arr = str.split("(");
 
 		let newStr = arr[0].trim();
+		console.log("test props:", props.entity.name);
+		console.log("test split:", newStr);
 
 		fetch(`https://api.fda.gov/drug/label.json?search=adverse_reactions:${newStr}`)
 			.then(function(response) {

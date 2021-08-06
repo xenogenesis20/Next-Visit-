@@ -29,7 +29,7 @@ export const BarGraph = props => {
 			newDataLables.datasets[0].data = [];
 			for (let i = 0; i < props.symptomNotes.length; i++) {
 				newDataLables.labels.push(props.symptomNotes[i].date);
-				console.log("Bargraph dates", newDataLables.labels.push(props.symptomNotes[i].date));
+				console.log("Bargraph dates", newDataLables.labels, props.symptomNotes[i].date);
 				newDataLables.datasets[0].data.push(parseInt(props.symptomNotes[i].severity));
 			}
 			setData(newDataLables);

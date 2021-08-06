@@ -7,7 +7,7 @@ export const SmallSympCard = props => {
 	const { store, actions } = useContext(GlobalState);
 
 	return (
-		<div className="card text-center text-dark bg-light my-4 mx-3 p-3 rounded shadow-lg" style={{ width: "95%" }}>
+		<div className="card text-center text-dark bg-light  my-3 p-4 rounded shadow-lg" style={{ width: "100%" }}>
 			<div className="card-body d-block justify-content-between align-items-center p-1">
 				<p className="card-title d-flex justify-content-between">
 					<span>{props.entity.symptomName}</span>
