@@ -36,7 +36,9 @@ export const SideNav = props => {
 					<SidebarHeader>
 						<div className="logotext">
 							{/* small and big change using menucollapse state */}
-							<p>{menuCollapse ? "N|V" : <img src={logo} />}</p>
+							<p className="d-flex justify-content-center">
+								{menuCollapse ? "N|V" : <img className="mt-3" src={logo} />}
+							</p>
 						</div>
 						<div className="closemenu" onClick={menuIconClick}>
 							{/* changing menu collapse icon on click */}
